@@ -1,0 +1,150 @@
+// Pioneer Public School — database schema
+//
+// Backs the four website forms plus CMS-style content models for the
+// future expansion described in the PRD. Run `npx prisma migrate dev`
+// after configuring DATABASE_URL in .env.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ── Form submissions ──────────────────────────────────────────────
+
+model AdmissionEnquiry {
+  id            String   @id @default(cuid())
+  parentName    String
+  studentName   String
+  gradeApplying String
+  phone         String
+  email         String
+  message       String?
+  status        EnquiryStatus @default(NEW)
+  createdAt     DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([status])
+}
+
+enum EnquiryStatus {
+  NEW
+  CONTACTED
+  VISIT_SCHEDULED
+  ADMITTED
+  CLOSED
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  subject   String
+  message   String
+  resolved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model CampusVisit {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String
+  email         String
+  preferredDate DateTime
+  visitors      String
+  confirmed     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([preferredDate])
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// ── Content (CMS-style) models ────────────────────────────────────
+
+model NewsPost {
+  id        String       @id @default(cuid())
+  slug      String       @unique
+  title     String
+  excerpt   String
+  body      String
+  category  NewsCategory
+  published Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@index([published, createdAt])
+}
+
+enum NewsCategory {
+  ANNOUNCEMENT
+  EVENT
+  ACHIEVEMENT
+  CIRCULAR
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  date        DateTime
+  time        String
+  location    String
+  description String
+  published   Boolean  @default(false)
+
+  @@index([date])
+}
+
+model GalleryAlbum {
+  id        String         @id @default(cuid())
+  title     String
+  category  String
+  year      Int
+  photos    GalleryPhoto[]
+  createdAt DateTime       @default(now())
+}
+
+model GalleryPhoto {
+  id       String       @id @default(cuid())
+  url      String // Cloudinary URL
+  alt      String
+  album    GalleryAlbum @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  albumId  String
+  ordering Int          @default(0)
+}
+
+model Download {
+  id        String   @id @default(cuid())
+  title     String
+  category  String // Holiday Calendar, Exam Schedule, Timetable, Circular…
+  fileUrl   String
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// ── Admin users (NextAuth-ready) ──────────────────────────────────
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(EDITOR)
+  createdAt    DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
