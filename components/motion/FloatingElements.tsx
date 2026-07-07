@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 interface Particle {
   x: string;
@@ -23,7 +24,9 @@ const particles: Particle[] = [
 
 export function FloatingElements() {
   const reduceMotion = useReducedMotion();
-  if (reduceMotion) return null;
+  const isMobile = useIsMobile();
+  // Eight infinite animations are wasted battery and jank on phones.
+  if (reduceMotion || isMobile) return null;
 
   return (
     <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">

@@ -4,16 +4,19 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { SiteImage } from "@/lib/images";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 interface ParallaxBandProps {
   image: SiteImage;
   children: React.ReactNode;
 }
 
-/** Full-bleed photographic band with a gentle scroll parallax. */
+/** Full-bleed photographic band with a gentle scroll parallax (desktop only). */
 export function ParallaxBand({ image, children }: ParallaxBandProps) {
   const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const staticBand = reduceMotion || isMobile;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -24,8 +27,8 @@ export function ParallaxBand({ image, children }: ParallaxBandProps) {
     <section ref={ref} className="relative overflow-hidden bg-ink text-white">
       <motion.div
         aria-hidden="true"
-        className="absolute inset-x-0 -top-[20%] h-[140%]"
-        style={reduceMotion ? undefined : { y }}
+        className="absolute inset-x-0 -top-[20%] h-[140%] will-change-transform"
+        style={staticBand ? undefined : { y }}
       >
         <Image
           src={image.src}

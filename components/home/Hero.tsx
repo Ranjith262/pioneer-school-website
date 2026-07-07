@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { site } from "@/content/site";
 import { img } from "@/lib/images";
+import { useIsMobile } from "@/lib/useIsMobile";
 import { ButtonLink } from "@/components/ui/Button";
 import { FloatingElements } from "@/components/motion/FloatingElements";
 
@@ -50,6 +51,9 @@ function RevealWords({
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  // Scroll-linked transforms repaint every frame — too heavy for phone GPUs.
+  const staticHero = reduceMotion || isMobile;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -72,7 +76,7 @@ export function Hero() {
       <motion.div
         aria-hidden="true"
         className="absolute inset-0"
-        style={reduceMotion ? undefined : { y: bgY }}
+        style={staticHero ? undefined : { y: bgY }}
       >
         <div
           className="absolute inset-[-10%] will-change-[background-position]"
@@ -125,12 +129,16 @@ export function Hero() {
       <motion.div
         aria-hidden="true"
         className="absolute inset-0"
-        style={reduceMotion ? undefined : { y: bgY }}
+        style={staticHero ? undefined : { y: bgY }}
       >
         <motion.div
-          className="absolute inset-[-8%]"
-          initial={reduceMotion ? false : { scale: 1.12, opacity: 0 }}
-          animate={reduceMotion ? undefined : { scale: 1, opacity: 1 }}
+          className="absolute inset-[-8%] will-change-transform"
+          initial={
+            reduceMotion ? false : staticHero ? { opacity: 0 } : { scale: 1.12, opacity: 0 }
+          }
+          animate={
+            reduceMotion ? undefined : staticHero ? { opacity: 1 } : { scale: 1, opacity: 1 }
+          }
           transition={{ duration: 18, ease: "linear", opacity: { duration: 4, delay: 5, ease: "easeInOut" } }}
         >
           <Image
@@ -157,14 +165,14 @@ export function Hero() {
       <motion.div
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-primary-800/15"
-        style={reduceMotion ? undefined : { opacity: overlayOpacity }}
+        style={staticHero ? undefined : { opacity: overlayOpacity }}
       />
 
       {/* Layer 3: Mid-ground decorative elements */}
       <motion.div
         aria-hidden="true"
         className="absolute inset-0"
-        style={reduceMotion ? undefined : { y: midY }}
+        style={staticHero ? undefined : { y: midY }}
       >
         {/* Saffron diagonal accent */}
         <div className="absolute -right-20 top-1/4 h-80 w-[400px] rotate-12 bg-gradient-to-b from-[#FF9933]/10 to-transparent blur-3xl" />
@@ -178,7 +186,7 @@ export function Hero() {
       {/* Layer 5: Content (parallax up on scroll, fades) */}
       <motion.div
         style={
-          reduceMotion
+          staticHero
             ? undefined
             : { y: contentY, opacity: contentOpacity, scale: contentScale }
         }

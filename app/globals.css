@@ -51,6 +51,20 @@
   --radius-card: 1.25rem;
 }
 
+/* Marquee travels a fixed pixel distance per loop, so a fixed duration reads
+   much faster on narrow screens. Slow it down as the viewport shrinks to keep
+   the perceived speed constant. (Unlayered on purpose — must beat the utility.) */
+@media (max-width: 1023px) {
+  .animate-marquee {
+    animation-duration: 48s;
+  }
+}
+@media (max-width: 639px) {
+  .animate-marquee {
+    animation-duration: 72s;
+  }
+}
+
 /* Base styles live in the base layer so Tailwind utilities can override them
    (an unlayered rule would always beat layered utility classes). */
 @layer base {
