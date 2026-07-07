@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 interface TextRevealProps {
   text: string;
@@ -20,7 +21,13 @@ export function TextReveal({
   tag: Tag = "span",
 }: TextRevealProps) {
   const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const units = mode === "char" ? text.split("") : text.split(" ");
+
+  // Per-word 3D reveals read as content popping in on a fast phone scroll.
+  if (isMobile) {
+    return <span className={className}>{text}</span>;
+  }
 
   const containerVariants = {
     hidden: {},

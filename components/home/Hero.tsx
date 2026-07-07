@@ -72,58 +72,64 @@ export function Hero() {
       ref={ref}
       className="relative flex min-h-[100svh] items-end overflow-hidden bg-ink text-white"
     >
-      {/* Layer 0: Animated sunrise sky gradient */}
-      <motion.div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={staticHero ? undefined : { y: bgY }}
-      >
-        <div
-          className="absolute inset-[-10%] will-change-[background-position]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to top, #1a0a2e 0%, #2d1b69 15%, #7b2d5f 30%, #d4574e 45%, #f09839 58%, #f5c842 70%, #87ceeb 90%)",
-            backgroundSize: "100% 300%",
-            animation: reduceMotion ? "none" : "sunrise-sky 14s cubic-bezier(0.4, 0, 0.2, 1) forwards",
-          }}
-        />
-      </motion.div>
+      {/* Sunrise theatrics are desktop-only: on phones the show reads as a
+          broken black screen, so the photo appears immediately instead. */}
+      {!staticHero && (
+        <>
+          {/* Layer 0: Animated sunrise sky gradient */}
+          <motion.div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{ y: bgY }}
+          >
+            <div
+              className="absolute inset-[-10%] will-change-[background-position]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to top, #1a0a2e 0%, #2d1b69 15%, #7b2d5f 30%, #d4574e 45%, #f09839 58%, #f5c842 70%, #87ceeb 90%)",
+                backgroundSize: "100% 300%",
+                animation: "sunrise-sky 14s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+              }}
+            />
+          </motion.div>
 
-      {/* Layer 0b: Animated sun glow orb */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-[15%] left-1/2 -translate-x-1/2 will-change-transform"
-        style={{
-          width: "clamp(200px, 35vw, 500px)",
-          height: "clamp(200px, 35vw, 500px)",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245,184,1,0.7) 0%, rgba(240,152,57,0.4) 35%, rgba(213,87,78,0) 70%)",
-          animation: reduceMotion ? "none" : "sunrise-glow 14s cubic-bezier(0.4, 0, 0.2, 1) forwards",
-          opacity: 0,
-        }}
-      />
+          {/* Layer 0b: Animated sun glow orb */}
+          <div
+            aria-hidden="true"
+            className="absolute bottom-[15%] left-1/2 -translate-x-1/2 will-change-transform"
+            style={{
+              width: "clamp(200px, 35vw, 500px)",
+              height: "clamp(200px, 35vw, 500px)",
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(245,184,1,0.7) 0%, rgba(240,152,57,0.4) 35%, rgba(213,87,78,0) 70%)",
+              animation: "sunrise-glow 14s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+              opacity: 0,
+            }}
+          />
 
-      {/* Layer 0c: Animated light rays */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-[15%] left-1/2 -translate-x-1/2 hidden sm:block will-change-transform"
-        style={{
-          width: "clamp(400px, 70vw, 1200px)",
-          height: "clamp(400px, 70vw, 1200px)",
-          background: `conic-gradient(
-            from 0deg,
-            transparent 0deg, rgba(245,179,1,0.12) 8deg, transparent 16deg,
-            transparent 30deg, rgba(255,153,51,0.1) 38deg, transparent 46deg,
-            transparent 60deg, rgba(245,179,1,0.08) 68deg, transparent 76deg,
-            transparent 90deg, rgba(255,153,51,0.1) 98deg, transparent 106deg,
-            transparent 120deg, rgba(245,179,1,0.12) 128deg, transparent 136deg,
-            transparent 150deg, rgba(255,153,51,0.08) 158deg, transparent 166deg,
-            transparent 180deg
-          )`,
-          animation: reduceMotion ? "none" : "sunrise-rays 14s cubic-bezier(0.4, 0, 0.2, 1) forwards",
-          opacity: 0,
-        }}
-      />
+          {/* Layer 0c: Animated light rays */}
+          <div
+            aria-hidden="true"
+            className="absolute bottom-[15%] left-1/2 -translate-x-1/2 hidden sm:block will-change-transform"
+            style={{
+              width: "clamp(400px, 70vw, 1200px)",
+              height: "clamp(400px, 70vw, 1200px)",
+              background: `conic-gradient(
+                from 0deg,
+                transparent 0deg, rgba(245,179,1,0.12) 8deg, transparent 16deg,
+                transparent 30deg, rgba(255,153,51,0.1) 38deg, transparent 46deg,
+                transparent 60deg, rgba(245,179,1,0.08) 68deg, transparent 76deg,
+                transparent 90deg, rgba(255,153,51,0.1) 98deg, transparent 106deg,
+                transparent 120deg, rgba(245,179,1,0.12) 128deg, transparent 136deg,
+                transparent 150deg, rgba(255,153,51,0.08) 158deg, transparent 166deg,
+                transparent 180deg
+              )`,
+              animation: "sunrise-rays 14s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+              opacity: 0,
+            }}
+          />
+        </>
+      )}
 
       {/* Layer 1: Background image with Ken Burns (fades in over sunrise) */}
       <motion.div
@@ -139,7 +145,11 @@ export function Hero() {
           animate={
             reduceMotion ? undefined : staticHero ? { opacity: 1 } : { scale: 1, opacity: 1 }
           }
-          transition={{ duration: 18, ease: "linear", opacity: { duration: 4, delay: 5, ease: "easeInOut" } }}
+          transition={
+            staticHero
+              ? { opacity: { duration: 0.5, ease: "easeOut" } }
+              : { duration: 18, ease: "linear", opacity: { duration: 4, delay: 5, ease: "easeInOut" } }
+          }
         >
           <Image
             src={img.heroClassroom.src}
@@ -153,13 +163,13 @@ export function Hero() {
       </motion.div>
 
       {/* Layer 1b: Dawn haze overlay (fades out as sunrise completes) */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e]/50 via-[#d4574e]/15 to-transparent"
-        style={{
-          animation: reduceMotion ? "none" : "sunrise-haze 12s ease-out forwards",
-        }}
-      />
+      {!staticHero && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e]/50 via-[#d4574e]/15 to-transparent"
+          style={{ animation: "sunrise-haze 12s ease-out forwards" }}
+        />
+      )}
 
       {/* Layer 2: Color overlay (shifts opacity on scroll) */}
       <motion.div

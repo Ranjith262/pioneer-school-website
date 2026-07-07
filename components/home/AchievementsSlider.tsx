@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { achievements } from "@/content/achievements";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 const categoryColors: Record<string, string> = {
   "Academics": "from-primary to-primary-700",
@@ -14,6 +15,8 @@ const categoryColors: Record<string, string> = {
 export function AchievementsSlider() {
   const trackRef = useRef<HTMLUListElement>(null);
   const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const noEntrance = reduceMotion || isMobile;
 
   const scrollByCard = (direction: 1 | -1) => {
     const track = trackRef.current;
@@ -33,7 +36,7 @@ export function AchievementsSlider() {
         {achievements.map((achievement, i) => (
           <motion.li
             key={achievement.title}
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            initial={noEntrance ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.5 }}

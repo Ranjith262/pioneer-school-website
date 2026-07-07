@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 type Direction = "up" | "down" | "left" | "right" | "none";
 
@@ -19,6 +20,10 @@ interface FadeInProps {
   delay?: number;
 }
 
+/* Scroll-entrance animations are desktop-only. On phones, content hidden
+   until it crosses the viewport threshold reads as blank flashes during a
+   fast thumb-scroll — so mobile renders everything immediately. */
+
 export function FadeIn({
   children,
   className,
@@ -26,7 +31,12 @@ export function FadeIn({
   delay = 0,
 }: FadeInProps) {
   const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const offset = reduceMotion ? offsets.none : offsets[direction];
+
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
@@ -49,6 +59,14 @@ interface StaggerProps {
 }
 
 export function Stagger({ children, className, interval = 0.1 }: StaggerProps) {
+  const isMobile = useIsMobile();
+
+  // Plain container on mobile: StaggerItem variants stay dormant without a
+  // parent controller, so children render visible.
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}
