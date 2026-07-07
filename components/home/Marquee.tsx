@@ -31,12 +31,10 @@ function Strip({ ariaHidden = false }: { ariaHidden?: boolean }) {
 /** ISB-style rolling values ticker. Pauses on hover; static text for screen readers. */
 export function Marquee() {
   return (
-    <div className="overflow-hidden border-y border-white/10 bg-gradient-to-r from-primary-800 via-primary to-secondary-700 py-5">
-      <div className="group relative flex">
-        <div className="flex animate-marquee group-hover:[animation-play-state:paused]">
-          <Strip />
-          <Strip ariaHidden />
-        </div>
+    <div className="marquee-shell overflow-hidden border-y border-white/10 bg-gradient-to-r from-primary-800 via-primary to-secondary-700 py-5">
+      <div className="marquee-track">
+        <Strip />
+        <Strip ariaHidden />
       </div>
     </div>
   );

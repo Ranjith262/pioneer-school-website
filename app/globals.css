@@ -24,15 +24,8 @@
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
 
-  --animate-marquee: marquee 32s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-shimmer: shimmer 2.5s linear infinite;
-
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
-    }
-  }
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -51,18 +44,43 @@
   --radius-card: 1.25rem;
 }
 
-/* Marquee travels a fixed pixel distance per loop, so a fixed duration reads
-   much faster on narrow screens. Slow it down as the viewport shrinks to keep
-   the perceived speed constant. (Unlayered on purpose — must beat the utility.) */
+/* Marquee — plain explicit CSS, no var() indirection, no shorthand/longhand
+   mixing. iOS Safari mishandled the Tailwind animation utility (racing loop
+   with blank gaps), so each breakpoint declares the full animation outright.
+   The track travels a fixed pixel distance per loop, so narrower viewports
+   get longer durations to keep the perceived speed constant. */
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+  will-change: transform;
+  animation: marquee-scroll 36s linear infinite;
+}
 @media (max-width: 1023px) {
-  .animate-marquee {
-    animation-duration: 48s;
+  .marquee-track {
+    animation: marquee-scroll 52s linear infinite;
   }
 }
 @media (max-width: 639px) {
-  .animate-marquee {
-    animation-duration: 72s;
+  .marquee-track {
+    animation: marquee-scroll 68s linear infinite;
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+.marquee-shell:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 /* Base styles live in the base layer so Tailwind utilities can override them
