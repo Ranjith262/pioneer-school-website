@@ -64,18 +64,22 @@ export function TextReveal({
       style={{ display: "inline" }}
     >
       {units.map((unit, i) => (
-        <span
-          key={`${unit}-${i}`}
-          className="inline-block overflow-hidden pb-0.5 align-bottom"
-          style={{ perspective: 600 }}
-        >
-          <motion.span
-            className="inline-block"
-            variants={unitVariants}
+        // The joining space lives BETWEEN the inline-blocks (a trailing
+        // space inside one would collapse), so it both renders and stays
+        // in the accessible text.
+        <span key={`${unit}-${i}`}>
+          <span
+            className="inline-block overflow-hidden pb-0.5 align-bottom"
+            style={{ perspective: 600 }}
           >
-            {unit}
-            {mode === "word" && i < units.length - 1 ? " " : ""}
-          </motion.span>
+            <motion.span
+              className="inline-block"
+              variants={unitVariants}
+            >
+              {unit}
+            </motion.span>
+          </span>
+          {mode === "word" && i < units.length - 1 ? " " : ""}
         </span>
       ))}
     </motion.span>

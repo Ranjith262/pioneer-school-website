@@ -11,6 +11,8 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Photo } from "@/components/ui/Photo";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { CountUp } from "@/components/motion/CountUp";
+import { TiltCard } from "@/components/motion/TiltCard";
+import { StatsOrbit3D } from "@/components/three/StatsOrbit3D";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
 import { ParallaxBand } from "@/components/home/ParallaxBand";
@@ -155,34 +157,52 @@ export default function HomePage() {
           />
           <Stagger className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {promises.map((promise) => (
-              <StaggerItem key={promise.number}>
-                <div className="group relative h-full overflow-hidden rounded-card border border-primary-100 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-2 hover:border-accent hover:shadow-lift">
+              <StaggerItem key={promise.number} className="h-full">
+                {/* 3D depth card: the card tilts toward the pointer while the
+                    icon, heading, and copy float at different Z-depths. */}
+                <TiltCard
+                  maxTilt={9}
+                  className="group relative h-full rounded-card border border-primary-100 bg-white p-7 shadow-soft transition-[border-color,box-shadow] duration-300 hover:border-accent hover:shadow-lift"
+                >
                   {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-accent/0 via-accent/0 to-accent/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="relative">
-                    <div className="flex items-center justify-between">
+                  <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-b from-accent/0 via-accent/0 to-accent/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="relative" style={{ transformStyle: "preserve-3d" }}>
+                    <div
+                      className="flex items-center justify-between"
+                      style={{ transform: "translateZ(46px)", transformStyle: "preserve-3d" }}
+                    >
                       <p className="font-display text-5xl font-medium text-primary/20 transition-colors duration-300 group-hover:text-accent">
                         {promise.number}
                       </p>
                       <span
                         aria-hidden="true"
-                        className="text-3xl transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110"
+                        className="text-3xl transition-transform duration-500 group-hover:scale-110"
+                        style={{ transform: "translateZ(24px)" }}
                       >
                         {promise.icon}
                       </span>
                     </div>
-                    <h3 className="mt-4 font-heading text-lg font-semibold text-ink">
+                    <h3
+                      className="mt-4 font-heading text-lg font-semibold text-ink"
+                      style={{ transform: "translateZ(30px)" }}
+                    >
                       {promise.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted">
+                    <p
+                      className="mt-3 text-sm leading-relaxed text-muted"
+                      style={{ transform: "translateZ(16px)" }}
+                    >
                       {promise.description}
                     </p>
                     {/* Reveal on hover */}
-                    <div className="mt-4 max-h-0 overflow-hidden text-xs italic leading-relaxed text-primary/80 transition-all duration-500 group-hover:max-h-24">
+                    <div
+                      className="mt-4 max-h-0 overflow-hidden text-xs italic leading-relaxed text-primary/80 transition-all duration-500 group-hover:max-h-24"
+                      style={{ transform: "translateZ(10px)" }}
+                    >
                       {promise.back}
                     </div>
                   </div>
-                </div>
+                </TiltCard>
               </StaggerItem>
             ))}
           </Stagger>
@@ -199,6 +219,8 @@ export default function HomePage() {
           <div className="absolute right-1/4 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full border border-white" />
           <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white" />
         </div>
+        {/* 3D armillary globe with orbiting satellites (desktop only) */}
+        <StatsOrbit3D />
         <Container className="relative">
           <dl className="grid grid-cols-2 gap-12 text-center lg:grid-cols-4">
             {stats.map((stat) => (
@@ -275,21 +297,30 @@ export default function HomePage() {
           />
           <Stagger className="grid grid-cols-2 gap-5 lg:grid-cols-4">
             {facilities.map((facility) => (
-              <StaggerItem key={facility.name}>
-                <div className="group h-full rounded-card border border-primary-100 bg-white p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:border-accent hover:shadow-glow">
-                  <span
-                    aria-hidden="true"
-                    className="inline-block text-4xl transition-transform duration-500 group-hover:scale-125 group-hover:rotate-6"
-                  >
-                    {facility.emoji}
-                  </span>
-                  <h3 className="mt-3 font-heading font-semibold text-ink transition-colors duration-300 group-hover:text-primary">
-                    {facility.name}
-                  </h3>
-                  <p className="mt-2 hidden text-sm text-muted sm:block">
-                    {facility.description}
-                  </p>
-                </div>
+              <StaggerItem key={facility.name} className="h-full">
+                <TiltCard
+                  maxTilt={12}
+                  className="group relative h-full rounded-card border border-primary-100 bg-white p-6 text-center transition-[border-color,box-shadow] duration-300 hover:border-accent hover:shadow-glow"
+                >
+                  <div style={{ transformStyle: "preserve-3d" }}>
+                    <span
+                      aria-hidden="true"
+                      className="inline-block text-4xl"
+                      style={{ transform: "translateZ(36px)" }}
+                    >
+                      {facility.emoji}
+                    </span>
+                    <h3
+                      className="mt-3 font-heading font-semibold text-ink transition-colors duration-300 group-hover:text-primary"
+                      style={{ transform: "translateZ(20px)" }}
+                    >
+                      {facility.name}
+                    </h3>
+                    <p className="mt-2 hidden text-sm text-muted sm:block">
+                      {facility.description}
+                    </p>
+                  </div>
+                </TiltCard>
               </StaggerItem>
             ))}
           </Stagger>

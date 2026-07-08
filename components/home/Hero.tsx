@@ -12,7 +12,7 @@ import { site } from "@/content/site";
 import { img } from "@/lib/images";
 import { useIsMobile } from "@/lib/useIsMobile";
 import { ButtonLink } from "@/components/ui/Button";
-import { FloatingElements } from "@/components/motion/FloatingElements";
+import { Hero3D } from "@/components/three/Hero3D";
 
 function RevealWords({
   text,
@@ -28,20 +28,25 @@ function RevealWords({
   return (
     <span className={className}>
       {words.map((word, i) => (
-        <span key={`${word}-${i}`} className="inline-block overflow-hidden pb-1 align-bottom">
-          <motion.span
-            className="inline-block"
-            initial={reduceMotion ? false : { y: "110%", rotateX: 45 }}
-            animate={{ y: 0, rotateX: 0 }}
-            transition={{
-              duration: 0.85,
-              delay: delay + i * 0.12,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-          >
-            {word}
-            {i < words.length - 1 ? " " : ""}
-          </motion.span>
+        // The joining space lives BETWEEN the inline-blocks (a trailing
+        // space inside one would collapse), so it both renders and stays
+        // in the accessible text.
+        <span key={`${word}-${i}`}>
+          <span className="inline-block overflow-hidden pb-1 align-bottom">
+            <motion.span
+              className="inline-block"
+              initial={reduceMotion ? false : { y: "110%", rotateX: 45 }}
+              animate={{ y: 0, rotateX: 0 }}
+              transition={{
+                duration: 0.85,
+                delay: delay + i * 0.12,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {i < words.length - 1 ? " " : ""}
         </span>
       ))}
     </span>
@@ -190,8 +195,11 @@ export function Hero() {
         <div className="absolute -left-16 bottom-1/4 h-64 w-[350px] -rotate-12 bg-gradient-to-t from-[#138808]/8 to-transparent blur-3xl" />
       </motion.div>
 
-      {/* Layer 4: Floating light particles */}
-      <FloatingElements />
+      {/* Layer 4: WebGL dawn sparks — depth-layered golden light dust
+          drifting upward, parting around the cursor on desktop. Phones
+          run the same scene at a battery-tuned density (see LazyScene);
+          only reduced-motion opts out entirely. */}
+      {!reduceMotion && <Hero3D />}
 
       {/* Layer 5: Content (parallax up on scroll, fades) */}
       <motion.div
@@ -221,7 +229,7 @@ export function Hero() {
               ))}
             </svg>
           </span>
-          Nursery to Class 10 · Koppal, Karnataka · Est. {site.established}
+          Nursery to Class 10 · Bhagyanagar, Koppal, Karnataka · Est. {site.established}
         </motion.p>
 
         {/* Headline with word-by-word reveal + 3D rotation */}
