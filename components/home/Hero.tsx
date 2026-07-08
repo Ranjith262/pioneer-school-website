@@ -4,10 +4,10 @@ import { useRef } from "react";
 import Image from "next/image";
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
 } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import { site } from "@/content/site";
 import { img } from "@/lib/images";
 import { useIsMobile } from "@/lib/useIsMobile";
@@ -197,9 +197,10 @@ export function Hero() {
 
       {/* Layer 4: WebGL dawn sparks — depth-layered golden light dust
           drifting upward, parting around the cursor on desktop. Phones
-          run the same scene at a battery-tuned density (see LazyScene);
-          only reduced-motion opts out entirely. */}
-      {!reduceMotion && <Hero3D />}
+          run the same scene at a battery-tuned density (see LazyScene).
+          Runs regardless of the OS Reduce Motion setting — owner's call:
+          slow ambient drift, not vestibular-trigger motion. */}
+      <Hero3D />
 
       {/* Layer 5: Content (parallax up on scroll, fades) */}
       <motion.div

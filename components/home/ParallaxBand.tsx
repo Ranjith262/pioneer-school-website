@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import type { SiteImage } from "@/lib/images";
 import { useIsMobile } from "@/lib/useIsMobile";
 import { BandSparks3D } from "@/components/three/BandSparks3D";
@@ -41,8 +42,9 @@ export function ParallaxBand({ image, children }: ParallaxBandProps) {
         <div className="absolute inset-0 bg-ink/65" />
       </motion.div>
       {/* golden embers rising through the photograph — all devices;
-          the scene self-tunes for phones, reduced-motion opts out */}
-      {!reduceMotion && <BandSparks3D />}
+          the scene self-tunes for phones. Ambient drift stays on even
+          under OS Reduce Motion (owner's call). */}
+      <BandSparks3D />
       <div className="relative z-10">{children}</div>
     </section>
   );

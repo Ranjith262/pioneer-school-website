@@ -145,15 +145,9 @@
     animation: shimmer 3s linear infinite;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
+  /* No prefers-reduced-motion overrides — owner decision (2026-07-09):
+     the site animates identically for every visitor regardless of the
+     OS Reduce Motion setting. (The old 0.01ms-duration override also
+     made infinite animations strobe — the original mobile marquee bug.)
+     Motion policy lives in lib/useReducedMotion.ts. */
 }

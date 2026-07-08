@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 interface CountUpProps {
   /** Final value, digits only (e.g. 300 for "300+"). */

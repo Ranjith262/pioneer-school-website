@@ -58,7 +58,6 @@ export function Marquee() {
     const track = trackRef.current;
     if (!track) return;
     const shell = track.parentElement;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     let offset = 0;
     let last: number | null = null;
@@ -74,7 +73,9 @@ export function Marquee() {
       /* clamp dt so returning from a background tab doesn't jump */
       const dt = Math.min((now - last) / 1000, 0.1);
       last = now;
-      if (paused || reduce.matches) return;
+      /* Keeps gliding under OS Reduce Motion (owner's decision) — a slow
+         ticker with hover-pause, not vestibular-trigger motion. */
+      if (paused) return;
       const strip = track.children[0] as HTMLElement | undefined;
       const width = strip?.offsetWidth ?? 0;
       if (width > 0) {
@@ -84,8 +85,11 @@ export function Marquee() {
     };
     raf = requestAnimationFrame(tick);
 
-    const pause = () => {
-      paused = true;
+    /* Hover-pause is a MOUSE affordance. Touch pointers also fire
+       pointerenter (e.g. a thumb scrolling across the band), which would
+       silently freeze the ticker on phones — so ignore them. */
+    const pause = (e: PointerEvent) => {
+      if (e.pointerType === "mouse") paused = true;
     };
     const resume = () => {
       paused = false;

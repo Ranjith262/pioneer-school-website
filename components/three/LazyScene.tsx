@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useReducedMotion } from "framer-motion";
 import { useIsMobile } from "@/lib/useIsMobile";
 
 /* Canvas props keep a stable identity — fresh object literals on every
@@ -56,7 +55,6 @@ export function LazyScene({
 }: LazySceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
-  const reduceMotion = useReducedMotion();
   const [webgl, setWebgl] = useState(false);
   const [inView, setInView] = useState(false);
   /* Lock prop identity for the lifetime of this instance. */
@@ -116,8 +114,9 @@ export function LazyScene({
     };
   }, []);
 
-  if (reduceMotion) return null;
-
+  /* Ambient light-drift stays on even under the OS Reduce Motion setting
+     (owner's decision) — it is slow additive glow, not the parallax/zoom
+     class of motion that setting exists to suppress. */
   return (
     <div
       ref={containerRef}
