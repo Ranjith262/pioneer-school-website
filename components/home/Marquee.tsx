@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 const phrases = [
   "Academic Excellence",
   "Rooted in Indian Values",
@@ -28,11 +32,77 @@ function Strip({ ariaHidden = false }: { ariaHidden?: boolean }) {
   );
 }
 
-/** ISB-style rolling values ticker. Pauses on hover; static text for screen readers. */
+/* Perceived glide speed per breakpoint, in CSS px/second — matches the
+   durations the CSS version used (mobile 40px/s was tuned from the
+   user's phone recordings). */
+function speedForViewport() {
+  if (window.innerWidth >= 1024) return 76;
+  if (window.innerWidth >= 640) return 52;
+  return 40;
+}
+
+/**
+ * ISB-style rolling values ticker. Pauses on hover; static text for
+ * screen readers and reduced-motion users.
+ *
+ * Driven by requestAnimationFrame rather than a CSS animation: iOS
+ * Safari silently dropped the CSS version — a `will-change: transform`
+ * track ~3000 CSS px wide becomes a ~9600-device-px compositor layer at
+ * 3× DPR, beyond what its compositor will animate. JS transforms have
+ * no such limit, and the loop stops automatically in background tabs.
+ */
 export function Marquee() {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const shell = track.parentElement;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    let offset = 0;
+    let last: number | null = null;
+    let paused = false;
+    let raf = 0;
+
+    const tick = (now: number) => {
+      raf = requestAnimationFrame(tick);
+      if (last === null) {
+        last = now;
+        return;
+      }
+      /* clamp dt so returning from a background tab doesn't jump */
+      const dt = Math.min((now - last) / 1000, 0.1);
+      last = now;
+      if (paused || reduce.matches) return;
+      const strip = track.children[0] as HTMLElement | undefined;
+      const width = strip?.offsetWidth ?? 0;
+      if (width > 0) {
+        offset = (offset + speedForViewport() * dt) % width;
+        track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+      }
+    };
+    raf = requestAnimationFrame(tick);
+
+    const pause = () => {
+      paused = true;
+    };
+    const resume = () => {
+      paused = false;
+    };
+    shell?.addEventListener("pointerenter", pause);
+    shell?.addEventListener("pointerleave", resume);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      shell?.removeEventListener("pointerenter", pause);
+      shell?.removeEventListener("pointerleave", resume);
+    };
+  }, []);
+
   return (
     <div className="marquee-shell overflow-hidden border-y border-white/10 bg-gradient-to-r from-primary-800 via-primary to-secondary-700 py-5">
-      <div className="marquee-track">
+      <div ref={trackRef} className="marquee-track">
         <Strip />
         <Strip ariaHidden />
       </div>

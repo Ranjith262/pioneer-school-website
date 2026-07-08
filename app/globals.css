@@ -44,43 +44,14 @@
   --radius-card: 1.25rem;
 }
 
-/* Marquee — plain explicit CSS, no var() indirection, no shorthand/longhand
-   mixing. iOS Safari mishandled the Tailwind animation utility (racing loop
-   with blank gaps), so each breakpoint declares the full animation outright.
-   The track travels a fixed pixel distance per loop, so narrower viewports
-   get longer durations to keep the perceived speed constant. */
-@keyframes marquee-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
+/* Marquee — layout only. The motion is driven by requestAnimationFrame in
+   Marquee.tsx: iOS Safari silently dropped the CSS animation because the
+   will-change'd ~3000px track exceeded its compositor layer limits at 3×
+   DPR. Speeds and reduced-motion handling live in the component. */
 .marquee-track {
   display: flex;
   width: max-content;
   flex-wrap: nowrap;
-  will-change: transform;
-  animation: marquee-scroll 36s linear infinite;
-}
-@media (max-width: 1023px) {
-  .marquee-track {
-    animation: marquee-scroll 52s linear infinite;
-  }
-}
-@media (max-width: 639px) {
-  .marquee-track {
-    animation: marquee-scroll 68s linear infinite;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
-}
-.marquee-shell:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 /* Base styles live in the base layer so Tailwind utilities can override them
