@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
+import { GLOW_BLEND } from "./blending";
 
 /**
  * LightDust — the site's signature 3D motif: soft, photographic bokeh
@@ -185,7 +186,7 @@ export function LightDust({
         ref={materialRef}
         transparent
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        {...GLOW_BLEND}
         uniforms={uniforms}
         vertexShader={VERTEX}
         fragmentShader={FRAGMENT}

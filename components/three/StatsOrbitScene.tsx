@@ -6,6 +6,7 @@ import { useFrame } from "@react-three/fiber";
 import { useIsMobile } from "@/lib/useIsMobile";
 import { LazyScene } from "./LazyScene";
 import { LightDust } from "./LightDust";
+import { GLOW_BLEND } from "./blending";
 
 /* ── A globe drawn in points of light, with knowledge travelling
       between them as comet pulses along great arcs. ─────────────── */
@@ -91,7 +92,7 @@ function DotSphere({ dots = 1300 }: { dots?: number }) {
         ref={materialRef}
         transparent
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        {...GLOW_BLEND}
         uniforms={uniforms}
         vertexShader={DOT_VERTEX}
         fragmentShader={DOT_FRAGMENT}
@@ -130,7 +131,7 @@ function Arc({
     const material = new THREE.LineBasicMaterial({
       color: "#f5b301",
       transparent: true,
-      opacity: 0.22,
+      opacity: 0.32,
     });
     return new THREE.Line(geometry, material);
   }, [curve]);
@@ -180,7 +181,7 @@ function Arc({
         <shaderMaterial
           transparent
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
+          {...GLOW_BLEND}
           uniforms={cometUniforms}
           vertexShader={/* glsl */ `
             uniform float uPixelRatio;
@@ -247,8 +248,8 @@ function Globe({ dots }: { dots: number }) {
       </group>
       {/* a single quiet gold meridian ring, off-axis for elegance */}
       <mesh rotation={[Math.PI / 2.05, 0, 0.3]}>
-        <torusGeometry args={[GLOBE_RADIUS * 1.28, 0.009, 6, 128]} />
-        <meshBasicMaterial color="#f5b301" transparent opacity={0.42} />
+        <torusGeometry args={[GLOBE_RADIUS * 1.28, 0.011, 6, 128]} />
+        <meshBasicMaterial color="#f5b301" transparent opacity={0.55} />
       </mesh>
     </group>
   );
