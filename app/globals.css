@@ -54,6 +54,42 @@
   flex-wrap: nowrap;
 }
 
+/* Values section — slowly turning sacred-geometry backdrop */
+@keyframes mandala-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.mandala-spin {
+  animation: mandala-rotate 180s linear infinite;
+}
+
+/* Values section — diya sparks rising inside an opened card */
+@keyframes spark-rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-80px) scale(0.35);
+    opacity: 0;
+  }
+}
+.value-spark {
+  position: absolute;
+  bottom: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: #f0b429;
+  box-shadow: 0 0 6px 1px rgba(240, 180, 41, 0.55);
+  animation: spark-rise 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
 /* Base styles live in the base layer so Tailwind utilities can override them
    (an unlayered rule would always beat layered utility classes). */
 @layer base {
