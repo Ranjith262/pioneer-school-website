@@ -34,7 +34,7 @@ export const achievements: Achievement[] = [
     emoji: "➗",
   },
   {
-    title: "Best School Award — Koppal Taluk",
+    title: "Best School Award — Bhagyanagar, Koppal Taluk",
     year: "2023",
     category: "Recognition",
     description:

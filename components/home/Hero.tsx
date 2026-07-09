@@ -280,7 +280,7 @@ export function Hero() {
             { value: "300+", label: "Students" },
             { value: "100%", label: "SSLC Pass Rate" },
             { value: "20+", label: "Expert Teachers" },
-            { value: "Since 2015", label: "Serving Koppal" },
+            { value: "Since 2015", label: "Serving Bhagyanagar, Koppal" },
           ].map((stat) => (
             <div key={stat.label}>
               <p className="font-display text-2xl font-medium text-accent">{stat.value}</p>

@@ -1,7 +1,10 @@
 import { cn } from "@/lib/utils";
 
+/* text-base (16px) on phones is load-bearing: iOS Safari force-zooms the
+   whole page when focusing an input smaller than 16px, and the zoom
+   sticks after submit (pushing fixed elements off-screen). */
 const inputClasses =
-  "w-full rounded-xl border border-primary-100 bg-white px-4 py-3 text-sm text-ink placeholder:text-muted/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+  "w-full rounded-xl border border-primary-100 bg-white px-4 py-3 text-base text-ink placeholder:text-muted/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:text-sm";
 
 interface FieldProps {
   label: string;

@@ -17,8 +17,8 @@ export const site = {
   },
   phone: "+91 94824 66882",
   admissionsPhone: "+91 94824 66882",
-  email: "pioneerpublic15@gmaomail.com",
-  admissionsEmail: "pioneerpublic15@gmaomail.com",
+  email: "pioneerpublic15@gmail.com",
+  admissionsEmail: "pioneerpublic15@gmail.com",
   hours: "Monday – Saturday, 9:00 AM – 4:30 PM",
   mapEmbedUrl:
     "https://www.google.com/maps?q=Bhagyanagar,+Koppal,+Karnataka+583238&output=embed",

@@ -38,7 +38,7 @@ export function Footer() {
           <p className="mt-4 text-sm leading-relaxed text-white/70">
             Nurturing young minds from Nursery to Class 10 since {site.established} —
             academic excellence, strong values, and holistic development in the heart
-            of Koppal.
+            of Bhagyanagar, Koppal.
           </p>
           <div className="mt-5 flex gap-3">
             {socials.map((social) => (

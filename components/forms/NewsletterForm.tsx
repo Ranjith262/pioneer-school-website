@@ -12,8 +12,17 @@ export function NewsletterForm() {
 
   if (state.status === "success") {
     return (
-      <p role="status" className="mt-4 rounded-xl bg-white/10 px-4 py-3 text-sm text-white">
-        ✓ {state.message}
+      <p
+        role="status"
+        className="mt-4 flex items-center gap-2.5 rounded-full border border-accent/40 bg-accent/15 px-5 py-3 text-sm font-medium text-white"
+      >
+        <span
+          aria-hidden="true"
+          className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-bold text-ink"
+        >
+          ✓
+        </span>
+        {state.message}
       </p>
     );
   }
@@ -41,7 +50,9 @@ export function NewsletterForm() {
           required
           placeholder="Your email"
           autoComplete="email"
-          className="w-full rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-accent focus:outline-none"
+          /* text-base on phones: iOS force-zooms the page for inputs
+             under 16px and the zoom sticks after submit */
+          className="w-full rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-base text-white placeholder:text-white/50 focus:border-accent focus:outline-none sm:text-sm"
         />
         <button
           type="submit"

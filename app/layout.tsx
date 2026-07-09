@@ -37,11 +37,11 @@ export const metadata: Metadata = {
   description: site.subTagline,
   keywords: [
     "Pioneer Public School",
-    "school in Koppal",
+    "school in Bhagyanagar, Koppal",
     "best school Bhagyanagar",
-    "Nursery admission Koppal",
+    "Nursery admission Bhagyanagar, Koppal",
     "CBSE school Karnataka",
-    "English medium school Koppal",
+    "English medium school Bhagyanagar, Koppal",
   ],
   openGraph: {
     type: "website",
@@ -50,11 +50,20 @@ export const metadata: Metadata = {
     description: site.subTagline,
     locale: "en_IN",
     url: site.url,
+    images: [
+      {
+        url: "/logo.png",
+        width: 1254,
+        height: 1254,
+        alt: `${site.name} emblem`,
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: `${site.name} — ${site.tagline}`,
     description: site.subTagline,
+    images: ["/logo.png"],
   },
   alternates: {
     canonical: "/",
@@ -84,7 +93,7 @@ const schoolSchema = {
   address: {
     "@type": "PostalAddress",
     streetAddress: `${site.address.line1}, ${site.address.line2}`,
-    addressLocality: "Koppal",
+    addressLocality: "Bhagyanagar, Koppal",
     addressRegion: site.address.state,
     postalCode: site.address.pincode,
     addressCountry: "IN",

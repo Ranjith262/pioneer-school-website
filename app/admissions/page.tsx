@@ -11,7 +11,7 @@ import { VisitForm } from "@/components/forms/VisitForm";
 export const metadata: Metadata = {
   title: "Admissions",
   description:
-    "Admissions open for 2026–27 at Pioneer Public School, Koppal — Nursery to Class 10. Process, eligibility, documents, FAQs, and online enquiry.",
+    "Admissions open for 2026–27 at Pioneer Public School, Bhagyanagar, Koppal — Nursery to Class 10. Process, eligibility, documents, FAQs, and online enquiry.",
   alternates: { canonical: "/admissions" },
 };
 
@@ -141,7 +141,7 @@ export default function AdmissionsPage() {
               <h2 className="mt-4 text-2xl font-bold text-ink">Fee Information</h2>
               <p className="mx-auto mt-3 max-w-xl text-muted">
                 Our fee structure is designed to keep quality education accessible to
-                the families of Koppal. Detailed, grade-wise fee information for
+                the families of Bhagyanagar, Koppal. Detailed, grade-wise fee information for
                 2026–27 is available at the school office and will be shared during
                 your campus visit or enquiry call.
               </p>

@@ -28,7 +28,7 @@ export const facilities: Facility[] = [
   },
   {
     name: "School Transport",
-    description: "Safe, GPS-monitored buses covering Koppal and surrounding areas with trained staff.",
+    description: "Safe, GPS-monitored buses covering Bhagyanagar, Koppal and surrounding areas with trained staff.",
     emoji: "🚌",
   },
   {

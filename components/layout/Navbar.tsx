@@ -46,7 +46,7 @@ export function Navbar() {
                 Pioneer Public School
               </span>
               <span className="hidden text-xs text-muted sm:block">
-                Koppal, Karnataka · Est. {site.established}
+                Bhagyanagar, Koppal · Est. {site.established}
               </span>
             </span>
           </Link>

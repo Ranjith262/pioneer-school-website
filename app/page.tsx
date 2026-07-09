@@ -93,7 +93,7 @@ export default function HomePage() {
               <div className="mt-7 space-y-5 text-lg leading-relaxed text-muted">
                 <p>
                   Since {site.established}, Pioneer Public School has stood for a simple
-                  belief: the children of Koppal deserve an education as ambitious as
+                  belief: the children of Bhagyanagar, Koppal deserve an education as ambitious as
                   any in the world — and as rooted as the banyan tree in our courtyard.
                 </p>
                 <p>

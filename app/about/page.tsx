@@ -11,7 +11,7 @@ import { ButtonLink } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Pioneer Public School's history, vision, mission, values, faculty, and infrastructure — serving Koppal since 2015.",
+    "Learn about Pioneer Public School's history, vision, mission, values, faculty, and infrastructure — serving Bhagyanagar, Koppal since 2015.",
   alternates: { canonical: "/about" },
 };
 
@@ -29,7 +29,7 @@ const milestones = [
   { year: "2017", event: "Extended to Middle School (Classes 6–8); science and computer labs inaugurated." },
   { year: "2019", event: "First batch of Class 10; secondary section fully established." },
   { year: "2021", event: "Smart classrooms introduced across all grades." },
-  { year: "2023", event: "Awarded Best School in Koppal Taluk for holistic education." },
+  { year: "2023", event: "Awarded Best School in Bhagyanagar, Koppal Taluk for holistic education." },
   { year: "2025", event: "100% SSLC pass rate with 40% distinctions; 300+ students strong." },
 ];
 
@@ -45,7 +45,7 @@ export default function AboutPage() {
     <>
       <PageHero
         title="About Pioneer Public School"
-        description="A decade of nurturing confident, compassionate learners in the heart of Koppal."
+        description="A decade of nurturing confident, compassionate learners in the heart of Bhagyanagar, Koppal."
         crumbs={[{ label: "About" }]}
       />
 
@@ -57,12 +57,12 @@ export default function AboutPage() {
               Our Story
             </p>
             <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-              Rooted in Koppal, Reaching for the World
+              Rooted in Bhagyanagar, Koppal — Reaching for the World
             </h2>
             <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted">
               <p>
                 Pioneer Public School was established in {site.established} with a simple
-                conviction: the children of Koppal deserve a school that matches the best
+                conviction: the children of Bhagyanagar, Koppal deserve a school that matches the best
                 anywhere — in teaching quality, in values, and in opportunity.
               </p>
               <p>

@@ -24,7 +24,7 @@ export const admissionFaqs: Faq[] = [
   {
     question: "Does the school provide transport?",
     answer:
-      "Yes, the school operates safe bus routes covering Koppal, Bhagyanagar, and surrounding areas. Transport details and route maps are available at the school office.",
+      "Yes, the school operates safe bus routes covering Bhagyanagar, Koppal, and surrounding areas. Transport details and route maps are available at the school office.",
   },
   {
     question: "How can I schedule a campus visit?",
