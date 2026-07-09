@@ -23,7 +23,11 @@ export function ScrollTop() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}
           transition={{ duration: 0.25 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() =>
+            window.__lenis
+              ? window.__lenis.scrollTo(0)
+              : window.scrollTo({ top: 0, behavior: "smooth" })
+          }
           aria-label="Move to top of page"
           className="fixed bottom-24 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-lift transition-colors hover:bg-primary-700 sm:bottom-8 sm:right-6"
         >

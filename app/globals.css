@@ -93,9 +93,9 @@
 /* Base styles live in the base layer so Tailwind utilities can override them
    (an unlayered rule would always beat layered utility classes). */
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  /* No CSS scroll-behavior: Lenis (components/motion/SmoothScroll.tsx)
+     owns scroll easing site-wide; the CSS property would fight its
+     programmatic scrolls. */
 
   body {
     background: #ffffff;

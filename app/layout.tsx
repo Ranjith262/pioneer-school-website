@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileCta } from "@/components/layout/MobileCta";
 import { ScrollTop } from "@/components/ui/ScrollTop";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -127,6 +128,7 @@ export default function RootLayout({
         <MobileCta />
         <ScrollTop />
         <ScrollProgress />
+        <SmoothScroll />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schoolSchema) }}
