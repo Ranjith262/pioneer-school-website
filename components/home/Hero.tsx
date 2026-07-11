@@ -19,12 +19,35 @@ function RevealWords({
   text,
   className,
   delay = 0,
+  mask = true,
 }: {
   text: string;
   className?: string;
   delay?: number;
+  /**
+   * The word-by-word reveal needs an overflow-hidden box around every
+   * word — safe for Latin, but it clips Devanagari/Kannada matras and
+   * conjuncts (which changes word meanings). Indic text passes
+   * mask={false}: a plain fade-up with NO clipping container, so no
+   * glyph can ever be cut.
+   */
+  mask?: boolean;
 }) {
   const reduceMotion = useReducedMotion();
+
+  if (!mask) {
+    return (
+      <motion.span
+        className={`inline-block ${className ?? ""}`}
+        initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {text}
+      </motion.span>
+    );
+  }
+
   const words = text.split(" ");
   return (
     <span className={className}>
@@ -58,7 +81,11 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  // Latin-only effects: word masking clips Indic glyphs, and synthetic
+  // italic distorts them. English keeps the theatrics; hi/kn get the
+  // safe unclipped variant.
+  const latin = language === "en";
   // Scroll-linked transforms repaint every frame — too heavy for phone GPUs.
   const staticHero = reduceMotion || isMobile;
   const { scrollYProgress } = useScroll({
@@ -235,14 +262,26 @@ export function Hero() {
           {t("hero.badge")}
         </motion.p>
 
-        {/* Headline with word-by-word reveal + 3D rotation */}
-        <h1 className="max-w-5xl font-heading text-5xl font-bold leading-[1.18] sm:text-7xl lg:text-[5.5rem]">
-          <RevealWords key={`t1-${t("hero.title1")}`} text={t("hero.title1")} delay={0.25} />
+        {/* Headline — masked word reveal for English; plain fade-up and
+            looser leading for Devanagari/Kannada (tall matras + deep
+            descenders need the headroom, and masking would clip them). */}
+        <h1
+          className={`max-w-5xl font-heading text-5xl font-bold sm:text-7xl lg:text-[5.5rem] ${
+            latin ? "leading-[1.18]" : "leading-[1.4]"
+          }`}
+        >
+          <RevealWords
+            key={`t1-${t("hero.title1")}`}
+            text={t("hero.title1")}
+            delay={0.25}
+            mask={latin}
+          />
           <br />
           <RevealWords
             key={`t2-${t("hero.title2")}`}
             text={t("hero.title2")}
             delay={0.6}
+            mask={latin}
             className="font-display italic font-medium text-accent"
           />
         </h1>

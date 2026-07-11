@@ -96,6 +96,15 @@
   pointer-events: none;
 }
 
+/* Noto Kannada / Noto Devanagari have no true italic face — stop the
+   browser synthesising one (slants distort conjuncts). Deliberately
+   UNLAYERED so it outranks Tailwind's .italic utility, which lives in a
+   later layer and would win over any layered rule. */
+:root:lang(kn) .italic,
+:root:lang(hi) .italic {
+  font-style: normal;
+}
+
 /* Base styles live in the base layer so Tailwind utilities can override them
    (an unlayered rule would always beat layered utility classes). */
 @layer base {
@@ -175,13 +184,6 @@
   @keyframes wave-drift {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
-  }
-
-  /* Noto Kannada / Noto Devanagari have no true italic face — prevent
-     the browser from synthesising one (slants distort conjuncts). */
-  :root:lang(kn) .italic,
-  :root:lang(hi) .italic {
-    font-style: normal;
   }
 
   /* Gradient text shimmer */
