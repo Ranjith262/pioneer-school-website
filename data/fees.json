@@ -1,0 +1,84 @@
+{
+  "students": [
+    {
+      "admissionNo": "PPS-2025-001",
+      "name": "Ananya Kulkarni",
+      "className": "Class 6",
+      "section": "A",
+      "parentName": "Ravi Kulkarni",
+      "phoneLast4": "6882"
+    },
+    {
+      "admissionNo": "PPS-2025-014",
+      "name": "Mohammed Ayaan",
+      "className": "Class 3",
+      "section": "B",
+      "parentName": "Imran Sheikh",
+      "phoneLast4": "4521"
+    },
+    {
+      "admissionNo": "PPS-2024-052",
+      "name": "Spandana Hiremath",
+      "className": "Class 9",
+      "section": "A",
+      "parentName": "Basavaraj Hiremath",
+      "phoneLast4": "9034"
+    }
+  ],
+  "fees": [
+    {
+      "id": "fee-001",
+      "admissionNo": "PPS-2025-001",
+      "label": "Tuition Fee — Term 2",
+      "amountPaise": 850000,
+      "dueDate": "2026-07-31",
+      "academicYear": "2026-27",
+      "status": "PENDING"
+    },
+    {
+      "id": "fee-002",
+      "admissionNo": "PPS-2025-001",
+      "label": "Transport Fee — Q2",
+      "amountPaise": 240000,
+      "dueDate": "2026-07-15",
+      "academicYear": "2026-27",
+      "status": "PENDING"
+    },
+    {
+      "id": "fee-003",
+      "admissionNo": "PPS-2025-014",
+      "label": "Tuition Fee — Term 2",
+      "amountPaise": 720000,
+      "dueDate": "2026-07-31",
+      "academicYear": "2026-27",
+      "status": "PENDING"
+    },
+    {
+      "id": "fee-004",
+      "admissionNo": "PPS-2025-014",
+      "label": "Activity & Lab Fee",
+      "amountPaise": 150000,
+      "dueDate": "2026-08-10",
+      "academicYear": "2026-27",
+      "status": "PENDING"
+    },
+    {
+      "id": "fee-005",
+      "admissionNo": "PPS-2024-052",
+      "label": "Tuition Fee — Term 2",
+      "amountPaise": 980000,
+      "dueDate": "2026-07-31",
+      "academicYear": "2026-27",
+      "status": "PENDING"
+    },
+    {
+      "id": "fee-006",
+      "admissionNo": "PPS-2024-052",
+      "label": "Exam Fee — SSLC Prelims",
+      "amountPaise": 120000,
+      "dueDate": "2026-09-01",
+      "academicYear": "2026-27",
+      "status": "PENDING"
+    }
+  ]
+}

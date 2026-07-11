@@ -43,5 +43,6 @@ export const navLinks = [
   { label: "Achievements", href: "/achievements" },
   { label: "News", href: "/news" },
   { label: "Parents", href: "/parents" },
+  { label: "Fees", href: "/fees" },
   { label: "Contact", href: "/contact" },
 ] as const;

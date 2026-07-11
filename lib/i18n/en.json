@@ -8,7 +8,8 @@
     "achievements": "Achievements",
     "news": "News",
     "parents": "Parents",
-    "contact": "Contact"
+    "contact": "Contact",
+    "fees": "Fees"
   },
   "chrome": {
     "subtitle": "Bhagyanagar, Koppal · Est. 2015",
@@ -268,11 +269,31 @@
       }
     },
     "events": [
-      { "title": "Campus Tour Day for New Parents", "time": "10:00 AM – 1:00 PM", "location": "School Campus" },
-      { "title": "Parent–Teacher Meeting (All Classes)", "time": "9:30 AM – 12:30 PM", "location": "Respective Classrooms" },
-      { "title": "Inter-House Sports Meet", "time": "8:30 AM – 4:00 PM", "location": "School Sports Ground" },
-      { "title": "Independence Day Celebration", "time": "8:00 AM – 10:30 AM", "location": "School Assembly Ground" },
-      { "title": "Science Exhibition", "time": "10:00 AM – 3:00 PM", "location": "Science Lab & Hall" }
+      {
+        "title": "Campus Tour Day for New Parents",
+        "time": "10:00 AM – 1:00 PM",
+        "location": "School Campus"
+      },
+      {
+        "title": "Parent–Teacher Meeting (All Classes)",
+        "time": "9:30 AM – 12:30 PM",
+        "location": "Respective Classrooms"
+      },
+      {
+        "title": "Inter-House Sports Meet",
+        "time": "8:30 AM – 4:00 PM",
+        "location": "School Sports Ground"
+      },
+      {
+        "title": "Independence Day Celebration",
+        "time": "8:00 AM – 10:30 AM",
+        "location": "School Assembly Ground"
+      },
+      {
+        "title": "Science Exhibition",
+        "time": "10:00 AM – 3:00 PM",
+        "location": "Science Lab & Hall"
+      }
     ],
     "programs": {
       "nursery": {
@@ -458,12 +479,30 @@
         "eyebrow": "Our Journey",
         "title": "A Decade of Milestones",
         "items": [
-          { "year": "2015", "event": "Pioneer Public School founded in Bhagyanagar, Koppal with Nursery to Class 5." },
-          { "year": "2017", "event": "Extended to Middle School (Classes 6–8); science and computer labs inaugurated." },
-          { "year": "2019", "event": "First batch of Class 10; secondary section fully established." },
-          { "year": "2021", "event": "Smart classrooms introduced across all grades." },
-          { "year": "2023", "event": "Awarded Best School in Bhagyanagar, Koppal Taluk for holistic education." },
-          { "year": "2025", "event": "100% SSLC pass rate with 40% distinctions; 300+ students strong." }
+          {
+            "year": "2015",
+            "event": "Pioneer Public School founded in Bhagyanagar, Koppal with Nursery to Class 5."
+          },
+          {
+            "year": "2017",
+            "event": "Extended to Middle School (Classes 6–8); science and computer labs inaugurated."
+          },
+          {
+            "year": "2019",
+            "event": "First batch of Class 10; secondary section fully established."
+          },
+          {
+            "year": "2021",
+            "event": "Smart classrooms introduced across all grades."
+          },
+          {
+            "year": "2023",
+            "event": "Awarded Best School in Bhagyanagar, Koppal Taluk for holistic education."
+          },
+          {
+            "year": "2025",
+            "event": "100% SSLC pass rate with 40% distinctions; 300+ students strong."
+          }
         ]
       },
       "faculty": {
@@ -471,10 +510,26 @@
         "title": "Management & Faculty",
         "description": "A dedicated team of educators and administrators committed to every child's growth.",
         "items": [
-          { "name": "The Principal", "role": "School Leadership", "note": "20+ years in school education and administration." },
-          { "name": "Primary Wing Team", "role": "Nursery – Class 5", "note": "Specialists in early childhood and foundational learning." },
-          { "name": "Middle School Team", "role": "Classes 6 – 8", "note": "Subject experts in science, mathematics, and languages." },
-          { "name": "Secondary Team", "role": "Classes 9 – 10", "note": "Board-exam mentors with consistently strong results." }
+          {
+            "name": "The Principal",
+            "role": "School Leadership",
+            "note": "20+ years in school education and administration."
+          },
+          {
+            "name": "Primary Wing Team",
+            "role": "Nursery – Class 5",
+            "note": "Specialists in early childhood and foundational learning."
+          },
+          {
+            "name": "Middle School Team",
+            "role": "Classes 6 – 8",
+            "note": "Subject experts in science, mathematics, and languages."
+          },
+          {
+            "name": "Secondary Team",
+            "role": "Classes 9 – 10",
+            "note": "Board-exam mentors with consistently strong results."
+          }
         ]
       },
       "values": {
@@ -482,12 +537,30 @@
         "title": "The Pioneer Way",
         "description": "Six values woven into assemblies, classrooms, and playgrounds every day.",
         "items": [
-          { "name": "Integrity", "description": "Doing the right thing, even when no one is watching." },
-          { "name": "Excellence", "description": "Giving our best in academics, sports, and character." },
-          { "name": "Respect", "description": "Valuing every person, culture, and point of view." },
-          { "name": "Curiosity", "description": "Asking questions and never stopping to learn." },
-          { "name": "Responsibility", "description": "Caring for our community and our environment." },
-          { "name": "Compassion", "description": "Leading with kindness inside and outside school." }
+          {
+            "name": "Integrity",
+            "description": "Doing the right thing, even when no one is watching."
+          },
+          {
+            "name": "Excellence",
+            "description": "Giving our best in academics, sports, and character."
+          },
+          {
+            "name": "Respect",
+            "description": "Valuing every person, culture, and point of view."
+          },
+          {
+            "name": "Curiosity",
+            "description": "Asking questions and never stopping to learn."
+          },
+          {
+            "name": "Responsibility",
+            "description": "Caring for our community and our environment."
+          },
+          {
+            "name": "Compassion",
+            "description": "Leading with kindness inside and outside school."
+          }
         ]
       },
       "recognition": {
@@ -507,10 +580,22 @@
         "eyebrow": "How It Works",
         "title": "A Simple, Transparent Admission Process",
         "steps": [
-          { "title": "Enquire", "description": "Submit the enquiry form below or visit the school office." },
-          { "title": "Visit the Campus", "description": "Tour our classrooms, labs, and grounds — meet our teachers." },
-          { "title": "Interaction", "description": "A friendly readiness interaction for Classes 1–9 (no test for pre-primary)." },
-          { "title": "Confirm Admission", "description": "Submit documents, complete the fee formalities, and welcome aboard!" }
+          {
+            "title": "Enquire",
+            "description": "Submit the enquiry form below or visit the school office."
+          },
+          {
+            "title": "Visit the Campus",
+            "description": "Tour our classrooms, labs, and grounds — meet our teachers."
+          },
+          {
+            "title": "Interaction",
+            "description": "A friendly readiness interaction for Classes 1–9 (no test for pre-primary)."
+          },
+          {
+            "title": "Confirm Admission",
+            "description": "Submit documents, complete the fee formalities, and welcome aboard!"
+          }
         ]
       },
       "eligibility": {
@@ -518,11 +603,26 @@
         "gradeHeader": "Grade",
         "ageHeader": "Age Requirement",
         "items": [
-          { "grade": "Nursery", "age": "3+ years as of June 1" },
-          { "grade": "LKG", "age": "4+ years as of June 1" },
-          { "grade": "UKG", "age": "5+ years as of June 1" },
-          { "grade": "Class 1", "age": "6+ years as of June 1" },
-          { "grade": "Classes 2–9", "age": "Age appropriate to grade, with previous school records" }
+          {
+            "grade": "Nursery",
+            "age": "3+ years as of June 1"
+          },
+          {
+            "grade": "LKG",
+            "age": "4+ years as of June 1"
+          },
+          {
+            "grade": "UKG",
+            "age": "5+ years as of June 1"
+          },
+          {
+            "grade": "Class 1",
+            "age": "6+ years as of June 1"
+          },
+          {
+            "grade": "Classes 2–9",
+            "age": "Age appropriate to grade, with previous school records"
+          }
         ]
       },
       "documents": {
@@ -602,47 +702,83 @@
         {
           "title": "Sports & Games",
           "description": "Daily physical education plus coaching in kabaddi, kho-kho, cricket, volleyball, and athletics on our spacious grounds.",
-          "highlights": ["Inter-house tournaments", "Annual sports meet", "Taluk & district participation"]
+          "highlights": [
+            "Inter-house tournaments",
+            "Annual sports meet",
+            "Taluk & district participation"
+          ]
         },
         {
           "title": "Arts & Craft",
           "description": "A dedicated art room where students explore drawing, painting, and craft — with their best work displayed across campus.",
-          "highlights": ["Weekly art periods", "Drawing competitions", "Craft exhibitions"]
+          "highlights": [
+            "Weekly art periods",
+            "Drawing competitions",
+            "Craft exhibitions"
+          ]
         },
         {
           "title": "Music & Dance",
           "description": "Vocal, instrumental, and classical/folk dance training that culminates in stage performances through the year.",
-          "highlights": ["Annual Day performances", "Music room sessions", "Folk dance troupe"]
+          "highlights": [
+            "Annual Day performances",
+            "Music room sessions",
+            "Folk dance troupe"
+          ]
         },
         {
           "title": "Science & STEM",
           "description": "Hands-on experiments, working models, and a school science club that feeds our award-winning science fair teams.",
-          "highlights": ["Science club", "District fair winners", "Model-making workshops"]
+          "highlights": [
+            "Science club",
+            "District fair winners",
+            "Model-making workshops"
+          ]
         },
         {
           "title": "Library & Reading",
           "description": "A calm reading space with storybooks, encyclopaedias, and periodicals — plus dedicated library periods for every class.",
-          "highlights": ["Weekly library period", "Reading challenges", "Storytelling sessions"]
+          "highlights": [
+            "Weekly library period",
+            "Reading challenges",
+            "Storytelling sessions"
+          ]
         },
         {
           "title": "Clubs & Competitions",
           "description": "Quiz, elocution, spell bee, and eco clubs give every child a platform to discover and sharpen their talents.",
-          "highlights": ["Quiz club", "Elocution & debate", "Olympiad training"]
+          "highlights": [
+            "Quiz club",
+            "Elocution & debate",
+            "Olympiad training"
+          ]
         },
         {
           "title": "House System",
           "description": "Every student belongs to one of four houses — Ruby, Sapphire, Emerald, and Topaz — competing all year for the house trophy.",
-          "highlights": ["Four houses", "House captains & prefects", "Annual rolling trophy"]
+          "highlights": [
+            "Four houses",
+            "House captains & prefects",
+            "Annual rolling trophy"
+          ]
         },
         {
           "title": "Educational Tours",
           "description": "Age-appropriate excursions — from local field visits for tiny tots to heritage and science-centre trips for seniors.",
-          "highlights": ["Hampi heritage trips", "Planetarium visits", "Local field studies"]
+          "highlights": [
+            "Hampi heritage trips",
+            "Planetarium visits",
+            "Local field studies"
+          ]
         },
         {
           "title": "Celebrations & Annual Day",
           "description": "Independence Day, Republic Day, festivals, and a grand Annual Day where every child gets a moment on stage.",
-          "highlights": ["Annual Day", "National festivals", "Cultural assemblies"]
+          "highlights": [
+            "Annual Day",
+            "National festivals",
+            "Cultural assemblies"
+          ]
         }
       ]
     },
@@ -662,7 +798,13 @@
       "title": "News & Announcements",
       "description": "Stay up to date with everything happening at Pioneer Public School.",
       "crumb": "News",
-      "categories": ["All", "Announcement", "Event", "Achievement", "Circular"]
+      "categories": [
+        "All",
+        "Announcement",
+        "Event",
+        "Achievement",
+        "Circular"
+      ]
     },
     "newsDetail": {
       "moreNews": "More News"
@@ -676,12 +818,36 @@
         "title": "Everything in One Place",
         "description": "Documents are being digitised and will appear here as downloads. Meanwhile, all items are available at the school office.",
         "items": [
-          { "title": "Holiday Calendar", "description": "Academic year calendar with holidays, exams, and events.", "status": "Published at the start of each academic year." },
-          { "title": "Exam Schedule", "description": "Unit tests, term exams, and preparatory examination dates.", "status": "Shared per term via circulars and the school diary." },
-          { "title": "Class Timetable", "description": "Grade-wise weekly timetables including activity periods.", "status": "Distributed on reopening day; copies at the office." },
-          { "title": "Circulars", "description": "All official communication from school to home.", "status": "Latest circulars appear in the News section." },
-          { "title": "Transport Routes", "description": "Bus routes, stops, timings, and transport staff contacts.", "status": "Route details available at the school office." },
-          { "title": "Homework Guidelines", "description": "How we assign age-appropriate homework, and how parents can help.", "status": "Shared during the first parent-teacher meeting." }
+          {
+            "title": "Holiday Calendar",
+            "description": "Academic year calendar with holidays, exams, and events.",
+            "status": "Published at the start of each academic year."
+          },
+          {
+            "title": "Exam Schedule",
+            "description": "Unit tests, term exams, and preparatory examination dates.",
+            "status": "Shared per term via circulars and the school diary."
+          },
+          {
+            "title": "Class Timetable",
+            "description": "Grade-wise weekly timetables including activity periods.",
+            "status": "Distributed on reopening day; copies at the office."
+          },
+          {
+            "title": "Circulars",
+            "description": "All official communication from school to home.",
+            "status": "Latest circulars appear in the News section."
+          },
+          {
+            "title": "Transport Routes",
+            "description": "Bus routes, stops, timings, and transport staff contacts.",
+            "status": "Route details available at the school office."
+          },
+          {
+            "title": "Homework Guidelines",
+            "description": "How we assign age-appropriate homework, and how parents can help.",
+            "status": "Shared during the first parent-teacher meeting."
+          }
         ]
       },
       "portal": {
@@ -704,6 +870,40 @@
         "title": "Send Us a Message",
         "description": "We reply to every message within one working day."
       }
+    },
+    "fees": {
+      "title": "Fee Payment",
+      "description": "Pay school fees securely by UPI — check pending fees with your child's admission number and pay in seconds.",
+      "crumb": "Fees",
+      "lookupTitle": "Find pending fees",
+      "lookupLabel": "Admission number",
+      "lookupPlaceholder": "PPS-2025-001",
+      "lookupButton": "View pending fees",
+      "lookupChecking": "Checking…",
+      "studentLabel": "Student",
+      "classLabel": "Class",
+      "parentLabel": "Parent",
+      "phoneHint": "Registered phone ending",
+      "pendingTitle": "Pending fees",
+      "noPending": "No pending fees. You're all caught up!",
+      "due": "Due",
+      "total": "Total",
+      "payButton": "Pay by UPI",
+      "paying": "Starting payment…",
+      "upiNote": "Pay with any UPI app — Google Pay, PhonePe, Paytm, or your bank's app — by UPI ID or QR code. No extra charges.",
+      "mockBanner": "Test mode — no real money moves. Live UPI payments activate once the school's Razorpay account is verified.",
+      "mockTitle": "Simulated UPI payment",
+      "mockDesc": "In live mode, parents scan this QR or pay to the school's UPI ID and approve in their UPI app. This is a simulation.",
+      "mockApprove": "Simulate successful payment",
+      "mockCancel": "Cancel",
+      "receiptTitle": "Payment successful",
+      "receiptDesc": "Your fee payment has been recorded. Keep this receipt reference for your records.",
+      "receiptTxn": "Receipt no.",
+      "receiptPayment": "Payment ID",
+      "receiptDate": "Paid on",
+      "receiptItems": "Fees paid",
+      "payMore": "Pay more fees",
+      "errorGeneric": "Something went wrong. Please try again."
     }
   }
 }

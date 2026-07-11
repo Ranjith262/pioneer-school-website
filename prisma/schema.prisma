@@ -133,6 +133,61 @@ model Download {
   createdAt DateTime @default(now())
 }
 
+// ── Fee payments (UPI via Razorpay) ───────────────────────────────
+// Currently served by the JSON dummy store (lib/fees/store.ts); these
+// models are the migration target once the real student DB is wired.
+
+model Student {
+  admissionNo String    @id
+  name        String
+  className   String
+  section     String
+  parentName  String
+  phone       String
+  fees        FeeItem[]
+}
+
+model FeeItem {
+  id            String          @id @default(cuid())
+  student       Student         @relation(fields: [admissionNo], references: [admissionNo])
+  admissionNo   String
+  label         String
+  amountPaise   Int
+  dueDate       DateTime
+  academicYear  String
+  status        FeeStatus       @default(PENDING)
+  transaction   FeeTransaction? @relation(fields: [transactionId], references: [id])
+  transactionId String?
+
+  @@index([admissionNo, status])
+}
+
+enum FeeStatus {
+  PENDING
+  PAID
+}
+
+model FeeTransaction {
+  id                String            @id @default(cuid())
+  admissionNo       String
+  amountPaise       Int
+  razorpayOrderId   String            @unique
+  razorpayPaymentId String?
+  status            TransactionStatus @default(CREATED)
+  method            String            @default("upi")
+  createdAt         DateTime          @default(now())
+  paidAt            DateTime?
+  feeItems          FeeItem[]
+
+  @@index([admissionNo, createdAt])
+}
+
+enum TransactionStatus {
+  CREATED
+  PAID
+  FAILED
+}
+
 // ── Admin users (NextAuth-ready) ──────────────────────────────────
 
 model User {
