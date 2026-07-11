@@ -1,6 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter, Poppins } from "next/font/google";
+import {
+  Fraunces,
+  Inter,
+  Noto_Sans_Devanagari,
+  Noto_Sans_Kannada,
+  Poppins,
+} from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/components/i18n/LanguageProvider";
 import { site } from "@/content/site";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
@@ -27,6 +34,21 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   style: ["normal", "italic"],
   weight: ["400", "500", "600"],
+});
+
+/* Indic scripts — Poppins/Inter have no Devanagari or Kannada glyphs,
+   so these sit in every font stack as fallbacks: Latin text renders in
+   the brand fonts, Hindi/Kannada text falls through to Noto Sans. */
+const notoDevanagari = Noto_Sans_Devanagari({
+  variable: "--font-noto-devanagari",
+  subsets: ["devanagari"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const notoKannada = Noto_Sans_Kannada({
+  variable: "--font-noto-kannada",
+  subsets: ["kannada"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -110,25 +132,27 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${inter.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${poppins.variable} ${inter.variable} ${fraunces.variable} ${notoDevanagari.variable} ${notoKannada.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-white"
-        >
-          Skip to main content
-        </a>
-        <AnnouncementBar />
-        <Navbar />
-        <main id="main-content" className="flex-1 pb-20 sm:pb-0">
-          {children}
-        </main>
-        <Footer />
-        <MobileCta />
-        <ScrollTop />
-        <ScrollProgress />
-        <SmoothScroll />
+        <LanguageProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-white"
+          >
+            Skip to main content
+          </a>
+          <AnnouncementBar />
+          <Navbar />
+          <main id="main-content" className="flex-1 pb-20 sm:pb-0">
+            {children}
+          </main>
+          <Footer />
+          <MobileCta />
+          <ScrollTop />
+          <ScrollProgress />
+          <SmoothScroll />
+        </LanguageProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schoolSchema) }}

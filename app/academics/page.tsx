@@ -6,6 +6,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Photo } from "@/components/ui/Photo";
 import { img, programImages } from "@/lib/images";
 import { Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { T } from "@/components/i18n/T";
 
 export const metadata: Metadata = {
   title: "Academics",
@@ -18,9 +19,9 @@ export default function AcademicsPage() {
   return (
     <>
       <PageHero
-        title="Academics"
-        description="A carefully sequenced learning journey from the first day of Nursery to the SSLC board examinations."
-        crumbs={[{ label: "Academics" }]}
+        title={<T k="pages.academics.title" />}
+        description={<T k="pages.academics.description" />}
+        crumbs={[{ label: <T k="pages.academics.crumb" /> }]}
       />
 
       <section className="py-16 sm:py-24">
@@ -43,16 +44,16 @@ export default function AcademicsPage() {
                   />
                   <div className="p-7">
                     <p className="text-xs font-semibold uppercase tracking-widest text-secondary">
-                      {program.ageRange}
+                      <T k={`content.programs.${program.slug}.ageRange`} />
                     </p>
                     <h2 className="mt-2 font-heading text-xl font-semibold text-ink group-hover:text-primary">
-                      {program.name}
+                      <T k={`content.programs.${program.slug}.name`} />
                     </h2>
                     <p className="mt-2.5 text-sm leading-relaxed text-muted">
-                      {program.summary}
+                      <T k={`content.programs.${program.slug}.summary`} />
                     </p>
                     <p className="mt-4 text-sm font-semibold text-primary">
-                      Explore Program →
+                      <T k="common.exploreProgram" /> →
                     </p>
                   </div>
                 </Link>

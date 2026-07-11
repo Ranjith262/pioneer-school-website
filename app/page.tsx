@@ -2,7 +2,7 @@ import Link from "next/link";
 import { site } from "@/content/site";
 import { facilities } from "@/content/facilities";
 import { galleryItems } from "@/content/gallery";
-import { events, formatDate, news } from "@/content/news";
+import { events, news } from "@/content/news";
 import { galleryImages, img } from "@/lib/images";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
@@ -20,6 +20,8 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { AchievementsSlider } from "@/components/home/AchievementsSlider";
 import { AcademicCarousel } from "@/components/home/AcademicCarousel";
 import { ValuesJourney } from "@/components/home/ValuesJourney";
+import { T } from "@/components/i18n/T";
+import { LocalDate } from "@/components/i18n/LocalDate";
 
 const promises = [
   {
@@ -82,34 +84,26 @@ export default function HomePage() {
           <div className="lg:col-span-6">
             <FadeIn direction="right">
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-secondary">
-                Namaste &amp; Welcome
+                <T k="home.welcome.eyebrow" />
               </p>
               <h2 className="mt-5 font-heading text-4xl font-bold leading-tight text-ink sm:text-5xl">
-                Some schools teach lessons.{" "}
+                <T k="home.welcome.titleA" />{" "}
                 <span className="font-display italic font-medium text-primary">
-                  We shape childhoods.
+                  <T k="home.welcome.titleB" />
                 </span>
               </h2>
               <div className="mt-7 space-y-5 text-lg leading-relaxed text-muted">
-                <p>
-                  Since {site.established}, Pioneer Public School has stood for a simple
-                  belief: the children of Bhagyanagar, Koppal deserve an education as ambitious as
-                  any in the world — and as rooted as the banyan tree in our courtyard.
-                </p>
-                <p>
-                  Here, a child learns to solve equations and touch elders&apos; feet, to
-                  code and to sing, to compete fiercely and to share freely. That is
-                  the Pioneer way.
-                </p>
+                <p><T k="home.welcome.p1" /></p>
+                <p><T k="home.welcome.p2" /></p>
               </div>
               <p className="mt-7 font-display text-xl italic text-ink">
-                &ldquo;Every child carries a spark. Our job is to give it wind.&rdquo;
+                <T k="home.welcome.quote" />
               </p>
               <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-muted">
-                — The Principal
+                <T k="home.welcome.principal" />
               </p>
               <ButtonLink href="/about" variant="ghost" className="mt-8">
-                Our Story <span className="arrow-bounce">→</span>
+                <T k="home.welcome.ourStory" /> <span className="arrow-bounce">→</span>
               </ButtonLink>
             </FadeIn>
           </div>
@@ -151,12 +145,12 @@ export default function HomePage() {
       <section className="bg-surface py-24 sm:py-32">
         <Container>
           <SectionHeading
-            eyebrow="The Pioneer Promise"
-            title="Four promises. Zero fine print."
-            description="What every family can hold us to, from the first bell of Nursery to the last exam of Class 10."
+            eyebrow={<T k="home.promise.eyebrow" />}
+            title={<T k="home.promise.title" />}
+            description={<T k="home.promise.description" />}
           />
           <Stagger className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {promises.map((promise) => (
+            {promises.map((promise, promiseIndex) => (
               <StaggerItem key={promise.number} className="h-full">
                 {/* 3D depth card: the card tilts toward the pointer while the
                     icon, heading, and copy float at different Z-depths. */}
@@ -186,20 +180,20 @@ export default function HomePage() {
                       className="mt-4 font-heading text-lg font-semibold text-ink"
                       style={{ transform: "translateZ(30px)" }}
                     >
-                      {promise.title}
+                      <T k={`home.promise.items.${promiseIndex}.title`} />
                     </h3>
                     <p
                       className="mt-3 text-sm leading-relaxed text-muted"
                       style={{ transform: "translateZ(16px)" }}
                     >
-                      {promise.description}
+                      <T k={`home.promise.items.${promiseIndex}.description`} />
                     </p>
                     {/* Reveal on hover */}
                     <div
                       className="mt-4 max-h-0 overflow-hidden text-xs italic leading-relaxed text-primary/80 transition-all duration-500 group-hover:max-h-24"
                       style={{ transform: "translateZ(10px)" }}
                     >
-                      {promise.back}
+                      <T k={`home.promise.items.${promiseIndex}.back`} />
                     </div>
                   </div>
                 </TiltCard>
@@ -209,7 +203,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <SectionDivider variant="slope" flip className="text-surface" />
+      <SectionDivider variant="wave" flip className="text-surface" />
 
       {/* ── Statistics ───────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-ink py-20 text-white">
@@ -223,13 +217,13 @@ export default function HomePage() {
         <StatsOrbit3D />
         <Container className="relative">
           <dl className="grid grid-cols-2 gap-12 text-center lg:grid-cols-4">
-            {stats.map((stat) => (
+            {stats.map((stat, statIndex) => (
               <div key={stat.label} className="group">
                 <dd className="font-display text-5xl font-medium text-accent transition-all duration-300 group-hover:scale-110 sm:text-6xl">
                   <CountUp end={stat.end} suffix={stat.suffix} />
                 </dd>
                 <dt className="mt-3 text-sm font-medium uppercase tracking-[0.2em] text-white/70">
-                  {stat.label}
+                  <T k={`home.stats.${statIndex}`} />
                 </dt>
               </div>
             ))}
@@ -241,9 +235,9 @@ export default function HomePage() {
       <section className="py-24 sm:py-32">
         <Container>
           <SectionHeading
-            eyebrow="Academics"
-            title="One journey, six chapters."
-            description="From finger paints to board exams — each stage designed to hand the child confidently to the next."
+            eyebrow={<T k="home.academics.eyebrow" />}
+            title={<T k="home.academics.title" />}
+            description={<T k="home.academics.description" />}
           />
           <FadeIn>
             <AcademicCarousel />
@@ -256,16 +250,15 @@ export default function HomePage() {
         <Container className="py-32 text-center sm:py-44">
           <FadeIn>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent">
-              The Pioneer Spirit
+              <T k="home.spirit.eyebrow" />
             </p>
             <h2 className="mx-auto mt-6 max-w-4xl font-display text-4xl font-medium italic leading-tight sm:text-6xl">
-              Rooted in India.
+              <T k="home.spirit.title1" />
               <br />
-              Ready for the world.
+              <T k="home.spirit.title2" />
             </h2>
             <p className="mx-auto mt-7 max-w-2xl text-lg text-white/85">
-              Shlokas and science. Kannada and code. Festivals and physics. Our
-              children grow up fluent in both their heritage and their future.
+              <T k="home.spirit.description" />
             </p>
           </FadeIn>
         </Container>
@@ -275,9 +268,9 @@ export default function HomePage() {
       <section className="py-24 sm:py-32">
         <Container>
           <SectionHeading
-            eyebrow="Indian Values"
-            title="Six pillars. One culture."
-            description="Ancient wisdom woven into modern education — tap each value to discover how it lives at Pioneer."
+            eyebrow={<T k="home.values.eyebrow" />}
+            title={<T k="home.values.title" />}
+            description={<T k="home.values.description" />}
           />
           <FadeIn>
             <ValuesJourney />
@@ -285,18 +278,18 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <SectionDivider variant="curve" className="text-surface" />
+      <SectionDivider variant="wave" className="text-surface" />
 
       {/* ── Facilities ───────────────────────────────────────── */}
       <section className="bg-surface py-24 sm:py-32">
         <Container>
           <SectionHeading
-            eyebrow="Our Campus"
-            title="Built for curious minds."
-            description="Every corner of our campus is a classroom in disguise."
+            eyebrow={<T k="home.facilities.eyebrow" />}
+            title={<T k="home.facilities.title" />}
+            description={<T k="home.facilities.description" />}
           />
           <Stagger className="grid grid-cols-2 gap-5 lg:grid-cols-4">
-            {facilities.map((facility) => (
+            {facilities.map((facility, facilityIndex) => (
               <StaggerItem key={facility.name} className="h-full">
                 <TiltCard
                   maxTilt={12}
@@ -314,10 +307,10 @@ export default function HomePage() {
                       className="mt-3 font-heading font-semibold text-ink transition-colors duration-300 group-hover:text-primary"
                       style={{ transform: "translateZ(20px)" }}
                     >
-                      {facility.name}
+                      <T k={`home.facilities.items.${facilityIndex}.name`} />
                     </h3>
                     <p className="mt-2 hidden text-sm text-muted sm:block">
-                      {facility.description}
+                      <T k={`home.facilities.items.${facilityIndex}.description`} />
                     </p>
                   </div>
                 </TiltCard>
@@ -333,9 +326,9 @@ export default function HomePage() {
       <section className="py-24 sm:py-32">
         <Container>
           <SectionHeading
-            eyebrow="Student Life"
-            title="Life between the bells."
-            description="Sports days and science fairs, Holi colours and heritage trips — the moments children remember at fifty."
+            eyebrow={<T k="home.studentLife.eyebrow" />}
+            title={<T k="home.studentLife.title" />}
+            description={<T k="home.studentLife.description" />}
           />
           <Stagger className="grid grid-cols-2 gap-5 lg:grid-cols-4">
             {studentLife.map((item, index) => {
@@ -357,16 +350,16 @@ export default function HomePage() {
                     {/* Overlay that slides up on hover */}
                     <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/50 to-transparent p-5 pt-20 transition-all duration-300">
                       <p className="font-heading text-sm font-semibold text-white">
-                        {item.title}
+                        <T k={`content.gallery.${item.id}`} />
                       </p>
                       <p className="text-xs text-white/70">
-                        {item.category} · {item.year}
+                        <T k={`content.categories.${item.category}`} /> · {item.year}
                       </p>
                     </div>
                     {/* Hover reveal: extra info */}
                     <div className="absolute inset-0 flex items-center justify-center bg-primary/60 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
                       <span className="rounded-full border-2 border-white px-5 py-2 text-sm font-semibold text-white">
-                        View Photo
+                        <T k="home.studentLife.viewPhoto" />
                       </span>
                     </div>
                   </div>
@@ -376,7 +369,7 @@ export default function HomePage() {
           </Stagger>
           <FadeIn className="mt-12 text-center">
             <ButtonLink href="/gallery" variant="ghost">
-              View the Full Gallery <span className="arrow-bounce">→</span>
+              <T k="home.studentLife.viewGallery" /> <span className="arrow-bounce">→</span>
             </ButtonLink>
           </FadeIn>
         </Container>
@@ -389,9 +382,9 @@ export default function HomePage() {
         <div aria-hidden="true" className="absolute -left-20 bottom-0 h-60 w-60 rounded-full bg-primary/10 blur-3xl" />
         <Container className="relative">
           <SectionHeading
-            eyebrow="Achievements"
-            title="Small town. Big trophies."
-            description="Our students compete with the best — and more often than not, come home smiling."
+            eyebrow={<T k="home.achievements.eyebrow" />}
+            title={<T k="home.achievements.title" />}
+            description={<T k="home.achievements.description" />}
           />
           <FadeIn>
             <AchievementsSlider />
@@ -403,8 +396,8 @@ export default function HomePage() {
       <section className="py-24 sm:py-32">
         <Container>
           <SectionHeading
-            eyebrow="Voices of Pioneer"
-            title="Don&rsquo;t take our word for it."
+            eyebrow={<T k="home.testimonials.eyebrow" />}
+            title={<T k="home.testimonials.title" />}
           />
           <FadeIn>
             <Testimonials />
@@ -412,7 +405,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <SectionDivider variant="slope" className="text-surface" />
+      <SectionDivider variant="wave" className="text-surface" />
 
       {/* ── Latest news & upcoming events ────────────────────── */}
       <section className="bg-surface py-24 sm:py-32">
@@ -420,9 +413,9 @@ export default function HomePage() {
           <div className="lg:col-span-3">
             <FadeIn>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-secondary">
-                Newsroom
+                <T k="home.news.eyebrow" />
               </p>
-              <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">Latest News</h2>
+              <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl"><T k="home.news.title" /></h2>
             </FadeIn>
             <div className="mt-8 space-y-5">
               {latestNews.map((item, i) => (
@@ -433,23 +426,25 @@ export default function HomePage() {
                   >
                     <div className="flex items-center gap-3 text-xs">
                       <span className="rounded-full bg-primary-50 px-3 py-1 font-semibold text-primary">
-                        {item.category}
+                        <T k={`content.categories.${item.category}`} />
                       </span>
                       <time dateTime={item.date} className="text-muted">
-                        {formatDate(item.date)}
+                        <LocalDate iso={item.date} />
                       </time>
                     </div>
                     <h3 className="mt-3 font-heading text-lg font-semibold text-ink group-hover:text-primary">
-                      {item.title}
+                      <T k={`content.news.${item.slug}.title`} />
                     </h3>
-                    <p className="mt-2 text-sm text-muted">{item.excerpt}</p>
+                    <p className="mt-2 text-sm text-muted">
+                      <T k={`content.news.${item.slug}.excerpt`} />
+                    </p>
                   </Link>
                 </FadeIn>
               ))}
             </div>
             <FadeIn className="mt-8">
               <ButtonLink href="/news" variant="ghost">
-                All News <span className="arrow-bounce">→</span>
+                <T k="home.news.allNews" /> <span className="arrow-bounce">→</span>
               </ButtonLink>
             </FadeIn>
           </div>
@@ -457,15 +452,16 @@ export default function HomePage() {
           <div className="lg:col-span-2">
             <FadeIn>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-secondary">
-                Mark the Date
+                <T k="home.events.eyebrow" />
               </p>
               <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-                Upcoming Events
+                <T k="home.events.title" />
               </h2>
             </FadeIn>
             <div className="mt-8 space-y-5">
               {upcomingEvents.map((event, i) => {
                 const date = new Date(event.date + "T00:00:00");
+                const eventIndex = events.indexOf(event);
                 return (
                   <FadeIn key={event.title} delay={i * 0.08}>
                     <div className="flex gap-5 rounded-card border border-primary-100 bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-soft">
@@ -474,15 +470,16 @@ export default function HomePage() {
                           {date.getDate()}
                         </span>
                         <span className="mt-1 text-xs uppercase">
-                          {date.toLocaleDateString("en-IN", { month: "short" })}
+                          <LocalDate iso={event.date} format="monthShort" />
                         </span>
                       </div>
                       <div>
                         <h3 className="font-heading font-semibold text-ink">
-                          {event.title}
+                          <T k={`content.events.${eventIndex}.title`} />
                         </h3>
                         <p className="mt-1 text-sm text-muted">
-                          {event.time} · {event.location}
+                          <T k={`content.events.${eventIndex}.time`} /> ·{" "}
+                          <T k={`content.events.${eventIndex}.location`} />
                         </p>
                       </div>
                     </div>
@@ -501,23 +498,22 @@ export default function HomePage() {
         <Container className="py-28 text-center sm:py-36">
           <FadeIn>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent">
-              Admissions Open 2026–27
+              <T k="home.cta.eyebrow" />
             </p>
             <h2 className="mx-auto mt-6 max-w-3xl font-display text-3xl font-medium italic leading-tight sm:text-5xl">
-              The best time to plant a tree was twenty years ago.
+              <T k="home.cta.title1" />
               <br />
-              The best time to enrol is today.
+              <T k="home.cta.title2" />
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-white/85">
-              Seats are limited across Nursery to Class 10. Begin your child&apos;s
-              Pioneer journey with a single click — or a single visit.
+              <T k="home.cta.description" />
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <ButtonLink href="/admissions#apply" variant="accent" size="lg">
-                Apply Now <span className="arrow-bounce">→</span>
+                <T k="chrome.applyNow" /> <span className="arrow-bounce">→</span>
               </ButtonLink>
               <ButtonLink href="/contact" variant="outline" size="lg">
-                Talk to Us
+                <T k="home.cta.talkToUs" />
               </ButtonLink>
             </div>
           </FadeIn>

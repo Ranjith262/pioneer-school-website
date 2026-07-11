@@ -3,9 +3,9 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { FadeIn } from "@/components/motion/FadeIn";
 
 interface PageHeroProps {
-  title: string;
-  description?: string;
-  crumbs: { label: string; href?: string }[];
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  crumbs: { label: React.ReactNode; href?: string }[];
 }
 
 export function PageHero({ title, description, crumbs }: PageHeroProps) {

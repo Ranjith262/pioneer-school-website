@@ -10,12 +10,14 @@ import {
 import { Photo } from "@/components/ui/Photo";
 import { galleryImages, img } from "@/lib/images";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 
 export function GalleryExplorer() {
   const [category, setCategory] = useState<string>("All");
   const [year, setYear] = useState<string>("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const { t } = useLanguage();
 
   const filtered = useMemo(
     () =>
@@ -38,7 +40,6 @@ export function GalleryExplorer() {
     [filtered.length]
   );
 
-  // Keyboard controls for the lightbox
   useEffect(() => {
     if (lightboxIndex === null) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -52,6 +53,9 @@ export function GalleryExplorer() {
   }, [lightboxIndex, close, step]);
 
   const active = lightboxIndex !== null ? filtered[lightboxIndex] : null;
+
+  const catLabel = (cat: string) =>
+    cat === "All" ? t("common.all") : t(`content.categories.${cat}`);
 
   return (
     <div>
@@ -74,7 +78,7 @@ export function GalleryExplorer() {
                   : "bg-white text-ink shadow-soft hover:bg-primary-50"
               )}
             >
-              {option}
+              {catLabel(option)}
             </button>
           ))}
         </div>
@@ -95,7 +99,7 @@ export function GalleryExplorer() {
                   : "bg-white text-ink shadow-soft hover:bg-secondary-50"
               )}
             >
-              {option}
+              {option === "All" ? t("common.all") : option}
             </button>
           ))}
         </div>
@@ -104,7 +108,7 @@ export function GalleryExplorer() {
       {/* Grid */}
       {filtered.length === 0 ? (
         <p className="mt-14 text-center text-muted">
-          No photos match the selected filters yet.
+          {t("pages.gallery.noPhotos")}
         </p>
       ) : (
         <ul className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-3">
@@ -113,17 +117,16 @@ export function GalleryExplorer() {
               <button
                 type="button"
                 onClick={() => setLightboxIndex(index)}
-                aria-label={`Open photo: ${item.title}`}
+                aria-label={`${t("pages.gallery.openPhoto")}: ${t(`content.gallery.${item.id}`)}`}
                 className="group relative block w-full overflow-hidden rounded-card text-left shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-lift"
               >
                 <Photo
                   src={(galleryImages[item.id] ?? img.kidsOutdoors).src}
-                  alt={item.title}
+                  alt={t(`content.gallery.${item.id}`)}
                   className="aspect-[4/3]"
                   sizes="(max-width: 640px) 50vw, 33vw"
                   imgClassName="transition-transform duration-500 group-hover:scale-110"
                 />
-                {/* Hover overlay with gradient and centered icon */}
                 <span className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-primary/70 via-primary/30 to-transparent opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover:opacity-100">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-primary shadow-lift transition-transform duration-300 group-hover:scale-100 scale-75">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -133,22 +136,20 @@ export function GalleryExplorer() {
                     </svg>
                   </span>
                 </span>
-                {/* Bottom info bar */}
                 <span className="absolute inset-x-0 bottom-0 translate-y-full bg-white p-4 transition-transform duration-300 group-hover:translate-y-0">
                   <span className="block font-heading text-sm font-semibold text-ink">
-                    {item.title}
+                    {t(`content.gallery.${item.id}`)}
                   </span>
                   <span className="mt-1 block text-xs text-muted">
-                    {item.category} · {item.year}
+                    {catLabel(item.category)} · {item.year}
                   </span>
                 </span>
-                {/* Static bottom when not hovered */}
                 <span className="block bg-white p-4 transition-opacity duration-300 group-hover:opacity-0">
                   <span className="block font-heading text-sm font-semibold text-ink">
-                    {item.title}
+                    {t(`content.gallery.${item.id}`)}
                   </span>
                   <span className="mt-1 block text-xs text-muted">
-                    {item.category} · {item.year}
+                    {catLabel(item.category)} · {item.year}
                   </span>
                 </span>
               </button>
@@ -166,7 +167,7 @@ export function GalleryExplorer() {
             exit={{ opacity: 0 }}
             role="dialog"
             aria-modal="true"
-            aria-label={active.title}
+            aria-label={t(`content.gallery.${active.id}`)}
             className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/90 p-4 backdrop-blur-sm"
             onClick={close}
           >
@@ -176,15 +177,17 @@ export function GalleryExplorer() {
             >
               <Photo
                 src={(galleryImages[active.id] ?? img.kidsOutdoors).src}
-                alt={active.title}
+                alt={t(`content.gallery.${active.id}`)}
                 className="aspect-[4/3] rounded-card"
                 sizes="(max-width: 768px) 100vw, 768px"
               />
               <div className="mt-4 flex items-center justify-between gap-4 text-white">
                 <div>
-                  <p className="font-heading text-lg font-semibold">{active.title}</p>
+                  <p className="font-heading text-lg font-semibold">
+                    {t(`content.gallery.${active.id}`)}
+                  </p>
                   <p className="text-sm text-white/70">
-                    {active.category} · {active.year}
+                    {catLabel(active.category)} · {active.year}
                   </p>
                 </div>
                 <div className="flex gap-2">

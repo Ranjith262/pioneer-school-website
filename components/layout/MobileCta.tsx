@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { T } from "@/components/i18n/T";
 
 /** Sticky bottom call-to-action bar, visible on small screens only. */
 export function MobileCta() {
@@ -10,13 +11,13 @@ export function MobileCta() {
           href={`tel:${site.admissionsPhone.replace(/\s/g, "")}`}
           className="flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-primary py-3 text-sm font-semibold text-primary"
         >
-          <span aria-hidden="true">📞</span> Call Us
+          <span aria-hidden="true">📞</span> <T k="chrome.callUs" />
         </a>
         <Link
           href="/admissions#apply"
           className="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent py-3 text-sm font-semibold text-ink shadow-soft"
         >
-          Apply Now
+          <T k="chrome.applyNow" />
         </Link>
       </div>
     </div>

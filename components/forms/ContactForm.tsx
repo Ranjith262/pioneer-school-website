@@ -10,9 +10,11 @@ import {
   TextArea,
   TextField,
 } from "@/components/forms/fields";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 
 export function ContactForm() {
   const [state, formAction, pending] = useActionState(submitContact, initialFormState);
+  const { t } = useLanguage();
 
   if (state.status === "success") {
     return <FormStatus status={state.status} message={state.message} />;
@@ -23,24 +25,24 @@ export function ContactForm() {
       <HoneypotField />
       <div className="grid gap-5 sm:grid-cols-2">
         <TextField
-          label="Your Name"
+          label={t("forms.contact.yourName")}
           name="name"
           required
           autoComplete="name"
           error={state.fieldErrors?.name}
         />
         <TextField
-          label="Phone Number"
+          label={t("forms.contact.phone")}
           name="phone"
           type="tel"
           required
           autoComplete="tel"
-          placeholder="+91 XXXXX XXXXX"
+          placeholder={t("forms.contact.phonePlaceholder")}
           error={state.fieldErrors?.phone}
         />
       </div>
       <TextField
-        label="Email Address"
+        label={t("forms.contact.email")}
         name="email"
         type="email"
         required
@@ -48,20 +50,20 @@ export function ContactForm() {
         error={state.fieldErrors?.email}
       />
       <TextField
-        label="Subject"
+        label={t("forms.contact.subject")}
         name="subject"
         required
         error={state.fieldErrors?.subject}
       />
       <TextArea
-        label="Message"
+        label={t("forms.contact.message")}
         name="message"
         required
         error={state.fieldErrors?.message}
       />
       <FormStatus status={state.status} message={state.message} />
       <SubmitButton size="lg" disabled={pending}>
-        {pending ? "Sending…" : "Send Message"}
+        {pending ? t("forms.contact.submitting") : t("forms.contact.submit")}
       </SubmitButton>
     </form>
   );

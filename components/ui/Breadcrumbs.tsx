@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { T } from "@/components/i18n/T";
 
 interface Crumb {
-  label: string;
+  label: React.ReactNode;
   href?: string;
 }
 
@@ -11,11 +12,11 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
       <ol className="flex flex-wrap items-center gap-1.5">
         <li>
           <Link href="/" className="hover:text-primary">
-            Home
+            <T k="common.home" />
           </Link>
         </li>
-        {items.map((item) => (
-          <li key={item.label} className="flex items-center gap-1.5">
+        {items.map((item, i) => (
+          <li key={i} className="flex items-center gap-1.5">
             <span aria-hidden="true">/</span>
             {item.href ? (
               <Link href={item.href} className="hover:text-primary">

@@ -3,14 +3,15 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { NewsletterForm } from "@/components/forms/NewsletterForm";
+import { T } from "@/components/i18n/T";
 
 const quickLinks = [
-  { label: "Admissions", href: "/admissions" },
-  { label: "Academics", href: "/academics" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "News", href: "/news" },
-  { label: "Parents", href: "/parents" },
-  { label: "Contact", href: "/contact" },
+  { key: "nav.admissions", href: "/admissions" },
+  { key: "nav.academics", href: "/academics" },
+  { key: "nav.gallery", href: "/gallery" },
+  { key: "nav.news", href: "/news" },
+  { key: "nav.parents", href: "/parents" },
+  { key: "nav.contact", href: "/contact" },
 ];
 
 const socials = [
@@ -36,9 +37,7 @@ export function Footer() {
             <p className="font-heading text-lg font-bold">{site.name}</p>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-white/70">
-            Nurturing young minds from Nursery to Class 10 since {site.established} —
-            academic excellence, strong values, and holistic development in the heart
-            of Bhagyanagar, Koppal.
+            <T k="chrome.footer.blurb" />
           </p>
           <div className="mt-5 flex gap-3">
             {socials.map((social) => (
@@ -59,7 +58,7 @@ export function Footer() {
         {/* Quick links */}
         <div>
           <h2 className="font-heading text-sm font-semibold uppercase tracking-widest text-accent">
-            Quick Links
+            <T k="chrome.footer.quickLinks" />
           </h2>
           <ul className="mt-4 space-y-2.5">
             {quickLinks.map((link) => (
@@ -68,7 +67,7 @@ export function Footer() {
                   href={link.href}
                   className="text-sm text-white/70 transition-colors hover:text-white"
                 >
-                  {link.label}
+                  <T k={link.key} />
                 </Link>
               </li>
             ))}
@@ -78,7 +77,7 @@ export function Footer() {
         {/* Contact */}
         <div>
           <h2 className="font-heading text-sm font-semibold uppercase tracking-widest text-accent">
-            Contact
+            <T k="chrome.footer.contact" />
           </h2>
           <address className="mt-4 space-y-2.5 text-sm not-italic text-white/70">
             <p>
@@ -96,17 +95,17 @@ export function Footer() {
                 {site.email}
               </a>
             </p>
-            <p>{site.hours}</p>
+            <p><T k="chrome.footer.hours" /></p>
           </address>
         </div>
 
         {/* Newsletter */}
         <div>
           <h2 className="font-heading text-sm font-semibold uppercase tracking-widest text-accent">
-            Newsletter
+            <T k="chrome.footer.newsletter" />
           </h2>
           <p className="mt-4 text-sm text-white/70">
-            School news, circulars, and event updates in your inbox.
+            <T k="chrome.footer.newsletterBlurb" />
           </p>
           <NewsletterForm />
         </div>
@@ -115,10 +114,10 @@ export function Footer() {
       <div className="border-t border-white/10">
         <Container className="flex flex-col items-center justify-between gap-3 py-6 text-sm text-white/60 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {site.name}. All rights reserved.
+            © {new Date().getFullYear()} {site.name}. <T k="chrome.footer.rights" />
           </p>
           <Link href="/privacy-policy" className="hover:text-white">
-            Privacy Policy
+            <T k="chrome.footer.privacy" />
           </Link>
         </Container>
       </div>

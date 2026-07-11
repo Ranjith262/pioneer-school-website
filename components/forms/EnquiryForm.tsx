@@ -11,6 +11,7 @@ import {
   TextArea,
   TextField,
 } from "@/components/forms/fields";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 
 const grades = [
   "Nursery",
@@ -30,6 +31,7 @@ const grades = [
 
 export function EnquiryForm() {
   const [state, formAction, pending] = useActionState(submitEnquiry, initialFormState);
+  const { t } = useLanguage();
 
   if (state.status === "success") {
     return <FormStatus status={state.status} message={state.message} />;
@@ -40,14 +42,14 @@ export function EnquiryForm() {
       <HoneypotField />
       <div className="grid gap-5 sm:grid-cols-2">
         <TextField
-          label="Parent / Guardian Name"
+          label={t("forms.enquiry.parentName")}
           name="parentName"
           required
           autoComplete="name"
           error={state.fieldErrors?.parentName}
         />
         <TextField
-          label="Student Name"
+          label={t("forms.enquiry.studentName")}
           name="studentName"
           required
           error={state.fieldErrors?.studentName}
@@ -55,24 +57,24 @@ export function EnquiryForm() {
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <SelectField
-          label="Grade Applying For"
+          label={t("forms.enquiry.gradeApplying")}
           name="gradeApplying"
           required
           options={grades}
           error={state.fieldErrors?.gradeApplying}
         />
         <TextField
-          label="Phone Number"
+          label={t("forms.enquiry.phone")}
           name="phone"
           type="tel"
           required
           autoComplete="tel"
-          placeholder="+91 XXXXX XXXXX"
+          placeholder={t("forms.enquiry.phonePlaceholder")}
           error={state.fieldErrors?.phone}
         />
       </div>
       <TextField
-        label="Email Address"
+        label={t("forms.enquiry.email")}
         name="email"
         type="email"
         required
@@ -80,14 +82,14 @@ export function EnquiryForm() {
         error={state.fieldErrors?.email}
       />
       <TextArea
-        label="Message (optional)"
+        label={t("forms.enquiry.message")}
         name="message"
-        placeholder="Any questions or details you would like to share…"
+        placeholder={t("forms.enquiry.messagePlaceholder")}
         error={state.fieldErrors?.message}
       />
       <FormStatus status={state.status} message={state.message} />
       <SubmitButton size="lg" disabled={pending}>
-        {pending ? "Submitting…" : "Submit Enquiry"}
+        {pending ? t("forms.enquiry.submitting") : t("forms.enquiry.submit")}
       </SubmitButton>
     </form>
   );

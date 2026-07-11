@@ -5,6 +5,8 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { cn } from "@/lib/utils";
+import { T } from "@/components/i18n/T";
+import { NewsSearchInput } from "@/components/ui/NewsSearchInput";
 
 export const metadata: Metadata = {
   title: "News & Announcements",
@@ -36,9 +38,9 @@ export default async function NewsPage({ searchParams }: PageProps) {
   return (
     <>
       <PageHero
-        title="News & Announcements"
-        description="Stay up to date with everything happening at Pioneer Public School."
-        crumbs={[{ label: "News" }]}
+        title={<T k="pages.news.title" />}
+        description={<T k="pages.news.description" />}
+        crumbs={[{ label: <T k="pages.news.crumb" /> }]}
       />
 
       <section className="py-16 sm:py-24">
@@ -46,7 +48,7 @@ export default async function NewsPage({ searchParams }: PageProps) {
           {/* Search + categories */}
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <nav aria-label="News categories" className="flex flex-wrap gap-2">
-              {categories.map((option) => {
+              {categories.map((option, i) => {
                 const href =
                   option === "All"
                     ? q
@@ -67,7 +69,7 @@ export default async function NewsPage({ searchParams }: PageProps) {
                         : "bg-white text-ink shadow-soft hover:bg-primary-50"
                     )}
                   >
-                    {option}
+                    <T k={`pages.news.categories.${i}`} />
                   </Link>
                 );
               })}
@@ -78,21 +80,14 @@ export default async function NewsPage({ searchParams }: PageProps) {
                 <input type="hidden" name="category" value={category} />
               )}
               <label htmlFor="news-search" className="sr-only">
-                Search news
+                <T k="common.search" />
               </label>
-              <input
-                id="news-search"
-                type="search"
-                name="q"
-                defaultValue={q}
-                placeholder="Search news…"
-                className="w-full rounded-full border border-primary-100 bg-white px-5 py-2.5 text-sm shadow-soft focus:border-primary focus:outline-none md:w-64"
-              />
+              <NewsSearchInput defaultValue={q} />
               <button
                 type="submit"
                 className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-primary-700"
               >
-                Search
+                <T k="common.search" />
               </button>
             </form>
           </div>
@@ -100,7 +95,7 @@ export default async function NewsPage({ searchParams }: PageProps) {
           {/* Results */}
           {filtered.length === 0 ? (
             <p className="mt-16 text-center text-muted">
-              No news found{query ? ` for “${q}”` : ""}. Try a different search or category.
+              <T k="common.noResults" />
             </p>
           ) : (
             <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -112,19 +107,21 @@ export default async function NewsPage({ searchParams }: PageProps) {
                   >
                     <div className="flex items-center gap-3 text-xs">
                       <span className="rounded-full bg-primary-50 px-3 py-1 font-semibold text-primary">
-                        {item.category}
+                        <T k={`content.categories.${item.category}`} />
                       </span>
                       <time dateTime={item.date} className="text-muted">
                         {formatDate(item.date)}
                       </time>
                     </div>
                     <h2 className="mt-3 font-heading text-xl font-semibold text-ink group-hover:text-primary">
-                      {item.title}
+                      <T k={`content.news.${item.slug}.title`} />
                     </h2>
                     <p className="mt-2.5 text-sm leading-relaxed text-muted">
-                      {item.excerpt}
+                      <T k={`content.news.${item.slug}.excerpt`} />
                     </p>
-                    <p className="mt-4 text-sm font-semibold text-primary">Read More →</p>
+                    <p className="mt-4 text-sm font-semibold text-primary">
+                      <T k="common.readMore" /> →
+                    </p>
                   </Link>
                 </FadeIn>
               ))}

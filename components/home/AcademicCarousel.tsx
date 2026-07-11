@@ -8,6 +8,7 @@ import { programs } from "@/content/programs";
 import { programImages, img } from "@/lib/images";
 import { Photo } from "@/components/ui/Photo";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 
 const stageColors = [
   "bg-secondary",
@@ -22,6 +23,7 @@ export function AcademicCarousel() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   const go = useCallback(
     (newIndex: number) => {
@@ -115,19 +117,19 @@ export function AcademicCarousel() {
             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
           >
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
-              {program.ageRange}
+              {t(`content.programs.${program.slug}.ageRange`)}
             </p>
             <h3 className="mt-3 font-heading text-3xl font-bold text-ink sm:text-4xl">
-              {program.name}
+              {t(`content.programs.${program.slug}.name`)}
             </h3>
             <p className="mt-4 text-lg leading-relaxed text-muted">
-              {program.summary}
+              {t(`content.programs.${program.slug}.summary`)}
             </p>
             <Link
               href={`/academics/${program.slug}`}
               className="mt-6 inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-accent"
             >
-              Explore Curriculum <span className="arrow-bounce">→</span>
+              {t("carousel.explore")} <span className="arrow-bounce">→</span>
             </Link>
           </motion.div>
         </AnimatePresence>
@@ -151,7 +153,7 @@ export function AcademicCarousel() {
             →
           </button>
           <span className="ml-3 text-sm text-muted">
-            Swipe or click to explore all programs
+            {t("carousel.hint")}
           </span>
         </div>
       </div>

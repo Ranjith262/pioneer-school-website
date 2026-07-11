@@ -3,6 +3,7 @@ import { achievements } from "@/content/achievements";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { T } from "@/components/i18n/T";
 
 export const metadata: Metadata = {
   title: "Achievements",
@@ -15,15 +16,15 @@ export default function AchievementsPage() {
   return (
     <>
       <PageHero
-        title="Achievements"
-        description="Every trophy tells a story of effort. Here are some of our proudest recent moments."
-        crumbs={[{ label: "Achievements" }]}
+        title={<T k="pages.achievements.title" />}
+        description={<T k="pages.achievements.description" />}
+        crumbs={[{ label: <T k="pages.achievements.crumb" /> }]}
       />
 
       <section className="py-16 sm:py-24">
         <Container>
           <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {achievements.map((achievement) => (
+            {achievements.map((achievement, i) => (
               <StaggerItem key={achievement.title}>
                 <article className="h-full rounded-card bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift">
                   <div className="flex items-start justify-between gap-3">
@@ -35,13 +36,13 @@ export default function AchievementsPage() {
                     </span>
                   </div>
                   <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-secondary">
-                    {achievement.category}
+                    <T k={`content.categories.${achievement.category}`} />
                   </p>
                   <h2 className="mt-2 font-heading text-lg font-semibold text-ink">
-                    {achievement.title}
+                    <T k={`content.achievements.${i}.title`} />
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {achievement.description}
+                    <T k={`content.achievements.${i}.description`} />
                   </p>
                 </article>
               </StaggerItem>

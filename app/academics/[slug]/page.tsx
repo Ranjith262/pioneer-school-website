@@ -7,6 +7,7 @@ import { Photo } from "@/components/ui/Photo";
 import { img, programImages } from "@/lib/images";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ButtonLink } from "@/components/ui/Button";
+import { T } from "@/components/i18n/T";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -32,7 +33,7 @@ function DetailCard({
   emoji,
   items,
 }: {
-  title: string;
+  title: React.ReactNode;
   emoji: string;
   items: string[];
 }) {
@@ -66,9 +67,12 @@ export default async function ProgramPage({ params }: PageProps) {
   return (
     <>
       <PageHero
-        title={program.name}
-        description={`${program.ageRange} · ${program.summary}`}
-        crumbs={[{ label: "Academics", href: "/academics" }, { label: program.name }]}
+        title={<T k={`content.programs.${program.slug}.name`} />}
+        description={<><T k={`content.programs.${program.slug}.ageRange`} /> · <T k={`content.programs.${program.slug}.summary`} /></>}
+        crumbs={[
+          { label: <T k="pages.academics.crumb" />, href: "/academics" },
+          { label: <T k={`content.programs.${program.slug}.name`} /> },
+        ]}
       />
 
       <section className="py-16 sm:py-24">
@@ -85,18 +89,22 @@ export default async function ProgramPage({ params }: PageProps) {
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             <FadeIn>
-              <DetailCard title="Curriculum" emoji="📘" items={program.curriculum} />
+              <DetailCard
+                title={<T k="pages.academicDetail.curriculum" />}
+                emoji="📘"
+                items={program.curriculum}
+              />
             </FadeIn>
             <FadeIn delay={0.08}>
               <DetailCard
-                title="Teaching Methodology"
+                title={<T k="pages.academicDetail.methodology" />}
                 emoji="🧑‍🏫"
                 items={program.methodology}
               />
             </FadeIn>
             <FadeIn delay={0.16}>
               <DetailCard
-                title="Learning Outcomes"
+                title={<T k="pages.academicDetail.outcomes" />}
                 emoji="🌟"
                 items={program.outcomes}
               />
@@ -107,11 +115,11 @@ export default async function ProgramPage({ params }: PageProps) {
                   <span aria-hidden="true" className="text-2xl">
                     📝
                   </span>
-                  Assessment
+                  <T k="pages.academicDetail.assessment" />
                 </h2>
                 <p className="mt-4 text-muted">{program.assessment}</p>
                 <h3 className="mt-6 font-heading font-semibold text-ink">
-                  Signature Activities
+                  <T k="pages.academicDetail.activities" />
                 </h3>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {program.activities.map((activity) => (
@@ -131,19 +139,17 @@ export default async function ProgramPage({ params }: PageProps) {
           <FadeIn className="mt-12">
             <div className="rounded-card border border-dashed border-primary/40 bg-primary-50 p-8 text-center">
               <h2 className="font-heading text-lg font-semibold text-ink">
-                📥 Downloads — Syllabus & Booklists
+                📥 <T k="pages.academicDetail.downloads" />
               </h2>
               <p className="mx-auto mt-2 max-w-xl text-sm text-muted">
-                Detailed syllabus documents and booklists for {program.name} will be
-                published here at the start of each academic year. Meanwhile, copies are
-                available at the school office.
+                <T k="pages.academicDetail.downloadsText" />
               </p>
             </div>
           </FadeIn>
 
           <FadeIn className="mt-12 text-center">
             <ButtonLink href="/admissions#apply" size="lg">
-              Apply for {program.name}
+              <T k="common.applyFor" /> <T k={`content.programs.${program.slug}.name`} />
             </ButtonLink>
           </FadeIn>
         </Container>

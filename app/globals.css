@@ -20,9 +20,15 @@
   --color-ink: #1a2433;
   --color-muted: #5a6b82;
 
-  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  /* Noto Sans Devanagari/Kannada follow the brand fonts in every stack:
+     Latin glyphs render in Poppins/Inter/Fraunces, Hindi and Kannada
+     text falls through to Noto so no script ever shows tofu boxes. */
+  --font-heading: var(--font-poppins), var(--font-noto-devanagari),
+    var(--font-noto-kannada), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), var(--font-noto-devanagari),
+    var(--font-noto-kannada), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), var(--font-noto-devanagari),
+    var(--font-noto-kannada), Georgia, "Times New Roman", serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-shimmer: shimmer 2.5s linear infinite;
@@ -164,6 +170,18 @@
     0% { opacity: 0.8; }
     50% { opacity: 0.3; }
     100% { opacity: 0.1; }
+  }
+
+  @keyframes wave-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Noto Kannada / Noto Devanagari have no true italic face — prevent
+     the browser from synthesising one (slants distort conjuncts). */
+  :root:lang(kn) .italic,
+  :root:lang(hi) .italic {
+    font-style: normal;
   }
 
   /* Gradient text shimmer */

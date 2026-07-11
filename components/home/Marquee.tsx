@@ -1,19 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 
-const phrases = [
-  "Academic Excellence",
-  "Rooted in Indian Values",
-  "Confident English",
-  "Science & Discovery",
-  "Sports & Sportsmanship",
-  "Music, Art & Theatre",
-  "A Family of 300+ Learners",
-  "Character Before Marks",
-];
+const PHRASE_COUNT = 8;
 
 function Strip({ ariaHidden = false }: { ariaHidden?: boolean }) {
+  const { t } = useLanguage();
+  const phrases = Array.from({ length: PHRASE_COUNT }, (_, i) => t(`marquee.${i}`));
   return (
     <div
       aria-hidden={ariaHidden || undefined}

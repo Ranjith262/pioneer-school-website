@@ -11,6 +11,7 @@ import { useReducedMotion } from "@/lib/useReducedMotion";
 import { site } from "@/content/site";
 import { img } from "@/lib/images";
 import { useIsMobile } from "@/lib/useIsMobile";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { ButtonLink } from "@/components/ui/Button";
 import { Hero3D } from "@/components/three/Hero3D";
 
@@ -32,7 +33,7 @@ function RevealWords({
         // space inside one would collapse), so it both renders and stays
         // in the accessible text.
         <span key={`${word}-${i}`}>
-          <span className="inline-block overflow-hidden pb-1 align-bottom">
+          <span className="inline-block overflow-hidden px-1 py-2 -mx-1 align-bottom">
             <motion.span
               className="inline-block"
               initial={reduceMotion ? false : { y: "110%", rotateX: 45 }}
@@ -57,6 +58,7 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const { t } = useLanguage();
   // Scroll-linked transforms repaint every frame — too heavy for phone GPUs.
   const staticHero = reduceMotion || isMobile;
   const { scrollYProgress } = useScroll({
@@ -230,15 +232,16 @@ export function Hero() {
               ))}
             </svg>
           </span>
-          Nursery to Class 10 · Bhagyanagar, Koppal, Karnataka · Est. {site.established}
+          {t("hero.badge")}
         </motion.p>
 
         {/* Headline with word-by-word reveal + 3D rotation */}
-        <h1 className="max-w-5xl font-heading text-5xl font-bold leading-[1.05] sm:text-7xl lg:text-[5.5rem]">
-          <RevealWords text="Learning Today." delay={0.25} />
+        <h1 className="max-w-5xl font-heading text-5xl font-bold leading-[1.18] sm:text-7xl lg:text-[5.5rem]">
+          <RevealWords key={`t1-${t("hero.title1")}`} text={t("hero.title1")} delay={0.25} />
           <br />
           <RevealWords
-            text="Leading Tomorrow."
+            key={`t2-${t("hero.title2")}`}
+            text={t("hero.title2")}
             delay={0.6}
             className="font-display italic font-medium text-accent"
           />
@@ -251,7 +254,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 1.15 }}
           className="mt-8 max-w-2xl text-lg leading-relaxed text-white/85 sm:text-xl"
         >
-          {site.subTagline}
+          {t("hero.subTagline")}
         </motion.p>
 
         {/* CTA buttons with stagger */}
@@ -262,10 +265,10 @@ export function Hero() {
           className="mt-10 flex flex-wrap items-center gap-4"
         >
           <ButtonLink href="/admissions#apply" variant="accent" size="lg">
-            Apply Now <span className="arrow-bounce">→</span>
+            {t("chrome.applyNow")} <span className="arrow-bounce">→</span>
           </ButtonLink>
           <ButtonLink href="/admissions#visit" variant="outline" size="lg">
-            Book a Campus Tour
+            {t("hero.bookTour")}
           </ButtonLink>
         </motion.div>
 
@@ -277,10 +280,10 @@ export function Hero() {
           className="mt-14 hidden items-center gap-10 border-t border-white/15 pt-6 sm:flex"
         >
           {[
-            { value: "300+", label: "Students" },
-            { value: "100%", label: "SSLC Pass Rate" },
-            { value: "20+", label: "Expert Teachers" },
-            { value: "Since 2015", label: "Serving Bhagyanagar, Koppal" },
+            { value: "300+", label: t("hero.stats.students") },
+            { value: "100%", label: t("hero.stats.passRate") },
+            { value: "20+", label: t("hero.stats.teachers") },
+            { value: t("hero.stats.sinceValue"), label: t("hero.stats.sinceLabel") },
           ].map((stat) => (
             <div key={stat.label}>
               <p className="font-display text-2xl font-medium text-accent">{stat.value}</p>
@@ -299,7 +302,7 @@ export function Hero() {
         className="absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
       >
         <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/50">
-          Scroll
+          {t("hero.scroll")}
         </span>
         <div className="flex h-12 w-7 items-start justify-center rounded-full border-2 border-white/30 p-1.5">
           <motion.span

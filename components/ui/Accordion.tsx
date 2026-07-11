@@ -1,9 +1,13 @@
 "use client";
 
 import { useId, useState } from "react";
-import type { Faq } from "@/types";
 
-export function Accordion({ items }: { items: Faq[] }) {
+interface AccordionItem {
+  question: React.ReactNode;
+  answer: React.ReactNode;
+}
+
+export function Accordion({ items }: { items: AccordionItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const baseId = useId();
 
@@ -14,7 +18,7 @@ export function Accordion({ items }: { items: Faq[] }) {
         const headerId = `${baseId}-header-${index}`;
         const panelId = `${baseId}-panel-${index}`;
         return (
-          <div key={item.question}>
+          <div key={index}>
             <h3>
               <button
                 id={headerId}

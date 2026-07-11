@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { testimonials } from "@/content/testimonials";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 
 const ROTATE_MS = 6000;
 
@@ -11,6 +12,7 @@ export function Testimonials() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (paused || reduceMotion) return;
@@ -45,11 +47,15 @@ export function Testimonials() {
               <span aria-hidden="true" className="mr-1 font-heading text-4xl text-accent">
                 “
               </span>
-              {current.quote}
+              {t(`content.testimonials.${index}.quote`)}
             </blockquote>
             <figcaption className="mt-6">
-              <p className="font-heading font-semibold text-ink">{current.name}</p>
-              <p className="text-sm text-secondary">{current.role}</p>
+              <p className="font-heading font-semibold text-ink">
+                {t(`content.testimonials.${index}.name`)}
+              </p>
+              <p className="text-sm text-secondary">
+                {t(`content.categories.${current.role}`)}
+              </p>
             </figcaption>
           </motion.figure>
         </AnimatePresence>

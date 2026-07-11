@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { GalleryExplorer } from "@/components/gallery/GalleryExplorer";
+import { T } from "@/components/i18n/T";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -14,9 +15,9 @@ export default function GalleryPage() {
   return (
     <>
       <PageHero
-        title="Gallery"
-        description="Browse moments from school life. Filter by category or year, and click any photo to view it larger."
-        crumbs={[{ label: "Gallery" }]}
+        title={<T k="pages.gallery.title" />}
+        description={<T k="pages.gallery.description" />}
+        crumbs={[{ label: <T k="pages.gallery.crumb" /> }]}
       />
 
       <section className="py-16 sm:py-24">

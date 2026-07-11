@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { site } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,6 +6,8 @@ import { Photo } from "@/components/ui/Photo";
 import { img } from "@/lib/images";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { ButtonLink } from "@/components/ui/Button";
+import { SectionDivider } from "@/components/ui/SectionDivider";
+import { T } from "@/components/i18n/T";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -15,38 +16,16 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-const values = [
-  { name: "Integrity", description: "Doing the right thing, even when no one is watching.", emoji: "🤝" },
-  { name: "Excellence", description: "Giving our best in academics, sports, and character.", emoji: "⭐" },
-  { name: "Respect", description: "Valuing every person, culture, and point of view.", emoji: "🙏" },
-  { name: "Curiosity", description: "Asking questions and never stopping to learn.", emoji: "💡" },
-  { name: "Responsibility", description: "Caring for our community and our environment.", emoji: "🌍" },
-  { name: "Compassion", description: "Leading with kindness inside and outside school.", emoji: "❤️" },
-];
-
-const milestones = [
-  { year: "2015", event: "Pioneer Public School founded in Bhagyanagar, Koppal with Nursery to Class 5." },
-  { year: "2017", event: "Extended to Middle School (Classes 6–8); science and computer labs inaugurated." },
-  { year: "2019", event: "First batch of Class 10; secondary section fully established." },
-  { year: "2021", event: "Smart classrooms introduced across all grades." },
-  { year: "2023", event: "Awarded Best School in Bhagyanagar, Koppal Taluk for holistic education." },
-  { year: "2025", event: "100% SSLC pass rate with 40% distinctions; 300+ students strong." },
-];
-
-const faculty = [
-  { name: "The Principal", role: "School Leadership", emoji: "👩‍💼", note: "20+ years in school education and administration." },
-  { name: "Primary Wing Team", role: "Nursery – Class 5", emoji: "👩‍🏫", note: "Specialists in early childhood and foundational learning." },
-  { name: "Middle School Team", role: "Classes 6 – 8", emoji: "👨‍🏫", note: "Subject experts in science, mathematics, and languages." },
-  { name: "Secondary Team", role: "Classes 9 – 10", emoji: "🧑‍🏫", note: "Board-exam mentors with consistently strong results." },
-];
+const valueEmojis = ["🤝", "⭐", "🙏", "💡", "🌍", "❤️"];
+const facultyEmojis = ["👩‍💼", "👩‍🏫", "👨‍🏫", "🧑‍🏫"];
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="About Pioneer Public School"
-        description="A decade of nurturing confident, compassionate learners in the heart of Bhagyanagar, Koppal."
-        crumbs={[{ label: "About" }]}
+        title={<T k="pages.about.title" />}
+        description={<T k="pages.about.description" />}
+        crumbs={[{ label: <T k="pages.about.crumb" /> }]}
       />
 
       {/* History */}
@@ -54,22 +33,14 @@ export default function AboutPage() {
         <Container className="grid items-center gap-12 lg:grid-cols-2">
           <FadeIn direction="right">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary">
-              Our Story
+              <T k="pages.about.history.eyebrow" />
             </p>
             <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-              Rooted in Bhagyanagar, Koppal — Reaching for the World
+              <T k="pages.about.history.title" />
             </h2>
             <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted">
-              <p>
-                Pioneer Public School was established in {site.established} with a simple
-                conviction: the children of Bhagyanagar, Koppal deserve a school that matches the best
-                anywhere — in teaching quality, in values, and in opportunity.
-              </p>
-              <p>
-                What began as a small primary school in Pragati Nagar has grown into a
-                vibrant community of {site.studentCount} students and {site.staffCount} dedicated
-                staff, offering a complete education from Nursery to Class 10.
-              </p>
+              <p><T k="pages.about.history.p1" /></p>
+              <p><T k="pages.about.history.p2" /></p>
             </div>
           </FadeIn>
           <FadeIn direction="left">
@@ -83,34 +54,39 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <SectionDivider variant="wave" className="text-surface" />
+
       {/* Vision & Mission */}
       <section className="bg-surface py-16 sm:py-24">
         <Container className="grid gap-8 lg:grid-cols-2">
           <FadeIn>
             <div className="h-full rounded-card bg-white p-10 shadow-soft">
               <span aria-hidden="true" className="text-4xl">🔭</span>
-              <h2 className="mt-4 text-2xl font-bold text-ink">Our Vision</h2>
+              <h2 className="mt-4 text-2xl font-bold text-ink">
+                <T k="pages.about.vision.title" />
+              </h2>
               <p className="mt-4 text-lg leading-relaxed text-muted">
-                To be the most trusted school in the region — a place where every child
-                discovers their strengths, builds strong character, and leaves prepared
-                to lead in a changing world.
+                <T k="pages.about.vision.text" />
               </p>
             </div>
           </FadeIn>
           <FadeIn delay={0.1}>
             <div className="h-full rounded-card bg-white p-10 shadow-soft">
               <span aria-hidden="true" className="text-4xl">🎯</span>
-              <h2 className="mt-4 text-2xl font-bold text-ink">Our Mission</h2>
+              <h2 className="mt-4 text-2xl font-bold text-ink">
+                <T k="pages.about.mission.title" />
+              </h2>
               <ul className="mt-4 space-y-3 text-lg leading-relaxed text-muted">
-                <li>• Deliver concept-first, joyful learning in every classroom.</li>
-                <li>• Give equal weight to academics, arts, sports, and values.</li>
-                <li>• Partner closely with parents in every child&apos;s journey.</li>
-                <li>• Keep quality education accessible to our community.</li>
+                {[0, 1, 2, 3].map((i) => (
+                  <li key={i}>• <T k={`pages.about.mission.items.${i}`} /></li>
+                ))}
               </ul>
             </div>
           </FadeIn>
         </Container>
       </section>
+
+      <SectionDivider variant="wave" flip className="text-surface" />
 
       {/* Principal's message */}
       <section className="py-16 sm:py-24">
@@ -125,49 +101,45 @@ export default function AboutPage() {
           </FadeIn>
           <FadeIn direction="left" className="order-1 lg:order-2">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary">
-              Principal&apos;s Message
+              <T k="pages.about.principal.eyebrow" />
             </p>
             <h2 className="mt-3 text-3xl font-bold text-ink">
-              Every Child Carries a Spark
+              <T k="pages.about.principal.title" />
             </h2>
             <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted">
-              <p>
-                “Education is not only about marks — it is about awakening. Our teachers
-                work every day to help children fall in love with learning, stand up
-                with confidence, and treat others with kindness.
-              </p>
-              <p>
-                When you walk through our corridors, you will hear questions, laughter,
-                and music. That is the sound of childhood being honoured. I invite you
-                to visit us and see it for yourself.”
-              </p>
+              <p><T k="pages.about.principal.p1" /></p>
+              <p><T k="pages.about.principal.p2" /></p>
             </div>
             <p className="mt-5 font-heading font-semibold text-ink">
-              — The Principal, Pioneer Public School
+              <T k="pages.about.principal.attribution" />
             </p>
           </FadeIn>
         </Container>
       </section>
 
+      <SectionDivider variant="wave" className="text-surface" />
+
       {/* Milestones */}
       <section className="bg-surface py-16 sm:py-24">
         <Container>
           <SectionHeading
-            eyebrow="Our Journey"
-            title="A Decade of Milestones"
+            eyebrow={<T k="pages.about.milestones.eyebrow" />}
+            title={<T k="pages.about.milestones.title" />}
           />
           <ol className="relative mx-auto max-w-3xl space-y-8 border-l-2 border-primary-100 pl-8">
-            {milestones.map((milestone, i) => (
-              <FadeIn key={milestone.year} delay={i * 0.05}>
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <FadeIn key={i} delay={i * 0.05}>
                 <li className="relative">
                   <span
                     aria-hidden="true"
                     className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-white bg-primary shadow-soft"
                   />
                   <p className="font-heading text-lg font-bold text-primary">
-                    {milestone.year}
+                    <T k={`pages.about.milestones.items.${i}.year`} />
                   </p>
-                  <p className="mt-1 text-muted">{milestone.event}</p>
+                  <p className="mt-1 text-muted">
+                    <T k={`pages.about.milestones.items.${i}.event`} />
+                  </p>
                 </li>
               </FadeIn>
             ))}
@@ -175,29 +147,35 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <SectionDivider variant="wave" flip className="text-surface" />
+
       {/* Faculty & management */}
       <section className="py-16 sm:py-24">
         <Container>
           <SectionHeading
-            eyebrow="Our People"
-            title="Management & Faculty"
-            description="A dedicated team of educators and administrators committed to every child's growth."
+            eyebrow={<T k="pages.about.faculty.eyebrow" />}
+            title={<T k="pages.about.faculty.title" />}
+            description={<T k="pages.about.faculty.description" />}
           />
           <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {faculty.map((member) => (
-              <StaggerItem key={member.name}>
+            {[0, 1, 2, 3].map((i) => (
+              <StaggerItem key={i}>
                 <div className="h-full rounded-card bg-white p-7 text-center shadow-soft transition-all hover:-translate-y-1.5 hover:shadow-lift">
                   <span
                     aria-hidden="true"
                     className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary-50 text-4xl"
                   >
-                    {member.emoji}
+                    {facultyEmojis[i]}
                   </span>
                   <h3 className="mt-4 font-heading font-semibold text-ink">
-                    {member.name}
+                    <T k={`pages.about.faculty.items.${i}.name`} />
                   </h3>
-                  <p className="text-sm font-medium text-secondary">{member.role}</p>
-                  <p className="mt-2 text-sm text-muted">{member.note}</p>
+                  <p className="text-sm font-medium text-secondary">
+                    <T k={`pages.about.faculty.items.${i}.role`} />
+                  </p>
+                  <p className="mt-2 text-sm text-muted">
+                    <T k={`pages.about.faculty.items.${i}.note`} />
+                  </p>
                 </div>
               </StaggerItem>
             ))}
@@ -205,22 +183,28 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <SectionDivider variant="wave" className="text-surface" />
+
       {/* Values */}
       <section className="bg-surface py-16 sm:py-24">
         <Container>
           <SectionHeading
-            eyebrow="School Values"
-            title="The Pioneer Way"
-            description="Six values woven into assemblies, classrooms, and playgrounds every day."
+            eyebrow={<T k="pages.about.values.eyebrow" />}
+            title={<T k="pages.about.values.title" />}
+            description={<T k="pages.about.values.description" />}
           />
           <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {values.map((value) => (
-              <StaggerItem key={value.name}>
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <StaggerItem key={i}>
                 <div className="flex h-full gap-4 rounded-card bg-white p-6 shadow-soft">
-                  <span aria-hidden="true" className="text-3xl">{value.emoji}</span>
+                  <span aria-hidden="true" className="text-3xl">{valueEmojis[i]}</span>
                   <div>
-                    <h3 className="font-heading font-semibold text-ink">{value.name}</h3>
-                    <p className="mt-1 text-sm text-muted">{value.description}</p>
+                    <h3 className="font-heading font-semibold text-ink">
+                      <T k={`pages.about.values.items.${i}.name`} />
+                    </h3>
+                    <p className="mt-1 text-sm text-muted">
+                      <T k={`pages.about.values.items.${i}.description`} />
+                    </p>
                   </div>
                 </div>
               </StaggerItem>
@@ -229,43 +213,47 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <SectionDivider variant="wave" flip className="text-surface" />
+
       {/* Recognition & disclosure */}
       <section className="py-16 sm:py-24">
         <Container className="grid gap-8 lg:grid-cols-2">
           <FadeIn>
             <div className="h-full rounded-card border border-primary-100 bg-white p-10 shadow-soft">
-              <h2 className="text-2xl font-bold text-ink">Recognition</h2>
+              <h2 className="text-2xl font-bold text-ink">
+                <T k="pages.about.recognition.title" />
+              </h2>
               <p className="mt-4 text-muted">
-                Pioneer Public School is recognised by the Department of Public
-                Instruction, Government of Karnataka, and follows the Karnataka State
-                Board syllabus with English as the medium of instruction.
+                <T k="pages.about.recognition.text" />
               </p>
             </div>
           </FadeIn>
           <FadeIn delay={0.1}>
             <div className="h-full rounded-card border border-primary-100 bg-white p-10 shadow-soft">
-              <h2 className="text-2xl font-bold text-ink">Mandatory Disclosure</h2>
+              <h2 className="text-2xl font-bold text-ink">
+                <T k="pages.about.disclosure.title" />
+              </h2>
               <p className="mt-4 text-muted">
-                Statutory documents — recognition certificates, building safety, fire
-                safety, and staff details — are available for inspection at the school
-                office and will be published in the Parents section as downloads.
+                <T k="pages.about.disclosure.text" />
               </p>
             </div>
           </FadeIn>
         </Container>
       </section>
 
+      <SectionDivider variant="wave" className="text-primary-800" />
+
       {/* CTA */}
       <section className="bg-gradient-to-r from-primary-800 to-primary py-16 text-white">
         <Container className="text-center">
           <FadeIn>
-            <h2 className="text-3xl font-bold">Come See Pioneer for Yourself</h2>
+            <h2 className="text-3xl font-bold"><T k="common.comeSee" /></h2>
             <p className="mx-auto mt-3 max-w-xl text-white/85">
-              The best way to know a school is to walk through it. Book a campus tour today.
+              <T k="common.comeSeeDesc" />
             </p>
             <div className="mt-8">
               <ButtonLink href="/admissions#visit" variant="accent" size="lg">
-                Book a Campus Tour
+                <T k="common.bookTour" />
               </ButtonLink>
             </div>
           </FadeIn>

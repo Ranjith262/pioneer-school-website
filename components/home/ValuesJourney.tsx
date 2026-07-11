@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { ValueEmblem, type EmblemKind } from "@/components/home/ValueEmblems";
 
 const values: Array<{
@@ -124,6 +125,7 @@ function MandalaBackdrop() {
 export function ValuesJourney() {
   const [active, setActive] = useState<number | null>(null);
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <div className="relative isolate">
@@ -185,7 +187,7 @@ export function ValuesJourney() {
                 <ValueEmblem kind={value.emblem} className="h-10 w-10" />
               </span>
               <h3 className="mt-4 font-heading text-lg font-bold text-ink">
-                {value.title}
+                {t(`home.values.items.${i}.title`)}
               </h3>
               <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-secondary">
                 {value.subtitle}
@@ -200,7 +202,7 @@ export function ValuesJourney() {
                     transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                     className="mt-4 overflow-hidden text-sm leading-relaxed text-muted"
                   >
-                    {value.description}
+                    {t(`home.values.items.${i}.description`)}
                   </motion.p>
                 )}
               </AnimatePresence>

@@ -2,9 +2,10 @@ import { cn } from "@/lib/utils";
 import { FadeIn } from "@/components/motion/FadeIn";
 
 interface SectionHeadingProps {
-  eyebrow?: string;
-  title: string;
-  description?: string;
+  /* ReactNode so callers can pass <T k="..." /> translation leaves */
+  eyebrow?: React.ReactNode;
+  title: React.ReactNode;
+  description?: React.ReactNode;
   align?: "center" | "left";
   className?: string;
 }

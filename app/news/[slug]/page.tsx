@@ -5,6 +5,7 @@ import { formatDate, getNewsItem, news } from "@/content/news";
 import { Container } from "@/components/ui/Container";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { T } from "@/components/i18n/T";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -42,18 +43,23 @@ export default async function NewsDetailPage({ params }: PageProps) {
     <>
       <section className="bg-gradient-to-br from-primary-50 via-white to-secondary-50 py-14 sm:py-20">
         <Container>
-          <Breadcrumbs items={[{ label: "News", href: "/news" }, { label: item.title }]} />
+          <Breadcrumbs
+            items={[
+              { label: <T k="pages.news.crumb" />, href: "/news" },
+              { label: <T k={`content.news.${item.slug}.title`} /> },
+            ]}
+          />
           <FadeIn>
             <div className="mt-6 flex items-center gap-3 text-sm">
               <span className="rounded-full bg-primary px-3.5 py-1 text-xs font-semibold text-white">
-                {item.category}
+                <T k={`content.categories.${item.category}`} />
               </span>
               <time dateTime={item.date} className="text-muted">
                 {formatDate(item.date)}
               </time>
             </div>
             <h1 className="mt-4 max-w-3xl text-3xl font-bold text-ink sm:text-4xl">
-              {item.title}
+              <T k={`content.news.${item.slug}.title`} />
             </h1>
           </FadeIn>
         </Container>
@@ -71,7 +77,9 @@ export default async function NewsDetailPage({ params }: PageProps) {
 
           {/* Related news */}
           <div className="mx-auto mt-16 max-w-3xl border-t border-primary-100 pt-10">
-            <h2 className="text-xl font-bold text-ink">More News</h2>
+            <h2 className="text-xl font-bold text-ink">
+              <T k="pages.newsDetail.moreNews" />
+            </h2>
             <ul className="mt-5 space-y-4">
               {related.map((relatedItem) => (
                 <li key={relatedItem.slug}>
@@ -80,7 +88,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
                     className="group flex items-baseline justify-between gap-4 rounded-xl px-2 py-1 hover:bg-surface"
                   >
                     <span className="font-medium text-ink group-hover:text-primary">
-                      {relatedItem.title}
+                      <T k={`content.news.${relatedItem.slug}.title`} />
                     </span>
                     <time dateTime={relatedItem.date} className="shrink-0 text-sm text-muted">
                       {formatDate(relatedItem.date)}

@@ -1,0 +1,709 @@
+{
+  "nav": {
+    "about": "About",
+    "academics": "Academics",
+    "admissions": "Admissions",
+    "campusLife": "Campus Life",
+    "gallery": "Gallery",
+    "achievements": "Achievements",
+    "news": "News",
+    "parents": "Parents",
+    "contact": "Contact"
+  },
+  "chrome": {
+    "subtitle": "Bhagyanagar, Koppal · Est. 2015",
+    "applyNow": "Apply Now",
+    "callUs": "Call Us",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "announcement": {
+      "text": "Admissions open for Academic Year 2026–27 — Nursery to Class 10.",
+      "cta": "Apply Now"
+    },
+    "footer": {
+      "blurb": "Nurturing young minds from Nursery to Class 10 since 2015 — academic excellence, strong values, and holistic development in the heart of Bhagyanagar, Koppal.",
+      "quickLinks": "Quick Links",
+      "contact": "Contact",
+      "newsletter": "Newsletter",
+      "newsletterBlurb": "School news, circulars, and event updates in your inbox.",
+      "emailPlaceholder": "Your email",
+      "join": "Join",
+      "hours": "Monday – Saturday, 9:00 AM – 4:30 PM",
+      "rights": "All rights reserved.",
+      "privacy": "Privacy Policy"
+    }
+  },
+  "hero": {
+    "badge": "Nursery to Class 10 · Bhagyanagar, Koppal, Karnataka · Est. 2015",
+    "title1": "Learning Today.",
+    "title2": "Leading Tomorrow.",
+    "subTagline": "Nurturing young minds from Nursery to Class 10 through academic excellence, values, and holistic development.",
+    "bookTour": "Book a Campus Tour",
+    "scroll": "Scroll",
+    "stats": {
+      "students": "Students",
+      "passRate": "SSLC Pass Rate",
+      "teachers": "Expert Teachers",
+      "sinceValue": "Since 2015",
+      "sinceLabel": "Serving Bhagyanagar, Koppal"
+    }
+  },
+  "marquee": [
+    "Academic Excellence",
+    "Rooted in Indian Values",
+    "Confident English",
+    "Science & Discovery",
+    "Sports & Sportsmanship",
+    "Music, Art & Theatre",
+    "A Family of 300+ Learners",
+    "Character Before Marks"
+  ],
+  "home": {
+    "welcome": {
+      "eyebrow": "Namaste & Welcome",
+      "titleA": "Some schools teach lessons.",
+      "titleB": "We shape childhoods.",
+      "p1": "Since 2015, Pioneer Public School has stood for a simple belief: the children of Bhagyanagar, Koppal deserve an education as ambitious as any in the world — and as rooted as the banyan tree in our courtyard.",
+      "p2": "Here, a child learns to solve equations and touch elders' feet, to code and to sing, to compete fiercely and to share freely. That is the Pioneer way.",
+      "quote": "“Every child carries a spark. Our job is to give it wind.”",
+      "principal": "— The Principal",
+      "ourStory": "Our Story"
+    },
+    "promise": {
+      "eyebrow": "The Pioneer Promise",
+      "title": "Four promises. Zero fine print.",
+      "description": "What every family can hold us to, from the first bell of Nursery to the last exam of Class 10.",
+      "items": [
+        {
+          "title": "Academic Excellence",
+          "description": "Concept-first teaching that turns marks into a by-product of genuine understanding — crowned by a 100% SSLC pass record.",
+          "back": "Every child learns differently. We teach that way — visual, kinesthetic, auditory. Results follow understanding."
+        },
+        {
+          "title": "Mentors, Not Just Teachers",
+          "description": "Twenty-plus educators who know every child by name, notice every quiet talent, and never let a question go unanswered.",
+          "back": "Parent-teacher meetings aren't formalities here. They're conversations about potential, not just percentages."
+        },
+        {
+          "title": "A Safe, Joyful Campus",
+          "description": "Supervised spaces, safe transport, and a culture of kindness — so the only thing children bring home is enthusiasm.",
+          "back": "GPS-tracked buses, CCTV, trained staff at every gate. Safety isn't a feature — it's a foundation."
+        },
+        {
+          "title": "The Whole Child",
+          "description": "Yoga at sunrise, cricket at noon, music by dusk. Marks matter; character, curiosity, and courage matter more.",
+          "back": "Sports, arts, community service, leadership roles — the parts of school that children remember at fifty."
+        }
+      ]
+    },
+    "stats": [
+      "Founded with a dream",
+      "Young pioneers",
+      "Dedicated educators",
+      "Grades, one journey"
+    ],
+    "academics": {
+      "eyebrow": "Academics",
+      "title": "One journey, six chapters.",
+      "description": "From finger paints to board exams — each stage designed to hand the child confidently to the next."
+    },
+    "spirit": {
+      "eyebrow": "The Pioneer Spirit",
+      "title1": "Rooted in India.",
+      "title2": "Ready for the world.",
+      "description": "Shlokas and science. Kannada and code. Festivals and physics. Our children grow up fluent in both their heritage and their future."
+    },
+    "values": {
+      "eyebrow": "Indian Values",
+      "title": "Six pillars. One culture.",
+      "description": "Ancient wisdom woven into modern education — tap each value to discover how it lives at Pioneer.",
+      "items": [
+        {
+          "title": "Respect",
+          "description": "Touching feet of elders and standing for teachers shows humility and reverence for knowledge — a daily ritual at Pioneer."
+        },
+        {
+          "title": "Wisdom",
+          "description": "The ancient teacher-student bond, alive in every classroom. Our teachers mentor, not merely instruct."
+        },
+        {
+          "title": "Purity",
+          "description": "Like the lotus that blooms in mud, our children rise above circumstances through education and self-belief."
+        },
+        {
+          "title": "Energy",
+          "description": "The boundless energy of childhood, channelled into academics, sports, arts, and community service."
+        },
+        {
+          "title": "Roots",
+          "description": "Like the banyan tree, we grow wide and strong. Rooted in Indian values, our branches reach toward the world."
+        },
+        {
+          "title": "Balance",
+          "description": "Equal weight to marks and character, competition and compassion, ambition and humility."
+        }
+      ]
+    },
+    "facilities": {
+      "eyebrow": "Our Campus",
+      "title": "Built for curious minds.",
+      "description": "Every corner of our campus is a classroom in disguise.",
+      "items": [
+        {
+          "name": "Smart Classrooms",
+          "description": "Digital boards and audio-visual aids make every lesson interactive and engaging."
+        },
+        {
+          "name": "Science Lab",
+          "description": "A well-equipped laboratory where students learn physics, chemistry, and biology by doing."
+        },
+        {
+          "name": "Computer Lab",
+          "description": "Modern systems with structured computer education from primary classes onwards."
+        },
+        {
+          "name": "Library",
+          "description": "A quiet, inviting space stocked with story books, references, and periodicals for all ages."
+        },
+        {
+          "name": "Sports Ground",
+          "description": "Spacious grounds for cricket, kho-kho, kabaddi, athletics, and daily physical education."
+        },
+        {
+          "name": "School Transport",
+          "description": "Safe, GPS-monitored buses covering Bhagyanagar, Koppal and surrounding areas with trained staff."
+        },
+        {
+          "name": "Music Room",
+          "description": "Vocal and instrumental music sessions that nurture rhythm, confidence, and creativity."
+        },
+        {
+          "name": "Art Room",
+          "description": "A colourful studio for drawing, painting, and craft where imagination takes shape."
+        }
+      ]
+    },
+    "studentLife": {
+      "eyebrow": "Student Life",
+      "title": "Life between the bells.",
+      "description": "Sports days and science fairs, Holi colours and heritage trips — the moments children remember at fifty.",
+      "viewPhoto": "View Photo",
+      "viewGallery": "View the Full Gallery"
+    },
+    "achievements": {
+      "eyebrow": "Achievements",
+      "title": "Small town. Big trophies.",
+      "description": "Our students compete with the best — and more often than not, come home smiling."
+    },
+    "testimonials": {
+      "eyebrow": "Voices of Pioneer",
+      "title": "Don’t take our word for it."
+    },
+    "news": {
+      "eyebrow": "Newsroom",
+      "title": "Latest News",
+      "allNews": "All News"
+    },
+    "events": {
+      "eyebrow": "Mark the Date",
+      "title": "Upcoming Events"
+    },
+    "cta": {
+      "eyebrow": "Admissions Open 2026–27",
+      "title1": "The best time to plant a tree was twenty years ago.",
+      "title2": "The best time to enrol is today.",
+      "description": "Seats are limited across Nursery to Class 10. Begin your child's Pioneer journey with a single click — or a single visit.",
+      "talkToUs": "Talk to Us"
+    }
+  },
+  "carousel": {
+    "explore": "Explore Curriculum",
+    "hint": "Swipe or click to explore all programs"
+  },
+  "content": {
+    "categories": {
+      "Announcement": "Announcement",
+      "Achievement": "Achievement",
+      "Event": "Event",
+      "Circular": "Circular",
+      "Academic Results": "Academic Results",
+      "Competitions": "Competitions",
+      "Sports": "Sports",
+      "Olympiads": "Olympiads",
+      "Recognition": "Recognition",
+      "Student Awards": "Student Awards",
+      "Annual Day": "Annual Day",
+      "Science Fair": "Science Fair",
+      "Events": "Events",
+      "Classrooms": "Classrooms",
+      "Trips": "Trips",
+      "Parent": "Parent",
+      "Student": "Student",
+      "Alumni": "Alumni"
+    },
+    "news": {
+      "admissions-open-2026-27": {
+        "title": "Admissions Open for Academic Year 2026–27",
+        "excerpt": "Applications are now open for Nursery to Class 10. Limited seats available — apply early to secure your child's place."
+      },
+      "sslc-results-2025": {
+        "title": "Outstanding SSLC Results: 100% Pass with 40% Distinctions",
+        "excerpt": "Our Class 10 students have once again made the school proud with a 100% pass rate in the SSLC board examinations."
+      },
+      "annual-day-2026": {
+        "title": "Annual Day Celebration — 'Roots and Wings'",
+        "excerpt": "A spectacular evening of dance, drama, and music as students showcased their talents to a packed audience."
+      },
+      "science-fair-district-winners": {
+        "title": "Pioneer Students Win District Science Fair",
+        "excerpt": "Our Class 8 team's water-conservation model won first prize at the district-level science exhibition."
+      },
+      "summer-vacation-circular": {
+        "title": "Circular: Summer Vacation and Reopening Dates",
+        "excerpt": "The school will remain closed for summer vacation from April 10. Classes resume on May 29 for the new academic year."
+      },
+      "independence-day-2025": {
+        "title": "Independence Day Celebrated with Patriotic Fervour",
+        "excerpt": "Flag hoisting, cultural programmes, and a march-past marked the 79th Independence Day at our campus."
+      }
+    },
+    "events": [
+      { "title": "Campus Tour Day for New Parents", "time": "10:00 AM – 1:00 PM", "location": "School Campus" },
+      { "title": "Parent–Teacher Meeting (All Classes)", "time": "9:30 AM – 12:30 PM", "location": "Respective Classrooms" },
+      { "title": "Inter-House Sports Meet", "time": "8:30 AM – 4:00 PM", "location": "School Sports Ground" },
+      { "title": "Independence Day Celebration", "time": "8:00 AM – 10:30 AM", "location": "School Assembly Ground" },
+      { "title": "Science Exhibition", "time": "10:00 AM – 3:00 PM", "location": "Science Lab & Hall" }
+    ],
+    "programs": {
+      "nursery": {
+        "name": "Nursery",
+        "ageRange": "Ages 3–4",
+        "summary": "A joyful first step into school life, where play-based learning builds curiosity, confidence, and early social skills."
+      },
+      "lkg": {
+        "name": "LKG",
+        "ageRange": "Ages 4–5",
+        "summary": "Lower Kindergarten strengthens early literacy and numeracy foundations through structured play and guided discovery."
+      },
+      "ukg": {
+        "name": "UKG",
+        "ageRange": "Ages 5–6",
+        "summary": "Upper Kindergarten prepares children for Class 1 with reading fluency, number work, and growing independence."
+      },
+      "primary": {
+        "name": "Primary (Classes 1–5)",
+        "ageRange": "Ages 6–11",
+        "summary": "The primary years build strong fundamentals in languages, mathematics, science, and values through engaging classrooms."
+      },
+      "middle": {
+        "name": "Middle School (Classes 6–8)",
+        "ageRange": "Ages 11–14",
+        "summary": "Middle school deepens subject knowledge, introduces laboratory work, and develops independent study skills."
+      },
+      "secondary": {
+        "name": "Secondary (Classes 9–10)",
+        "ageRange": "Ages 14–16",
+        "summary": "Focused board-exam preparation with rigorous academics, mentoring, and career guidance for every student."
+      }
+    },
+    "testimonials": [
+      {
+        "quote": "Pioneer Public School has been a blessing for our family. The teachers know every child by name and genuinely care about their progress. My daughter looks forward to school every single day.",
+        "name": "Mrs. Lakshmi Devi"
+      },
+      {
+        "quote": "The individual attention my son receives here is remarkable. His confidence in mathematics improved dramatically within one year, and the teachers keep us informed at every step.",
+        "name": "Mr. Suresh Kumar"
+      },
+      {
+        "quote": "I love our science lab classes and the annual science fair. Our teachers encourage us to ask questions and try experiments ourselves instead of just reading from books.",
+        "name": "Ananya R."
+      },
+      {
+        "quote": "The foundation I received at Pioneer helped me excel in my pre-university studies. The discipline and study habits from Classes 9 and 10 still guide me today.",
+        "name": "Kiran Patil"
+      },
+      {
+        "quote": "What sets this school apart is the balance — academics are strong, but sports, music, and values get equal importance. It is a truly holistic education.",
+        "name": "Mrs. Farzana Begum"
+      },
+      {
+        "quote": "Being part of the student council taught me leadership skills I use every day. Pioneer gave me the stage to grow beyond textbooks.",
+        "name": "Mohammed Imran"
+      }
+    ],
+    "achievements": [
+      {
+        "title": "100% SSLC Pass Result",
+        "description": "Every Class 10 student cleared the SSLC board examination, with 40% securing distinction."
+      },
+      {
+        "title": "District Science Fair — First Prize",
+        "description": "Our Class 8 team won first place in the district-level science exhibition for their water-conservation model."
+      },
+      {
+        "title": "Taluk-Level Kabaddi Champions",
+        "description": "The senior boys' kabaddi team brought home the taluk championship trophy for the second consecutive year."
+      },
+      {
+        "title": "National Mathematics Olympiad Qualifiers",
+        "description": "Five students qualified for the second round of the National Mathematics Olympiad."
+      },
+      {
+        "title": "Best School Award — Bhagyanagar, Koppal Taluk",
+        "description": "Recognised by the local education department for excellence in academics and co-curricular activities."
+      },
+      {
+        "title": "State-Level Drawing Competition Winner",
+        "description": "A Class 6 student won the state-level drawing competition among 2,000+ participants."
+      }
+    ],
+    "gallery": {
+      "1": "Annual Day Group Dance",
+      "2": "Kabaddi Championship Match",
+      "3": "Rainwater Harvesting Model",
+      "4": "Independence Day March-Past",
+      "5": "Smart Classroom Session",
+      "6": "Trip to Hampi Heritage Site",
+      "7": "Sports Day 100m Finals",
+      "8": "Annual Day Prize Distribution",
+      "9": "Chemistry Lab Experiments",
+      "10": "Yoga Day Celebration",
+      "11": "Library Reading Hour",
+      "12": "Educational Trip — Planetarium"
+    }
+  },
+  "common": {
+    "home": "Home",
+    "all": "All",
+    "readMore": "Read More",
+    "search": "Search",
+    "searchPlaceholder": "Search news…",
+    "noResults": "No news found. Try a different search or category.",
+    "moreNews": "More News",
+    "exploreProgram": "Explore Program",
+    "applyFor": "Apply for",
+    "viewPhotos": "See Campus Life in Photos",
+    "bookTour": "Book a Campus Tour",
+    "comeSee": "Come See Pioneer for Yourself",
+    "comeSeeDesc": "The best way to know a school is to walk through it. Book a campus tour today.",
+    "contactOffice": "Contact the school office"
+  },
+  "forms": {
+    "enquiry": {
+      "parentName": "Parent / Guardian Name",
+      "studentName": "Student Name",
+      "gradeApplying": "Grade Applying For",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+91 XXXXX XXXXX",
+      "email": "Email Address",
+      "message": "Message (optional)",
+      "messagePlaceholder": "Any questions or details you would like to share…",
+      "submit": "Submit Enquiry",
+      "submitting": "Submitting…"
+    },
+    "visit": {
+      "yourName": "Your Name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+91 XXXXX XXXXX",
+      "email": "Email Address",
+      "preferredDate": "Preferred Date",
+      "visitors": "Number of Visitors",
+      "submit": "Book Campus Tour",
+      "submitting": "Booking…"
+    },
+    "contact": {
+      "yourName": "Your Name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+91 XXXXX XXXXX",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "submitting": "Sending…"
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "About Pioneer Public School",
+      "description": "A decade of nurturing confident, compassionate learners in the heart of Bhagyanagar, Koppal.",
+      "crumb": "About",
+      "history": {
+        "eyebrow": "Our Story",
+        "title": "Rooted in Bhagyanagar, Koppal — Reaching for the World",
+        "p1": "Pioneer Public School was established in 2015 with a simple conviction: the children of Bhagyanagar, Koppal deserve a school that matches the best anywhere — in teaching quality, in values, and in opportunity.",
+        "p2": "What began as a small primary school in Pragati Nagar has grown into a vibrant community of 300+ students and 20+ dedicated staff, offering a complete education from Nursery to Class 10."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "text": "To be the most trusted school in the region — a place where every child discovers their strengths, builds strong character, and leaves prepared to lead in a changing world."
+      },
+      "mission": {
+        "title": "Our Mission",
+        "items": [
+          "Deliver concept-first, joyful learning in every classroom.",
+          "Give equal weight to academics, arts, sports, and values.",
+          "Partner closely with parents in every child's journey.",
+          "Keep quality education accessible to our community."
+        ]
+      },
+      "principal": {
+        "eyebrow": "Principal's Message",
+        "title": "Every Child Carries a Spark",
+        "p1": "\"Education is not only about marks — it is about awakening. Our teachers work every day to help children fall in love with learning, stand up with confidence, and treat others with kindness.",
+        "p2": "When you walk through our corridors, you will hear questions, laughter, and music. That is the sound of childhood being honoured. I invite you to visit us and see it for yourself.\"",
+        "attribution": "— The Principal, Pioneer Public School"
+      },
+      "milestones": {
+        "eyebrow": "Our Journey",
+        "title": "A Decade of Milestones",
+        "items": [
+          { "year": "2015", "event": "Pioneer Public School founded in Bhagyanagar, Koppal with Nursery to Class 5." },
+          { "year": "2017", "event": "Extended to Middle School (Classes 6–8); science and computer labs inaugurated." },
+          { "year": "2019", "event": "First batch of Class 10; secondary section fully established." },
+          { "year": "2021", "event": "Smart classrooms introduced across all grades." },
+          { "year": "2023", "event": "Awarded Best School in Bhagyanagar, Koppal Taluk for holistic education." },
+          { "year": "2025", "event": "100% SSLC pass rate with 40% distinctions; 300+ students strong." }
+        ]
+      },
+      "faculty": {
+        "eyebrow": "Our People",
+        "title": "Management & Faculty",
+        "description": "A dedicated team of educators and administrators committed to every child's growth.",
+        "items": [
+          { "name": "The Principal", "role": "School Leadership", "note": "20+ years in school education and administration." },
+          { "name": "Primary Wing Team", "role": "Nursery – Class 5", "note": "Specialists in early childhood and foundational learning." },
+          { "name": "Middle School Team", "role": "Classes 6 – 8", "note": "Subject experts in science, mathematics, and languages." },
+          { "name": "Secondary Team", "role": "Classes 9 – 10", "note": "Board-exam mentors with consistently strong results." }
+        ]
+      },
+      "values": {
+        "eyebrow": "School Values",
+        "title": "The Pioneer Way",
+        "description": "Six values woven into assemblies, classrooms, and playgrounds every day.",
+        "items": [
+          { "name": "Integrity", "description": "Doing the right thing, even when no one is watching." },
+          { "name": "Excellence", "description": "Giving our best in academics, sports, and character." },
+          { "name": "Respect", "description": "Valuing every person, culture, and point of view." },
+          { "name": "Curiosity", "description": "Asking questions and never stopping to learn." },
+          { "name": "Responsibility", "description": "Caring for our community and our environment." },
+          { "name": "Compassion", "description": "Leading with kindness inside and outside school." }
+        ]
+      },
+      "recognition": {
+        "title": "Recognition",
+        "text": "Pioneer Public School is recognised by the Department of Public Instruction, Government of Karnataka, and follows the Karnataka State Board syllabus with English as the medium of instruction."
+      },
+      "disclosure": {
+        "title": "Mandatory Disclosure",
+        "text": "Statutory documents — recognition certificates, building safety, fire safety, and staff details — are available for inspection at the school office and will be published in the Parents section as downloads."
+      }
+    },
+    "admissions": {
+      "title": "Admissions 2026–27",
+      "description": "Join the Pioneer family — admissions are open from Nursery to Class 10. Seats are limited.",
+      "crumb": "Admissions",
+      "process": {
+        "eyebrow": "How It Works",
+        "title": "A Simple, Transparent Admission Process",
+        "steps": [
+          { "title": "Enquire", "description": "Submit the enquiry form below or visit the school office." },
+          { "title": "Visit the Campus", "description": "Tour our classrooms, labs, and grounds — meet our teachers." },
+          { "title": "Interaction", "description": "A friendly readiness interaction for Classes 1–9 (no test for pre-primary)." },
+          { "title": "Confirm Admission", "description": "Submit documents, complete the fee formalities, and welcome aboard!" }
+        ]
+      },
+      "eligibility": {
+        "title": "Age Eligibility",
+        "gradeHeader": "Grade",
+        "ageHeader": "Age Requirement",
+        "items": [
+          { "grade": "Nursery", "age": "3+ years as of June 1" },
+          { "grade": "LKG", "age": "4+ years as of June 1" },
+          { "grade": "UKG", "age": "5+ years as of June 1" },
+          { "grade": "Class 1", "age": "6+ years as of June 1" },
+          { "grade": "Classes 2–9", "age": "Age appropriate to grade, with previous school records" }
+        ]
+      },
+      "documents": {
+        "title": "Required Documents",
+        "items": [
+          "Birth certificate (original + photocopy)",
+          "Transfer certificate — for Class 1 and above",
+          "Previous year's report card",
+          "Aadhaar card copies (child and parents)",
+          "Caste / income certificate, if applicable",
+          "Four passport-size photographs of the child",
+          "Two passport-size photographs of each parent"
+        ]
+      },
+      "fee": {
+        "title": "Fee Information",
+        "text": "Our fee structure is designed to keep quality education accessible to the families of Bhagyanagar, Koppal. Detailed, grade-wise fee information for 2026–27 is available at the school office and will be shared during your campus visit or enquiry call."
+      },
+      "faq": {
+        "eyebrow": "FAQs",
+        "title": "Questions Parents Ask Us",
+        "items": [
+          {
+            "question": "What is the age criterion for Nursery admission?",
+            "answer": "Children should be at least 3 years old as of June 1 of the admission year for Nursery. For LKG the minimum age is 4 years, and for UKG it is 5 years."
+          },
+          {
+            "question": "What documents are required at the time of admission?",
+            "answer": "Birth certificate, transfer certificate (for Class 1 and above), previous year's report card, Aadhaar card copies of the child and parents, caste/income certificate if applicable, and four passport-size photographs."
+          },
+          {
+            "question": "Is there an entrance test for admission?",
+            "answer": "There is no entrance test for Nursery to UKG. For Classes 1–9, a simple interaction and written readiness assessment is conducted to understand the child's learning level — it is not an elimination test."
+          },
+          {
+            "question": "What is the medium of instruction?",
+            "answer": "English is the medium of instruction. Kannada and Hindi are taught as second and third languages following the three-language formula."
+          },
+          {
+            "question": "Does the school provide transport?",
+            "answer": "Yes, the school operates safe bus routes covering Bhagyanagar, Koppal, and surrounding areas. Transport details and route maps are available at the school office."
+          },
+          {
+            "question": "How can I schedule a campus visit?",
+            "answer": "You can book a campus tour through the form on our Admissions page, call the admissions office, or simply walk in on any working day between 9:00 AM and 4:00 PM."
+          }
+        ]
+      },
+      "enquiryForm": {
+        "title": "Admission Enquiry",
+        "description": "Fill in your details and our admissions team will call you within one working day."
+      },
+      "visitForm": {
+        "title": "Book a Campus Visit",
+        "description": "See our classrooms, meet our teachers, and get all your questions answered in person."
+      }
+    },
+    "academics": {
+      "title": "Academics",
+      "description": "A carefully sequenced learning journey from the first day of Nursery to the SSLC board examinations.",
+      "crumb": "Academics"
+    },
+    "academicDetail": {
+      "curriculum": "Curriculum",
+      "methodology": "Teaching Methodology",
+      "outcomes": "Learning Outcomes",
+      "assessment": "Assessment",
+      "activities": "Signature Activities",
+      "downloads": "Downloads — Syllabus & Booklists",
+      "downloadsText": "Detailed syllabus documents and booklists will be published here at the start of each academic year. Meanwhile, copies are available at the school office."
+    },
+    "campusLife": {
+      "title": "Campus Life",
+      "description": "School is more than classrooms. At Pioneer, every day holds a stage, a field, a lab, and a library waiting to be explored.",
+      "crumb": "Campus Life",
+      "items": [
+        {
+          "title": "Sports & Games",
+          "description": "Daily physical education plus coaching in kabaddi, kho-kho, cricket, volleyball, and athletics on our spacious grounds.",
+          "highlights": ["Inter-house tournaments", "Annual sports meet", "Taluk & district participation"]
+        },
+        {
+          "title": "Arts & Craft",
+          "description": "A dedicated art room where students explore drawing, painting, and craft — with their best work displayed across campus.",
+          "highlights": ["Weekly art periods", "Drawing competitions", "Craft exhibitions"]
+        },
+        {
+          "title": "Music & Dance",
+          "description": "Vocal, instrumental, and classical/folk dance training that culminates in stage performances through the year.",
+          "highlights": ["Annual Day performances", "Music room sessions", "Folk dance troupe"]
+        },
+        {
+          "title": "Science & STEM",
+          "description": "Hands-on experiments, working models, and a school science club that feeds our award-winning science fair teams.",
+          "highlights": ["Science club", "District fair winners", "Model-making workshops"]
+        },
+        {
+          "title": "Library & Reading",
+          "description": "A calm reading space with storybooks, encyclopaedias, and periodicals — plus dedicated library periods for every class.",
+          "highlights": ["Weekly library period", "Reading challenges", "Storytelling sessions"]
+        },
+        {
+          "title": "Clubs & Competitions",
+          "description": "Quiz, elocution, spell bee, and eco clubs give every child a platform to discover and sharpen their talents.",
+          "highlights": ["Quiz club", "Elocution & debate", "Olympiad training"]
+        },
+        {
+          "title": "House System",
+          "description": "Every student belongs to one of four houses — Ruby, Sapphire, Emerald, and Topaz — competing all year for the house trophy.",
+          "highlights": ["Four houses", "House captains & prefects", "Annual rolling trophy"]
+        },
+        {
+          "title": "Educational Tours",
+          "description": "Age-appropriate excursions — from local field visits for tiny tots to heritage and science-centre trips for seniors.",
+          "highlights": ["Hampi heritage trips", "Planetarium visits", "Local field studies"]
+        },
+        {
+          "title": "Celebrations & Annual Day",
+          "description": "Independence Day, Republic Day, festivals, and a grand Annual Day where every child gets a moment on stage.",
+          "highlights": ["Annual Day", "National festivals", "Cultural assemblies"]
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Gallery",
+      "description": "Browse moments from school life. Filter by category or year, and click any photo to view it larger.",
+      "crumb": "Gallery",
+      "noPhotos": "No photos match the selected filters yet.",
+      "openPhoto": "Open photo"
+    },
+    "achievements": {
+      "title": "Achievements",
+      "description": "Every trophy tells a story of effort. Here are some of our proudest recent moments.",
+      "crumb": "Achievements"
+    },
+    "news": {
+      "title": "News & Announcements",
+      "description": "Stay up to date with everything happening at Pioneer Public School.",
+      "crumb": "News",
+      "categories": ["All", "Announcement", "Event", "Achievement", "Circular"]
+    },
+    "newsDetail": {
+      "moreNews": "More News"
+    },
+    "parents": {
+      "title": "Parents",
+      "description": "You are our most important partner. Everything you need to support your child's journey is here.",
+      "crumb": "Parents",
+      "resources": {
+        "eyebrow": "Downloads & Resources",
+        "title": "Everything in One Place",
+        "description": "Documents are being digitised and will appear here as downloads. Meanwhile, all items are available at the school office.",
+        "items": [
+          { "title": "Holiday Calendar", "description": "Academic year calendar with holidays, exams, and events.", "status": "Published at the start of each academic year." },
+          { "title": "Exam Schedule", "description": "Unit tests, term exams, and preparatory examination dates.", "status": "Shared per term via circulars and the school diary." },
+          { "title": "Class Timetable", "description": "Grade-wise weekly timetables including activity periods.", "status": "Distributed on reopening day; copies at the office." },
+          { "title": "Circulars", "description": "All official communication from school to home.", "status": "Latest circulars appear in the News section." },
+          { "title": "Transport Routes", "description": "Bus routes, stops, timings, and transport staff contacts.", "status": "Route details available at the school office." },
+          { "title": "Homework Guidelines", "description": "How we assign age-appropriate homework, and how parents can help.", "status": "Shared during the first parent-teacher meeting." }
+        ]
+      },
+      "portal": {
+        "title": "Parent Portal — Coming Soon",
+        "text": "We are building a secure parent portal for attendance, homework, fee payments, and report cards. Until then, our teachers and office team are just a phone call away."
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Questions about admissions, transport, or anything else? We would love to hear from you.",
+      "crumb": "Contact",
+      "cards": {
+        "address": "Address",
+        "phone": "Phone",
+        "email": "Email",
+        "hours": "Working Hours",
+        "sunday": "Sunday: Closed"
+      },
+      "form": {
+        "title": "Send Us a Message",
+        "description": "We reply to every message within one working day."
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { achievements } from "@/content/achievements";
 import { useIsMobile } from "@/lib/useIsMobile";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 
 const categoryColors: Record<string, string> = {
   "Academics": "from-primary to-primary-700",
@@ -17,6 +18,7 @@ export function AchievementsSlider() {
   const trackRef = useRef<HTMLUListElement>(null);
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const { t } = useLanguage();
   const noEntrance = reduceMotion || isMobile;
 
   const scrollByCard = (direction: 1 | -1) => {
@@ -31,7 +33,7 @@ export function AchievementsSlider() {
     <div className="relative">
       <ul
         ref={trackRef}
-        className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:thin]"
+        className="flex snap-x snap-proximity gap-6 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:thin]"
         aria-label="School achievements"
       >
         {achievements.map((achievement, i) => (
@@ -65,13 +67,13 @@ export function AchievementsSlider() {
                 </span>
               </div>
               <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-secondary">
-                {achievement.category}
+                {t(`content.categories.${achievement.category}`)}
               </p>
               <h3 className="mt-2 font-heading text-lg font-semibold text-ink">
-                {achievement.title}
+                {t(`content.achievements.${i}.title`)}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                {achievement.description}
+                {t(`content.achievements.${i}.description`)}
               </p>
             </div>
           </motion.li>

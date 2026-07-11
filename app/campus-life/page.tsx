@@ -7,6 +7,7 @@ import { campusLifeImages, img } from "@/lib/images";
 import { Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ButtonLink } from "@/components/ui/Button";
+import { T } from "@/components/i18n/T";
 
 export const metadata: Metadata = {
   title: "Campus Life",
@@ -19,15 +20,15 @@ export default function CampusLifePage() {
   return (
     <>
       <PageHero
-        title="Campus Life"
-        description="School is more than classrooms. At Pioneer, every day holds a stage, a field, a lab, and a library waiting to be explored."
-        crumbs={[{ label: "Campus Life" }]}
+        title={<T k="pages.campusLife.title" />}
+        description={<T k="pages.campusLife.description" />}
+        crumbs={[{ label: <T k="pages.campusLife.crumb" /> }]}
       />
 
       <section className="py-16 sm:py-24">
         <Container>
           <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {campusLife.map((section) => {
+            {campusLife.map((section, i) => {
               const photo = campusLifeImages[section.title] ?? img.kidsOutdoors;
               return (
               <StaggerItem key={section.title}>
@@ -41,18 +42,18 @@ export default function CampusLifePage() {
                   />
                   <div className="p-7">
                     <h2 className="font-heading text-xl font-semibold text-ink">
-                      {section.title}
+                      <T k={`pages.campusLife.items.${i}.title`} />
                     </h2>
                     <p className="mt-2.5 text-sm leading-relaxed text-muted">
-                      {section.description}
+                      <T k={`pages.campusLife.items.${i}.description`} />
                     </p>
                     <ul className="mt-4 flex flex-wrap gap-2">
-                      {section.highlights.map((highlight) => (
+                      {section.highlights.map((_, hi) => (
                         <li
-                          key={highlight}
+                          key={hi}
                           className="rounded-full bg-surface px-3 py-1 text-xs font-medium text-muted"
                         >
-                          {highlight}
+                          <T k={`pages.campusLife.items.${i}.highlights.${hi}`} />
                         </li>
                       ))}
                     </ul>
@@ -65,7 +66,7 @@ export default function CampusLifePage() {
 
           <FadeIn className="mt-14 text-center">
             <ButtonLink href="/gallery" variant="ghost">
-              See Campus Life in Photos →
+              <T k="common.viewPhotos" /> →
             </ButtonLink>
           </FadeIn>
         </Container>
