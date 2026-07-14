@@ -7,7 +7,7 @@ export const achievements: Achievement[] = [
     category: "Academic Results",
     description:
       "Every Class 10 student cleared the SSLC board examination, with 40% securing distinction.",
-    emoji: "🏆",
+    icon: "trophy",
   },
   {
     title: "District Science Fair — First Prize",
@@ -15,7 +15,7 @@ export const achievements: Achievement[] = [
     category: "Competitions",
     description:
       "Our Class 8 team won first place in the district-level science exhibition for their water-conservation model.",
-    emoji: "🔬",
+    icon: "microscope",
   },
   {
     title: "Taluk-Level Kabaddi Champions",
@@ -23,7 +23,7 @@ export const achievements: Achievement[] = [
     category: "Sports",
     description:
       "The senior boys' kabaddi team brought home the taluk championship trophy for the second consecutive year.",
-    emoji: "🥇",
+    icon: "medal",
   },
   {
     title: "National Mathematics Olympiad Qualifiers",
@@ -31,7 +31,7 @@ export const achievements: Achievement[] = [
     category: "Olympiads",
     description:
       "Five students qualified for the second round of the National Mathematics Olympiad.",
-    emoji: "➗",
+    icon: "math",
   },
   {
     title: "Best School Award — Bhagyanagar, Koppal Taluk",
@@ -39,7 +39,7 @@ export const achievements: Achievement[] = [
     category: "Recognition",
     description:
       "Recognised by the local education department for excellence in academics and co-curricular activities.",
-    emoji: "🎖️",
+    icon: "badge",
   },
   {
     title: "State-Level Drawing Competition Winner",
@@ -47,6 +47,6 @@ export const achievements: Achievement[] = [
     category: "Student Awards",
     description:
       "A Class 6 student won the state-level drawing competition among 2,000+ participants.",
-    emoji: "🎨",
+    icon: "palette",
   },
 ];

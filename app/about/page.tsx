@@ -8,6 +8,7 @@ import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { ButtonLink } from "@/components/ui/Button";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { T } from "@/components/i18n/T";
+import { SiteIcon } from "@/components/ui/SiteIcon";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -16,8 +17,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-const valueEmojis = ["🤝", "⭐", "🙏", "💡", "🌍", "❤️"];
-const facultyEmojis = ["👩‍💼", "👩‍🏫", "👨‍🏫", "🧑‍🏫"];
+const valueIcons = ["handshake", "star", "namaste", "lightbulb", "globe", "heart"];
+const facultyIcons = ["person", "person", "person", "person"];
 
 export default function AboutPage() {
   return (
@@ -61,7 +62,7 @@ export default function AboutPage() {
         <Container className="grid gap-8 lg:grid-cols-2">
           <FadeIn>
             <div className="h-full rounded-card bg-white p-10 shadow-soft">
-              <span aria-hidden="true" className="text-4xl">🔭</span>
+              <SiteIcon name="telescope" className="h-10 w-10 text-primary" />
               <h2 className="mt-4 text-2xl font-bold text-ink">
                 <T k="pages.about.vision.title" />
               </h2>
@@ -72,7 +73,7 @@ export default function AboutPage() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <div className="h-full rounded-card bg-white p-10 shadow-soft">
-              <span aria-hidden="true" className="text-4xl">🎯</span>
+              <SiteIcon name="target" className="h-10 w-10 text-primary" />
               <h2 className="mt-4 text-2xl font-bold text-ink">
                 <T k="pages.about.mission.title" />
               </h2>
@@ -161,11 +162,8 @@ export default function AboutPage() {
             {[0, 1, 2, 3].map((i) => (
               <StaggerItem key={i}>
                 <div className="h-full rounded-card bg-white p-7 text-center shadow-soft transition-all hover:-translate-y-1.5 hover:shadow-lift">
-                  <span
-                    aria-hidden="true"
-                    className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary-50 text-4xl"
-                  >
-                    {facultyEmojis[i]}
+                  <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary-50">
+                    <SiteIcon name={facultyIcons[i]} className="h-8 w-8 text-primary" />
                   </span>
                   <h3 className="mt-4 font-heading font-semibold text-ink">
                     <T k={`pages.about.faculty.items.${i}.name`} />
@@ -197,7 +195,7 @@ export default function AboutPage() {
             {[0, 1, 2, 3, 4, 5].map((i) => (
               <StaggerItem key={i}>
                 <div className="flex h-full gap-4 rounded-card bg-white p-6 shadow-soft">
-                  <span aria-hidden="true" className="text-3xl">{valueEmojis[i]}</span>
+                  <SiteIcon name={valueIcons[i]} className="h-8 w-8 shrink-0 text-primary" />
                   <div>
                     <h3 className="font-heading font-semibold text-ink">
                       <T k={`pages.about.values.items.${i}.name`} />

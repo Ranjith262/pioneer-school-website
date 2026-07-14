@@ -3,7 +3,7 @@ export interface Program {
   name: string;
   ageRange: string;
   summary: string;
-  emoji: string;
+  icon: string;
   gradient: GradientVariant;
   curriculum: string[];
   methodology: string[];
@@ -15,7 +15,7 @@ export interface Program {
 export interface Facility {
   name: string;
   description: string;
-  emoji: string;
+  icon: string;
 }
 
 export interface Testimonial {
@@ -46,7 +46,7 @@ export interface Achievement {
   year: string;
   category: string;
   description: string;
-  emoji: string;
+  icon: string;
 }
 
 export interface GalleryItem {
@@ -54,7 +54,7 @@ export interface GalleryItem {
   title: string;
   category: "Sports" | "Events" | "Science Fair" | "Annual Day" | "Classrooms" | "Trips";
   year: string;
-  emoji: string;
+  icon: string;
   gradient: GradientVariant;
 }
 

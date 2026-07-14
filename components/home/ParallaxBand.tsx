@@ -23,13 +23,13 @@ export function ParallaxBand({ image, children }: ParallaxBandProps) {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-14%", "14%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <section ref={ref} className="relative overflow-hidden bg-ink text-white">
       <motion.div
         aria-hidden="true"
-        className="absolute inset-x-0 -top-[20%] h-[140%] will-change-transform"
+        className="absolute inset-x-0 -top-[14%] h-[128%] will-change-transform"
         style={staticBand ? undefined : { y }}
       >
         <Image

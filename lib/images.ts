@@ -1,134 +1,126 @@
-/**
- * Curated, verified Unsplash photography (India / school themed).
- * Every ID here was checked to return HTTP 200. Swap these for authentic
- * school photos before launch — keep the same alt-text discipline.
- */
-const unsplash = (id: string, w = 1200) =>
-  `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
-
 export const img = {
   heroClassroom: {
-    src: unsplash("1709290749293-c6152a187b14", 1920),
+    src: "/images/hero-classroom.jpg",
     alt: "Indian students in blue uniforms learning in a bright classroom with teacher in saree",
   },
   indianClassroom: {
-    src: unsplash("1580582932707-520aed937b7b", 1200),
+    src: "/images/indian-classroom.jpg",
     alt: "Sunlit Indian classroom with rows of green writing boards",
   },
   girlReading: {
-    src: unsplash("1630864972901-052dfdc7fba4", 900),
+    src: "/images/girl-reading.jpg",
     alt: "Joyful young Indian girl laughing in a bright green field",
   },
   kidsWriting: {
-    src: unsplash("1692269725827-699e04a11cdf", 1600),
+    src: "/images/kids-writing.jpg",
     alt: "Indian boys in blue uniforms writing at their desks in a classroom",
   },
   teacherBlackboard: {
-    src: unsplash("1524069290683-0457abfe42c3", 1200),
+    src: "/images/teacher-blackboard.jpg",
     alt: "Smiling Indian school boys in light blue uniforms",
   },
   kidsOutdoors: {
-    src: unsplash("1569173675610-42c361a86e37", 1600),
+    src: "/images/kids-outdoors.jpg",
     alt: "Happy Indian school children in blue uniforms smiling together outdoors",
   },
   toddlersPlaying: {
-    src: unsplash("1569173675610-42c361a86e37", 900),
+    src: "/images/kids-outdoors.jpg",
     alt: "Happy Indian school children in blue uniforms smiling together outdoors",
   },
   crayonArt: {
-    src: unsplash("1560421683-6856ea585c78", 900),
+    src: "/images/crayon-art.jpg",
     alt: "Small hands colouring with bright crayons",
   },
   onlineLearning: {
-    src: unsplash("1629306262232-1f854b4b0b13", 900),
+    src: "/images/online-learning.jpg",
     alt: "Indian students learning in a smart classroom session",
   },
   mathBoard: {
-    src: unsplash("1509228468518-180dd4864904", 900),
+    src: "/images/math-board.jpg",
     alt: "Mathematics formulas chalked on a blackboard",
   },
   graduationCaps: {
-    src: unsplash("1523580846011-d3a5bc25702b", 900),
+    src: "/images/graduation-caps.jpg",
     alt: "Graduation caps thrown high in celebration",
   },
   scienceLab: {
-    src: unsplash("1532094349884-543bc11b234d", 900),
+    src: "/images/science-lab.jpg",
     alt: "Colourful chemistry flasks in a science laboratory",
   },
   computerLab: {
-    src: unsplash("1517694712202-14dd9538aa97", 900),
+    src: "/images/computer-lab.jpg",
     alt: "Student coding on a laptop in a computer lab",
   },
   library: {
-    src: unsplash("1524995997946-a1c2e315a42f", 900),
+    src: "/images/library.jpg",
     alt: "Open books stacked in a warm library",
   },
   runningTrack: {
-    src: unsplash("1461896836934-ffe607ba8211", 1200),
+    src: "/images/running-track.jpg",
     alt: "Athletes sprinting on a red running track",
   },
   basketball: {
-    src: unsplash("1540747913346-19e32dc3e97e", 900),
+    src: "/images/basketball.jpg",
     alt: "Basketball players mid-game under bright lights",
   },
   schoolBus: {
-    src: unsplash("1557223562-6c77ef16210f", 900),
+    src: "/images/school-bus.jpg",
     alt: "School bus ready for the morning route",
   },
   music: {
-    src: unsplash("1511671782779-c97d3d27a1d4", 900),
+    src: "/images/music.jpg",
     alt: "Hands playing a melody on piano keys",
   },
   artBrushes: {
-    src: unsplash("1513364776144-60967b0f800f", 900),
+    src: "/images/art-brushes.jpg",
     alt: "Paint brushes and vivid colour palettes in the art room",
   },
   yoga: {
-    src: unsplash("1544367567-0f2fcb009e0b", 900),
+    src: "/images/yoga.jpg",
     alt: "Peaceful yoga practice at sunrise",
   },
   holiColours: {
-    src: unsplash("1514222134-b57cbb8ce073", 1600),
+    src: "/images/holi-colours.jpg",
     alt: "The Golden Temple of Amritsar glowing over water at dusk",
   },
   tajMahal: {
-    src: unsplash("1564507592333-c60657eea523", 1200),
+    src: "/images/taj-mahal.jpg",
     alt: "The Taj Mahal glowing at dawn — Indian heritage",
   },
   hampiTemple: {
-    src: unsplash("1689946727963-be60e05fe278", 1200),
+    src: "/images/hampi-temple.jpg",
     alt: "Ancient Hampi temple ruins in Karnataka — a UNESCO World Heritage Site",
   },
   stageLights: {
-    src: unsplash("1514525253161-7a46d19cd819", 1200),
+    src: "/images/stage-lights.jpg",
     alt: "Stage lights over a lively cultural performance",
   },
   groupStudy: {
-    src: unsplash("1692269725911-87697c558be1", 900),
+    src: "/images/group-study.jpg",
     alt: "Indian girls in blue uniforms studying together at a classroom desk",
   },
   kidsInLine: {
-    src: unsplash("1524069290683-0457abfe42c3", 900),
+    src: "/images/teacher-blackboard.jpg",
     alt: "Cheerful Indian school children in light blue uniforms waving",
   },
   chalkNotes: {
-    src: unsplash("1503676260728-1c00da094a0b", 1200),
+    src: "/images/chalk-notes.jpg",
     alt: "Notebooks and learning materials on a study desk",
   },
   indianKidStudying: {
-    src: unsplash("1596495578065-6e0763fa1178", 900),
+    src: "/images/indian-kid-studying.jpg",
     alt: "Young Indian child practising writing at home",
   },
   indianKids: {
-    src: unsplash("1610484826967-09c5720778c7", 900),
+    src: "/images/indian-kids.jpg",
     alt: "Smiling Indian school children together",
   },
   indianSchoolRoom: {
-    src: unsplash("1692269725836-fbd72e98883f", 1200),
+    src: "/images/indian-school-room.jpg",
     alt: "Indian school children in blue uniforms at their desks in a bright classroom",
   },
   cricket: {
-    src: unsplash("1531415074968-036ba1b575da", 1200),
+    src: "/images/cricket.jpg",
     alt: "Cricket match in full swing — India's favourite game",
   },
 } as const;

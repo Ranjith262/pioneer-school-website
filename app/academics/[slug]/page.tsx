@@ -8,6 +8,7 @@ import { img, programImages } from "@/lib/images";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ButtonLink } from "@/components/ui/Button";
 import { T } from "@/components/i18n/T";
+import { SiteIcon } from "@/components/ui/SiteIcon";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -30,19 +31,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 function DetailCard({
   title,
-  emoji,
+  icon,
   items,
 }: {
   title: React.ReactNode;
-  emoji: string;
+  icon: string;
   items: string[];
 }) {
   return (
     <div className="h-full rounded-card bg-white p-8 shadow-soft">
       <h2 className="flex items-center gap-3 font-heading text-xl font-semibold text-ink">
-        <span aria-hidden="true" className="text-2xl">
-          {emoji}
-        </span>
+        <SiteIcon name={icon} className="h-7 w-7 shrink-0 text-primary" />
         {title}
       </h2>
       <ul className="mt-4 space-y-2.5">
@@ -91,30 +90,28 @@ export default async function ProgramPage({ params }: PageProps) {
             <FadeIn>
               <DetailCard
                 title={<T k="pages.academicDetail.curriculum" />}
-                emoji="📘"
+                icon="book"
                 items={program.curriculum}
               />
             </FadeIn>
             <FadeIn delay={0.08}>
               <DetailCard
                 title={<T k="pages.academicDetail.methodology" />}
-                emoji="🧑‍🏫"
+                icon="mentor"
                 items={program.methodology}
               />
             </FadeIn>
             <FadeIn delay={0.16}>
               <DetailCard
                 title={<T k="pages.academicDetail.outcomes" />}
-                emoji="🌟"
+                icon="star"
                 items={program.outcomes}
               />
             </FadeIn>
             <FadeIn delay={0.24}>
               <div className="h-full rounded-card bg-white p-8 shadow-soft">
                 <h2 className="flex items-center gap-3 font-heading text-xl font-semibold text-ink">
-                  <span aria-hidden="true" className="text-2xl">
-                    📝
-                  </span>
+                  <SiteIcon name="pencil" className="h-7 w-7 shrink-0 text-primary" />
                   <T k="pages.academicDetail.assessment" />
                 </h2>
                 <p className="mt-4 text-muted">{program.assessment}</p>
@@ -138,8 +135,9 @@ export default async function ProgramPage({ params }: PageProps) {
           {/* Downloads */}
           <FadeIn className="mt-12">
             <div className="rounded-card border border-dashed border-primary/40 bg-primary-50 p-8 text-center">
-              <h2 className="font-heading text-lg font-semibold text-ink">
-                📥 <T k="pages.academicDetail.downloads" />
+              <h2 className="flex items-center justify-center gap-2 font-heading text-lg font-semibold text-ink">
+                <SiteIcon name="books" className="h-6 w-6 text-primary" />
+                <T k="pages.academicDetail.downloads" />
               </h2>
               <p className="mx-auto mt-2 max-w-xl text-sm text-muted">
                 <T k="pages.academicDetail.downloadsText" />

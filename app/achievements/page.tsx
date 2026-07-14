@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { T } from "@/components/i18n/T";
+import { SiteIcon } from "@/components/ui/SiteIcon";
 
 export const metadata: Metadata = {
   title: "Achievements",
@@ -28,9 +29,7 @@ export default function AchievementsPage() {
               <StaggerItem key={achievement.title}>
                 <article className="h-full rounded-card bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift">
                   <div className="flex items-start justify-between gap-3">
-                    <span aria-hidden="true" className="text-4xl">
-                      {achievement.emoji}
-                    </span>
+                    <SiteIcon name={achievement.icon} className="h-10 w-10 text-primary" />
                     <span className="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent-600">
                       {achievement.year}
                     </span>

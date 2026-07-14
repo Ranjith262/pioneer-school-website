@@ -8,6 +8,7 @@ import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { VisitForm } from "@/components/forms/VisitForm";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { T } from "@/components/i18n/T";
+import { SiteIcon } from "@/components/ui/SiteIcon";
 
 export const metadata: Metadata = {
   title: "Admissions",
@@ -113,7 +114,7 @@ export default function AdmissionsPage() {
         <Container>
           <FadeIn>
             <div className="mx-auto max-w-3xl rounded-card border border-dashed border-accent bg-accent-50 p-10 text-center">
-              <span aria-hidden="true" className="text-4xl">💰</span>
+              <SiteIcon name="coins" className="mx-auto h-10 w-10 text-primary" />
               <h2 className="mt-4 text-2xl font-bold text-ink">
                 <T k="pages.admissions.fee.title" />
               </h2>

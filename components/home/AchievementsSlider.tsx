@@ -6,6 +6,7 @@ import { useReducedMotion } from "@/lib/useReducedMotion";
 import { achievements } from "@/content/achievements";
 import { useIsMobile } from "@/lib/useIsMobile";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
+import { SiteIcon } from "@/components/ui/SiteIcon";
 
 const categoryColors: Record<string, string> = {
   "Academics": "from-primary to-primary-700",
@@ -39,10 +40,10 @@ export function AchievementsSlider() {
         {achievements.map((achievement, i) => (
           <motion.li
             key={achievement.title}
-            initial={noEntrance ? false : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08, duration: 0.5 }}
+            initial={noEntrance ? false : { y: 16 }}
+            whileInView={{ y: 0 }}
+            viewport={{ once: true, margin: "0px 0px 120px 0px" }}
+            transition={{ delay: i * 0.08, duration: 0.4 }}
             className="group w-80 shrink-0 snap-start"
           >
             <div className="relative h-full overflow-hidden rounded-card border border-primary-100 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-lift">
@@ -56,11 +57,10 @@ export function AchievementsSlider() {
               <div className="flex items-start justify-between gap-3">
                 <motion.span
                   aria-hidden="true"
-                  className="text-4xl"
                   whileHover={reduceMotion ? undefined : { rotate: 15, scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {achievement.emoji}
+                  <SiteIcon name={achievement.icon} className="h-10 w-10 text-primary" />
                 </motion.span>
                 <span className="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent-600">
                   {achievement.year}

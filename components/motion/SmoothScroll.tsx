@@ -26,9 +26,8 @@ export function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
       autoRaf: true,
-      /* glide length per wheel notch — long enough to feel premium,
-         short enough to never feel laggy */
-      duration: 1.05,
+      lerp: 0.075,
+      smoothWheel: true,
       anchors: true,
     });
     window.__lenis = lenis;

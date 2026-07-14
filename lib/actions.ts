@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import type { FormState } from "@/lib/form-state";
+import { sendFormEmail } from "@/lib/email";
 
 const phoneSchema = z
   .string()
@@ -54,13 +55,13 @@ function zodErrors(error: z.ZodError): Record<string, string> {
   return fieldErrors;
 }
 
-/**
- * Persistence hook. Wire this to Prisma (see prisma/schema.prisma) and an
- * email provider once DATABASE_URL / SMTP settings are configured — the
- * schema models map 1:1 to these submission types.
- */
 async function persistSubmission(kind: string, data: Record<string, unknown>) {
   console.info(`[form:${kind}]`, JSON.stringify(data));
+  try {
+    await sendFormEmail(kind, data);
+  } catch (err) {
+    console.error(`[form:${kind}] email failed:`, err);
+  }
 }
 
 export async function submitEnquiry(

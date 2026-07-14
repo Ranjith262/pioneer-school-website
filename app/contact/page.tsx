@@ -6,6 +6,7 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { T } from "@/components/i18n/T";
+import { SiteIcon } from "@/components/ui/SiteIcon";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const cardKeys = ["address", "phone", "email", "hours"] as const;
-const cardEmojis = ["📍", "📞", "✉️", "🕘"];
+const cardIcons = ["pin", "phone", "envelope", "clock"];
 
 export default function ContactPage() {
   return (
@@ -32,7 +33,7 @@ export default function ContactPage() {
           {cardKeys.map((cardKey, i) => (
             <FadeIn key={cardKey} delay={i * 0.06}>
               <div className="h-full rounded-card bg-white p-7 shadow-soft">
-                <span aria-hidden="true" className="text-3xl">{cardEmojis[i]}</span>
+                <SiteIcon name={cardIcons[i]} className="h-8 w-8 text-primary" />
                 <h2 className="mt-3 font-heading font-semibold text-ink">
                   <T k={`pages.contact.cards.${cardKey}`} />
                 </h2>

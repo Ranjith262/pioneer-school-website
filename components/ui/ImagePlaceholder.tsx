@@ -1,22 +1,18 @@
 import { cn, gradients } from "@/lib/utils";
 import type { GradientVariant } from "@/types";
+import { SiteIcon } from "@/components/ui/SiteIcon";
 
 interface ImagePlaceholderProps {
   label: string;
-  emoji?: string;
+  icon?: string;
   gradient?: GradientVariant;
   className?: string;
-  /** Visually hide the label (still available to screen readers). */
   hideLabel?: boolean;
 }
 
-/**
- * Branded stand-in for real school photography. Replace with <Image> once
- * authentic photos are available — see the Image Guidelines in README.md.
- */
 export function ImagePlaceholder({
   label,
-  emoji,
+  icon,
   gradient = "blue",
   className,
   hideLabel = false,
@@ -31,7 +27,6 @@ export function ImagePlaceholder({
         className
       )}
     >
-      {/* Subtle dot texture */}
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-15"
@@ -41,10 +36,8 @@ export function ImagePlaceholder({
         }}
       />
       <div className="relative flex flex-col items-center gap-2 p-4 text-center">
-        {emoji && (
-          <span aria-hidden="true" className="text-5xl drop-shadow-sm sm:text-6xl">
-            {emoji}
-          </span>
+        {icon && (
+          <SiteIcon name={icon} className="h-12 w-12 text-white/80 sm:h-14 sm:w-14" />
         )}
         {!hideLabel && (
           <span className="text-sm font-medium text-white/90">{label}</span>

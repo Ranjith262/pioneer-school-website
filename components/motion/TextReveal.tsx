@@ -42,14 +42,13 @@ export function TextReveal({
 
   const unitVariants = {
     hidden: reduceMotion
-      ? { opacity: 1, y: 0 }
-      : { opacity: 0, y: 20, rotateX: 40 },
+      ? { y: 0 }
+      : { y: 14, rotateX: 30 },
     visible: {
-      opacity: 1,
       y: 0,
       rotateX: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.45,
         ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       },
     },
@@ -60,7 +59,7 @@ export function TextReveal({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "0px 0px 300px 0px" }}
       variants={containerVariants}
       style={{ display: "inline" }}
     >

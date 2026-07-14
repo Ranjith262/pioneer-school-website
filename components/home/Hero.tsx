@@ -59,12 +59,12 @@ function RevealWords({
           <span className="inline-block overflow-hidden px-1 py-2 -mx-1 align-bottom">
             <motion.span
               className="inline-block"
-              initial={reduceMotion ? false : { y: "110%", rotateX: 45 }}
-              animate={{ y: 0, rotateX: 0 }}
+              initial={reduceMotion ? false : { y: "40%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{
-                duration: 0.85,
-                delay: delay + i * 0.12,
-                ease: [0.16, 1, 0.3, 1],
+                duration: 0.7,
+                delay: delay + i * 0.07,
+                ease: [0.22, 1, 0.36, 1],
               }}
             >
               {word}
@@ -93,13 +93,12 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Multi-layer parallax: each layer moves at different speed
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const midY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const contentScale = useTransform(scrollYProgress, [0, 0.6], [1, 0.95]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.65, 0.85]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const midY = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-4%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+  const contentScale = useTransform(scrollYProgress, [0, 0.85], [1, 0.98]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.6, 0.78]);
 
   return (
     <section
@@ -168,7 +167,7 @@ export function Hero() {
       {/* Layer 1: Background image with Ken Burns (fades in over sunrise) */}
       <motion.div
         aria-hidden="true"
-        className="absolute inset-0"
+        className="absolute inset-0 will-change-transform"
         style={staticHero ? undefined : { y: bgY }}
       >
         <motion.div
@@ -215,7 +214,7 @@ export function Hero() {
       {/* Layer 3: Mid-ground decorative elements */}
       <motion.div
         aria-hidden="true"
-        className="absolute inset-0"
+        className="absolute inset-0 will-change-transform"
         style={staticHero ? undefined : { y: midY }}
       >
         {/* Saffron diagonal accent */}
@@ -331,6 +330,13 @@ export function Hero() {
           ))}
         </motion.div>
       </motion.div>
+
+      {/* Bridge gradient — blends the dark hero bottom into the
+          Marquee's primary-800 band so there's no hard visual edge. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 z-[1] h-48 bg-gradient-to-b from-transparent via-primary-900/40 to-primary-800/80"
+      />
 
       {/* Scroll indicator - animated pill */}
       <motion.div

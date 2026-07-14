@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, site } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
@@ -23,13 +22,26 @@ export function Navbar() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 8);
+          ticking = false;
+        });
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
     <header
@@ -98,7 +110,7 @@ export function Navbar() {
             {/* Mobile menu toggle */}
             <button
               type="button"
-              onClick={() => setMenuOpen((open) => !open)}
+              onClick={() => setMenuOpen((prev) => !prev)}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
               aria-label={menuOpen ? t("chrome.closeMenu") : t("chrome.openMenu")}
@@ -113,46 +125,40 @@ export function Navbar() {
       </nav>
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-primary-100 bg-white xl:hidden"
-          >
-            <Container className="py-4">
-              <div className="mb-3 flex justify-center">
-                <LanguageSwitcher />
-              </div>
-              <ul className="flex flex-col gap-1">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      onClick={closeMenu}
-                      className="block rounded-xl px-4 py-3 font-medium text-ink hover:bg-primary-50 hover:text-primary"
-                    >
-                      {t(navKey(link.href))}
-                    </Link>
-                  </li>
-                ))}
-                <li className="mt-2">
+      {menuOpen && (
+        <div
+          id="mobile-menu"
+          className="border-t border-primary-100 bg-white xl:hidden"
+        >
+          <Container className="py-4">
+            <div className="mb-3 flex justify-center">
+              <LanguageSwitcher />
+            </div>
+            <ul className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <li key={link.href}>
                   <Link
-                    href="/admissions#apply"
+                    href={link.href}
                     onClick={closeMenu}
-                    className="block rounded-full bg-accent px-5 py-3 text-center font-semibold text-ink"
+                    className="block rounded-xl px-4 py-3 font-medium text-ink hover:bg-primary-50 hover:text-primary"
                   >
-                    {t("chrome.applyNow")}
+                    {t(navKey(link.href))}
                   </Link>
                 </li>
-              </ul>
-            </Container>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              ))}
+              <li className="mt-2">
+                <Link
+                  href="/admissions#apply"
+                  onClick={closeMenu}
+                  className="block rounded-full bg-accent px-5 py-3 text-center font-semibold text-ink"
+                >
+                  {t("chrome.applyNow")}
+                </Link>
+              </li>
+            </ul>
+          </Container>
+        </div>
+      )}
     </header>
   );
 }

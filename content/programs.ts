@@ -7,7 +7,7 @@ export const programs: Program[] = [
     ageRange: "Ages 3–4",
     summary:
       "A joyful first step into school life, where play-based learning builds curiosity, confidence, and early social skills.",
-    emoji: "🧸",
+    icon: "teddy",
     gradient: "gold",
     curriculum: [
       "Pre-literacy through rhymes, stories, and picture talk",
@@ -35,7 +35,7 @@ export const programs: Program[] = [
     ageRange: "Ages 4–5",
     summary:
       "Lower Kindergarten strengthens early literacy and numeracy foundations through structured play and guided discovery.",
-    emoji: "🎨",
+    icon: "palette",
     gradient: "sky",
     curriculum: [
       "Phonics-based letter sounds and early writing strokes",
@@ -63,7 +63,7 @@ export const programs: Program[] = [
     ageRange: "Ages 5–6",
     summary:
       "Upper Kindergarten prepares children for Class 1 with reading fluency, number work, and growing independence.",
-    emoji: "📚",
+    icon: "books",
     gradient: "green",
     curriculum: [
       "Reading simple sentences and sight words",
@@ -91,7 +91,7 @@ export const programs: Program[] = [
     ageRange: "Ages 6–11",
     summary:
       "The primary years build strong fundamentals in languages, mathematics, science, and values through engaging classrooms.",
-    emoji: "✏️",
+    icon: "pencil",
     gradient: "blue",
     curriculum: [
       "English, Kannada, and Hindi language development",
@@ -119,7 +119,7 @@ export const programs: Program[] = [
     ageRange: "Ages 11–14",
     summary:
       "Middle school deepens subject knowledge, introduces laboratory work, and develops independent study skills.",
-    emoji: "🔬",
+    icon: "microscope",
     gradient: "teal",
     curriculum: [
       "Mathematics, Science, and Social Science in depth",
@@ -147,7 +147,7 @@ export const programs: Program[] = [
     ageRange: "Ages 14–16",
     summary:
       "Focused board-exam preparation with rigorous academics, mentoring, and career guidance for every student.",
-    emoji: "🎓",
+    icon: "graduation",
     gradient: "violet",
     curriculum: [
       "Complete state board syllabus coverage with revision cycles",

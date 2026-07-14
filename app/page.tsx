@@ -22,6 +22,7 @@ import { AcademicCarousel } from "@/components/home/AcademicCarousel";
 import { ValuesJourney } from "@/components/home/ValuesJourney";
 import { T } from "@/components/i18n/T";
 import { LocalDate } from "@/components/i18n/LocalDate";
+import { SiteIcon } from "@/components/ui/SiteIcon";
 
 const promises = [
   {
@@ -29,7 +30,7 @@ const promises = [
     title: "Academic Excellence",
     description:
       "Concept-first teaching that turns marks into a by-product of genuine understanding — crowned by a 100% SSLC pass record.",
-    icon: "📚",
+    icon: "books",
     back: "Every child learns differently. We teach that way — visual, kinesthetic, auditory. Results follow understanding.",
   },
   {
@@ -37,7 +38,7 @@ const promises = [
     title: "Mentors, Not Just Teachers",
     description:
       "Twenty-plus educators who know every child by name, notice every quiet talent, and never let a question go unanswered.",
-    icon: "🧑‍🏫",
+    icon: "mentor",
     back: "Parent-teacher meetings aren't formalities here. They're conversations about potential, not just percentages.",
   },
   {
@@ -45,7 +46,7 @@ const promises = [
     title: "A Safe, Joyful Campus",
     description:
       "Supervised spaces, safe transport, and a culture of kindness — so the only thing children bring home is enthusiasm.",
-    icon: "🏫",
+    icon: "campus",
     back: "GPS-tracked buses, CCTV, trained staff at every gate. Safety isn't a feature — it's a foundation.",
   },
   {
@@ -53,7 +54,7 @@ const promises = [
     title: "The Whole Child",
     description:
       "Yoga at sunrise, cricket at noon, music by dusk. Marks matter; character, curiosity, and courage matter more.",
-    icon: "🌟",
+    icon: "star",
     back: "Sports, arts, community service, leadership roles — the parts of school that children remember at fifty.",
   },
 ];
@@ -168,13 +169,10 @@ export default function HomePage() {
                       <p className="font-display text-5xl font-medium text-primary/20 transition-colors duration-300 group-hover:text-accent">
                         {promise.number}
                       </p>
-                      <span
-                        aria-hidden="true"
-                        className="text-3xl transition-transform duration-500 group-hover:scale-110"
-                        style={{ transform: "translateZ(24px)" }}
-                      >
-                        {promise.icon}
-                      </span>
+                      <SiteIcon
+                        name={promise.icon}
+                        className="h-8 w-8 text-primary transition-transform duration-500 group-hover:scale-110"
+                      />
                     </div>
                     <h3
                       className="mt-4 font-heading text-lg font-semibold text-ink"
@@ -296,13 +294,10 @@ export default function HomePage() {
                   className="group relative h-full rounded-card border border-primary-100 bg-white p-6 text-center transition-[border-color,box-shadow] duration-300 hover:border-accent hover:shadow-glow"
                 >
                   <div style={{ transformStyle: "preserve-3d" }}>
-                    <span
-                      aria-hidden="true"
-                      className="inline-block text-4xl"
-                      style={{ transform: "translateZ(36px)" }}
-                    >
-                      {facility.emoji}
-                    </span>
+                    <SiteIcon
+                      name={facility.icon}
+                      className="inline-block h-10 w-10 text-primary"
+                    />
                     <h3
                       className="mt-3 font-heading font-semibold text-ink transition-colors duration-300 group-hover:text-primary"
                       style={{ transform: "translateZ(20px)" }}
