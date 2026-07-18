@@ -11,7 +11,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Photo } from "@/components/ui/Photo";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { CountUp } from "@/components/motion/CountUp";
-import { TiltCard } from "@/components/motion/TiltCard";
+import { LiftCard } from "@/components/motion/LiftCard";
 import { StatsOrbit3D } from "@/components/three/StatsOrbit3D";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
@@ -22,7 +22,7 @@ import { AcademicCarousel } from "@/components/home/AcademicCarousel";
 import { ValuesJourney } from "@/components/home/ValuesJourney";
 import { T } from "@/components/i18n/T";
 import { LocalDate } from "@/components/i18n/LocalDate";
-import { SiteIcon } from "@/components/ui/SiteIcon";
+import { DuoIcon } from "@/components/ui/DuoIcon";
 
 const promises = [
   {
@@ -63,7 +63,7 @@ const stats = [
   { label: "Founded with a dream", end: 2015, suffix: "" },
   { label: "Young pioneers", end: 300, suffix: "+" },
   { label: "Dedicated educators", end: 20, suffix: "+" },
-  { label: "Grades, one journey", end: 14, suffix: "" },
+  { label: "Grades, one journey", end: 12, suffix: "" },
 ];
 
 export default function HomePage() {
@@ -153,48 +153,47 @@ export default function HomePage() {
           <Stagger className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {promises.map((promise, promiseIndex) => (
               <StaggerItem key={promise.number} className="h-full">
-                {/* 3D depth card: the card tilts toward the pointer while the
-                    icon, heading, and copy float at different Z-depths. */}
-                <TiltCard
-                  maxTilt={9}
-                  className="group relative h-full rounded-card border border-primary-100 bg-white p-7 shadow-soft transition-[border-color,box-shadow] duration-300 hover:border-accent hover:shadow-lift"
-                >
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-b from-accent/0 via-accent/0 to-accent/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="relative" style={{ transformStyle: "preserve-3d" }}>
-                    <div
-                      className="flex items-center justify-between"
-                      style={{ transform: "translateZ(46px)", transformStyle: "preserve-3d" }}
-                    >
-                      <p className="font-display text-5xl font-medium text-primary/20 transition-colors duration-300 group-hover:text-accent">
+                {/* Premium glass card: lifts + scales on hover (LiftCard),
+                    deepens its layered shadow, and warms the number from
+                    pale blue to gold. */}
+                <LiftCard className="group relative h-full overflow-hidden rounded-3xl border border-white/70 bg-gradient-to-b from-white via-white to-accent-50/60 p-7 shadow-[0_1px_2px_rgba(16,42,67,0.05),0_8px_24px_rgba(16,42,67,0.07)] transition-shadow duration-300 hover:shadow-[0_2px_4px_rgba(16,42,67,0.05),0_16px_36px_rgba(16,42,67,0.12),0_28px_56px_rgba(245,179,1,0.14)]">
+                  {/* Ambient corner glow, awakens on hover */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-accent/15 blur-3xl opacity-50 transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                  <div className="relative">
+                    <div className="flex items-start justify-between">
+                      <p className="font-display text-6xl font-medium leading-none text-primary/15 transition-colors duration-300 group-hover:text-accent/90">
                         {promise.number}
                       </p>
-                      <SiteIcon
-                        name={promise.icon}
-                        className="h-8 w-8 text-primary transition-transform duration-500 group-hover:scale-110"
-                      />
+                      {/* Icon in a circular glass container with gold-to-white
+                          gradient and a soft ambient halo */}
+                      <div className="relative shrink-0">
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-1 rounded-full bg-accent/30 blur-lg opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+                        />
+                        <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-accent-50 via-white/90 to-white ring-1 ring-accent/25 backdrop-blur-sm shadow-[inset_0_1px_2px_rgba(255,255,255,0.95),0_6px_16px_rgba(245,179,1,0.18)]">
+                          <DuoIcon
+                            name={promise.icon}
+                            className="h-14 w-14 text-primary transition-transform duration-300 ease-out group-hover:rotate-6 group-hover:scale-110"
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <h3
-                      className="mt-4 font-heading text-lg font-semibold text-ink"
-                      style={{ transform: "translateZ(30px)" }}
-                    >
+                    <h3 className="mt-5 font-heading text-lg font-semibold text-ink">
                       <T k={`home.promise.items.${promiseIndex}.title`} />
                     </h3>
-                    <p
-                      className="mt-3 text-sm leading-relaxed text-muted"
-                      style={{ transform: "translateZ(16px)" }}
-                    >
+                    <p className="mt-3 text-sm leading-relaxed text-muted">
                       <T k={`home.promise.items.${promiseIndex}.description`} />
                     </p>
                     {/* Reveal on hover */}
-                    <div
-                      className="mt-4 max-h-0 overflow-hidden text-xs italic leading-relaxed text-primary/80 transition-all duration-500 group-hover:max-h-24"
-                      style={{ transform: "translateZ(10px)" }}
-                    >
+                    <div className="mt-4 max-h-0 overflow-hidden text-xs italic leading-relaxed text-primary/80 transition-all duration-500 group-hover:max-h-24">
                       <T k={`home.promise.items.${promiseIndex}.back`} />
                     </div>
                   </div>
-                </TiltCard>
+                </LiftCard>
               </StaggerItem>
             ))}
           </Stagger>
@@ -289,26 +288,34 @@ export default function HomePage() {
           <Stagger className="grid grid-cols-2 gap-5 lg:grid-cols-4">
             {facilities.map((facility, facilityIndex) => (
               <StaggerItem key={facility.name} className="h-full">
-                <TiltCard
-                  maxTilt={12}
-                  className="group relative h-full rounded-card border border-primary-100 bg-white p-6 text-center transition-[border-color,box-shadow] duration-300 hover:border-accent hover:shadow-glow"
-                >
-                  <div style={{ transformStyle: "preserve-3d" }}>
-                    <SiteIcon
-                      name={facility.icon}
-                      className="inline-block h-10 w-10 text-primary"
-                    />
-                    <h3
-                      className="mt-3 font-heading font-semibold text-ink transition-colors duration-300 group-hover:text-primary"
-                      style={{ transform: "translateZ(20px)" }}
-                    >
+                <LiftCard className="group relative h-full overflow-hidden rounded-3xl border border-white/70 bg-gradient-to-b from-white via-white to-primary-50/50 p-6 pt-8 text-center shadow-[0_1px_2px_rgba(16,42,67,0.05),0_8px_24px_rgba(16,42,67,0.07)] transition-shadow duration-300 hover:shadow-[0_2px_4px_rgba(16,42,67,0.05),0_16px_36px_rgba(16,42,67,0.12),0_28px_56px_rgba(245,179,1,0.14)]">
+                  {/* Ambient glow behind the card top */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-1/2 top-0 h-36 w-36 -translate-x-1/2 -translate-y-1/3 rounded-full bg-accent/15 blur-3xl opacity-50 transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                  <div className="relative">
+                    {/* Circular glass icon container */}
+                    <div className="relative mx-auto h-24 w-24">
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-2 rounded-full bg-accent/30 blur-xl opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+                      />
+                      <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-accent-50 via-white/90 to-white ring-1 ring-accent/25 backdrop-blur-sm shadow-[inset_0_1px_2px_rgba(255,255,255,0.95),0_6px_16px_rgba(245,179,1,0.18)]">
+                        <DuoIcon
+                          name={facility.icon}
+                          className="h-14 w-14 text-primary transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-110"
+                        />
+                      </div>
+                    </div>
+                    <h3 className="mt-4 font-heading font-semibold text-ink transition-colors duration-300 group-hover:text-primary">
                       <T k={`home.facilities.items.${facilityIndex}.name`} />
                     </h3>
                     <p className="mt-2 hidden text-sm text-muted sm:block">
                       <T k={`home.facilities.items.${facilityIndex}.description`} />
                     </p>
                   </div>
-                </TiltCard>
+                </LiftCard>
               </StaggerItem>
             ))}
           </Stagger>
