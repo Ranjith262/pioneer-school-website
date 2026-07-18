@@ -45,3 +45,4 @@ next-env.d.ts
 
 # fee-payment runtime data (mock transactions)
 /data/runtime/
+CLAUDE.md_bkp
