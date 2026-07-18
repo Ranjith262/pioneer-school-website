@@ -11,6 +11,8 @@ interface TiltCardProps {
   maxTilt?: number;
   /** Glare overlay on hover. */
   glare?: boolean;
+  /** Also lift + scale the card on hover (premium card treatment). */
+  lift?: boolean;
 }
 
 export function TiltCard({
@@ -18,6 +20,7 @@ export function TiltCard({
   className,
   maxTilt = 8,
   glare = true,
+  lift = false,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -57,6 +60,8 @@ export function TiltCard({
       className={className}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      whileHover={lift && !reduceMotion ? { y: -12, scale: 1.02 } : undefined}
+      transition={{ type: "tween", duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       style={
         reduceMotion
           ? undefined

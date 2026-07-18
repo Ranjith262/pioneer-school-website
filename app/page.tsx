@@ -11,7 +11,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Photo } from "@/components/ui/Photo";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { CountUp } from "@/components/motion/CountUp";
-import { LiftCard } from "@/components/motion/LiftCard";
+import { TiltCard } from "@/components/motion/TiltCard";
 import { StatsOrbit3D } from "@/components/three/StatsOrbit3D";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
@@ -153,23 +153,35 @@ export default function HomePage() {
           <Stagger className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {promises.map((promise, promiseIndex) => (
               <StaggerItem key={promise.number} className="h-full">
-                {/* Premium glass card: lifts + scales on hover (LiftCard),
-                    deepens its layered shadow, and warms the number from
-                    pale blue to gold. */}
-                <LiftCard className="group relative h-full overflow-hidden rounded-3xl border border-white/70 bg-gradient-to-b from-white via-white to-accent-50/60 p-7 shadow-[0_1px_2px_rgba(16,42,67,0.05),0_8px_24px_rgba(16,42,67,0.07)] transition-shadow duration-300 hover:shadow-[0_2px_4px_rgba(16,42,67,0.05),0_16px_36px_rgba(16,42,67,0.12),0_28px_56px_rgba(245,179,1,0.14)]">
-                  {/* Ambient corner glow, awakens on hover */}
+                {/* Premium glass card: tilts toward the pointer with true
+                    3D depth layers, lifts + scales on hover, deepens its
+                    layered shadow, and warms the number from pale blue to
+                    gold. NOTE: no overflow-hidden on the card itself —
+                    that would flatten the preserve-3d depth. The glow is
+                    clipped by an inner layer instead. */}
+                <TiltCard
+                  lift
+                  maxTilt={9}
+                  className="group relative h-full rounded-3xl border border-white/70 bg-gradient-to-b from-white via-white to-accent-50/60 p-7 shadow-[0_1px_2px_rgba(16,42,67,0.05),0_8px_24px_rgba(16,42,67,0.07)] transition-shadow duration-300 hover:shadow-[0_2px_4px_rgba(16,42,67,0.05),0_16px_36px_rgba(16,42,67,0.12),0_28px_56px_rgba(245,179,1,0.14)]"
+                >
+                  {/* Ambient corner glow, awakens on hover (clipped here) */}
                   <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-accent/15 blur-3xl opacity-50 transition-opacity duration-300 group-hover:opacity-100"
-                  />
-                  <div className="relative">
-                    <div className="flex items-start justify-between">
+                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
+                  >
+                    <div className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-accent/15 blur-3xl opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
+                  </div>
+                  <div className="relative" style={{ transformStyle: "preserve-3d" }}>
+                    <div
+                      className="flex items-start justify-between"
+                      style={{ transform: "translateZ(46px)", transformStyle: "preserve-3d" }}
+                    >
                       <p className="font-display text-6xl font-medium leading-none text-primary/15 transition-colors duration-300 group-hover:text-accent/90">
                         {promise.number}
                       </p>
                       {/* Icon in a circular glass container with gold-to-white
                           gradient and a soft ambient halo */}
-                      <div className="relative shrink-0">
+                      <div className="relative shrink-0" style={{ transform: "translateZ(14px)" }}>
                         <div
                           aria-hidden="true"
                           className="absolute inset-1 rounded-full bg-accent/30 blur-lg opacity-60 transition-opacity duration-300 group-hover:opacity-100"
@@ -182,18 +194,27 @@ export default function HomePage() {
                         </div>
                       </div>
                     </div>
-                    <h3 className="mt-5 font-heading text-lg font-semibold text-ink">
+                    <h3
+                      className="mt-5 font-heading text-lg font-semibold text-ink"
+                      style={{ transform: "translateZ(30px)" }}
+                    >
                       <T k={`home.promise.items.${promiseIndex}.title`} />
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted">
+                    <p
+                      className="mt-3 text-sm leading-relaxed text-muted"
+                      style={{ transform: "translateZ(16px)" }}
+                    >
                       <T k={`home.promise.items.${promiseIndex}.description`} />
                     </p>
                     {/* Reveal on hover */}
-                    <div className="mt-4 max-h-0 overflow-hidden text-xs italic leading-relaxed text-primary/80 transition-all duration-500 group-hover:max-h-24">
+                    <div
+                      className="mt-4 max-h-0 overflow-hidden text-xs italic leading-relaxed text-primary/80 transition-all duration-500 group-hover:max-h-24"
+                      style={{ transform: "translateZ(10px)" }}
+                    >
                       <T k={`home.promise.items.${promiseIndex}.back`} />
                     </div>
                   </div>
-                </LiftCard>
+                </TiltCard>
               </StaggerItem>
             ))}
           </Stagger>
@@ -288,15 +309,25 @@ export default function HomePage() {
           <Stagger className="grid grid-cols-2 gap-5 lg:grid-cols-4">
             {facilities.map((facility, facilityIndex) => (
               <StaggerItem key={facility.name} className="h-full">
-                <LiftCard className="group relative h-full overflow-hidden rounded-3xl border border-white/70 bg-gradient-to-b from-white via-white to-primary-50/50 p-6 pt-8 text-center shadow-[0_1px_2px_rgba(16,42,67,0.05),0_8px_24px_rgba(16,42,67,0.07)] transition-shadow duration-300 hover:shadow-[0_2px_4px_rgba(16,42,67,0.05),0_16px_36px_rgba(16,42,67,0.12),0_28px_56px_rgba(245,179,1,0.14)]">
-                  {/* Ambient glow behind the card top */}
+                <TiltCard
+                  lift
+                  maxTilt={12}
+                  className="group relative h-full rounded-3xl border border-white/70 bg-gradient-to-b from-white via-white to-primary-50/50 p-6 pt-8 text-center shadow-[0_1px_2px_rgba(16,42,67,0.05),0_8px_24px_rgba(16,42,67,0.07)] transition-shadow duration-300 hover:shadow-[0_2px_4px_rgba(16,42,67,0.05),0_16px_36px_rgba(16,42,67,0.12),0_28px_56px_rgba(245,179,1,0.14)]"
+                >
+                  {/* Ambient glow behind the card top (clipped here so the
+                      card itself can stay overflow-visible for 3D depth) */}
                   <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute left-1/2 top-0 h-36 w-36 -translate-x-1/2 -translate-y-1/3 rounded-full bg-accent/15 blur-3xl opacity-50 transition-opacity duration-300 group-hover:opacity-100"
-                  />
-                  <div className="relative">
-                    {/* Circular glass icon container */}
-                    <div className="relative mx-auto h-24 w-24">
+                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
+                  >
+                    <div className="absolute left-1/2 top-0 h-36 w-36 -translate-x-1/2 -translate-y-1/3 rounded-full bg-accent/15 blur-3xl opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
+                  </div>
+                  <div className="relative" style={{ transformStyle: "preserve-3d" }}>
+                    {/* Circular glass icon container floating closest to the eye */}
+                    <div
+                      className="relative mx-auto h-24 w-24"
+                      style={{ transform: "translateZ(40px)" }}
+                    >
                       <div
                         aria-hidden="true"
                         className="absolute inset-2 rounded-full bg-accent/30 blur-xl opacity-60 transition-opacity duration-300 group-hover:opacity-100"
@@ -308,14 +339,20 @@ export default function HomePage() {
                         />
                       </div>
                     </div>
-                    <h3 className="mt-4 font-heading font-semibold text-ink transition-colors duration-300 group-hover:text-primary">
+                    <h3
+                      className="mt-4 font-heading font-semibold text-ink transition-colors duration-300 group-hover:text-primary"
+                      style={{ transform: "translateZ(24px)" }}
+                    >
                       <T k={`home.facilities.items.${facilityIndex}.name`} />
                     </h3>
-                    <p className="mt-2 hidden text-sm text-muted sm:block">
+                    <p
+                      className="mt-2 hidden text-sm text-muted sm:block"
+                      style={{ transform: "translateZ(12px)" }}
+                    >
                       <T k={`home.facilities.items.${facilityIndex}.description`} />
                     </p>
                   </div>
-                </LiftCard>
+                </TiltCard>
               </StaggerItem>
             ))}
           </Stagger>
